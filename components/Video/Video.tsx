@@ -19,12 +19,15 @@ const Video: FC = () => {
 
     return (
         <div className='h-full w-full overflow-hidden relative my-auto max-h-[500px]'>
-            <video loop controls ref={videoRef} className='relative w-full mb-[-100px]'>
+            <video loop controls ref={videoRef} className='relative w-full mb-[-10vh]'>
                 <source src='/assets/video.mp4' type='video/mp4'/>
             </video>
             <div className='bg-cover text-center h-full left-0 top-0 absolute w-full z-999 bg-[#ffd700]/40'>
-                <Button variant='outline' className='rounded-full relative top-[50%] h-[50px] text-[#ffd700]'
-                        onClick={togglePlay}>
+                <Button
+                    variant='outline'
+                    className='rounded-full relative top-[25%] sm:top-[50%] h-[50px] scale-75 sm:scale-100 text-[#ffd700]'
+                    onClick={togglePlay}
+                >
                     {isPlaying || <PlayIcon/>}
                     {isPlaying && <PauseIcon/>}
                 </Button>

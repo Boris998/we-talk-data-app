@@ -19,7 +19,7 @@ const slides = [
 
 
 const ImageSlider = () => {
-    const [currentIndex, setCurrentIndex] = useState(3);
+    const [currentIndex, setCurrentIndex] = useState(0);
 
     const prevSlide = () => {
         const newIndex = currentIndex === 0 && slides.length - 1 || currentIndex - 1;
@@ -27,7 +27,8 @@ const ImageSlider = () => {
     }
 
     const nextSlide = () => {
-        const newIndex = currentIndex === slides.length - 1 && 0 || currentIndex + 1;
+        // const newIndex = (currentIndex === slides.length - 1) && 0 || currentIndex + 1;
+        const newIndex = currentIndex === slides.length - 1 ? 0 : currentIndex + 1;
         setCurrentIndex(newIndex);
     }
 
@@ -37,7 +38,7 @@ const ImageSlider = () => {
 
     const slidesList = slides.map((slide, slideIndex) =>
         <div key={slideIndex}
-            onClick={() => goToSlide(slideIndex)}
+             onClick={() => goToSlide(slideIndex)}
              className='text-2xl cursor-pointer'
         >
             <DotIcon key={slideIndex}/>
@@ -52,16 +53,16 @@ const ImageSlider = () => {
 
         {/*left arrow*/}
         <Button onClick={prevSlide}
-                className='hidden group-hover:block absolute top-[50%] -translate-x-0 translatey-y-[-50%]
-                left-5 text-2xl rounded-full bg-black/20 text-white pb-12'
+                className='hidden group-hover:block absolute top-[45%] -translate-x-0 translatey-y-[-50%]
+                left-5 text-2xl rounded-full bg-black/20 text-white pb-12 hover:bg-[#ffd700]/40'
         >
             <ChevronLeftIcon className='h-10 w-10'/>
         </Button>
 
         {/*right arrow*/}
         <Button onClick={nextSlide}
-                className='hidden group-hover:block absolute top-[50%] -translate-x-0 translatey-y-[-50%]
-                right-5 text-2xl rounded-full bg-black/20 text-white pb-12'
+                className='hidden group-hover:block absolute top-[45%] -translate-x-0 translatey-y-[-50%]
+                right-5 text-2xl rounded-full bg-black/20 text-white pb-12 hover:bg-[#ffd700]/40'
         >
             <ChevronRightIcon className='h-10 w-10'/>
         </Button>

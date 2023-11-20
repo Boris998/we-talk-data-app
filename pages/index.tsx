@@ -1,25 +1,24 @@
-import {Inter} from 'next/font/google'
 import About from "@/components/About/About";
 import Hero from "@/components/Header/Hero";
 import Gallery from "@/components/Gallery/Gallery";
 import PastEvents from "@/components/Events/PastEvents";
-import Head from "next/head";
 import Video from "@/components/Video/Video";
 import Partners from "@/components/Partners/Partners";
 import Supporters from "@/components/Supporters/Supporters";
 import Footer from "@/components/Footer/Footer";
+import Header from "@/components/Header/Header";
 
-const inter = Inter({subsets: ['latin']})
+// const inter = Inter({subsets: ['latin']})
 
 const Home = () => {
     return (
         <div className='scrollbar scrollbar-track-gray-500/20'>
 
-            <Head>
-                <title>We Talk Data & AI</title>
-            </Head>
+            <header className="sticky top-0 z-50">
+                <Header/>
+            </header>
 
-            {/*Navbar + Hero*/}
+            {/*Hero*/}
             <section id='header'>
                 <Hero/>
             </section>
@@ -30,7 +29,7 @@ const Home = () => {
             </section>
 
             {/* Video */}
-            <section id='gallery'>
+            <section>
                 <Video/>
             </section>
 
@@ -40,7 +39,7 @@ const Home = () => {
             </section>
 
             {/* Past Events */}
-            <section id='gallery'>
+            <section id='events'>
                 <PastEvents/>
             </section>
 

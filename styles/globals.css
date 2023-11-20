@@ -17,7 +17,11 @@
 }
 
 body {
-    background: linear-gradient(225deg, hsla(208, 100%, 20%, 1) 20%, hsla(216, 100%, 9%, 1) 100%);
+    /*background: linear-gradient(225deg, hsla(208, 100%, 20%, 1) 20%, hsla(216, 100%, 9%, 1) 100%);*/
+    /*background: linear-gradient(45deg, hsla(216, 100%, 9%, 1) 0%, hsla(208, 100%, 20%, 1) 25%, hsla(216, 100%, 9%, 1) 50%, hsla(208, 100%, 20%, 1) 75%, hsla(216, 100%, 9%, 1) 100%);*/
+    /*background: radial-gradient(circle, hsla(0, 0%, 0%, 1) 0%, hsla(208, 100%, 20%, 1) 25%, hsla(216, 100%, 9%, 1) 50%, hsla(208, 100%, 20%, 1) 75%, hsla(216, 100%, 9%, 1) 100%);*/
+    /*background: radial-gradient(circle, hsla(208, 100%, 20%, 1) 2%, hsla(210, 100%, 17%, 1) 20%, hsla(216, 91%, 13%, 1) 56%, hsla(208, 100%, 20%, 1) 92%);*/
+    background: radial-gradient(circle, hsla(208, 100%, 20%, 1) 2%, hsla(210, 100%, 17%, 1) 20%, hsla(216, 100%, 10%, 0.95) 56%, hsla(208, 100%, 20%, 1) 92%);
 }
 
 /*body {

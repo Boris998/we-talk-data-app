@@ -6,9 +6,9 @@ const bars = ['HOME', 'ABOUT', 'GALLERY', 'EVENTS', 'PARTNERS', 'CONTACT US'];
 
 const barsList = bars.map((bar,i) =>
             <Link key={i}
-                  className='cursor-pointer text-[#ffd700] hover:text-[#001330] text-center
+                  className='cursor-pointer text-[#ffd700] hover:text-[#001330] text-center bg-[#001330]/40
               hover:bg-[#ffd700]/50 p-[15px] rounded-full active:bg-[#ffd700]/50'
-                  href={`#${bar.toLowerCase()}`}>
+                  href={`/#${bar.toLowerCase()}`}>
                 {bar}
             </Link>
     )
@@ -17,10 +17,10 @@ const barsList = bars.map((bar,i) =>
 const SheetMenu = () => {
     return <Sheet>
         <SheetTrigger className='text-[#ffd700]/50 hover:text-[#ffd700]'>
-            <HamburgerMenuIcon className='h-[32px] w-[32px]'/>
+            <HamburgerMenuIcon className='h-[8vw] w-[10vw] sm:h-[32px] sm:w-[32px]'/>
         </SheetTrigger>
-        <SheetContent side='right' className='w-full md:w-[600px]'>
-            <nav className='flex flex-col gap-4'>
+        <SheetContent side='right' className='w-full lg:hidden'>
+            <nav className='flex flex-col gap-4 mt-16 font-bold'>
                 {barsList}
             </nav>
         </SheetContent>

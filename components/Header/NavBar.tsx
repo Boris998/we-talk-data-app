@@ -15,7 +15,7 @@ const NavBar = () => {
     );
 
     return (
-        <nav className='mx-6 items-center space-x-4 lg:space-x-6 hidden lg:block'>
+        <nav className='items-center space-x-3 lg:space-x-4 hidden lg:block w-full xl:pr-[10vw]'>
             {barsList}
         </nav>
     );
