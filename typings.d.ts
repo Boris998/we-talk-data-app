@@ -22,3 +22,9 @@ export interface Event extends SanityBody {
     name: string;
     year: number
 }
+
+export interface Social extends SanityBody {
+    _type: "social",
+    title: string,
+    url: string,
+}

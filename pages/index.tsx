@@ -7,12 +7,13 @@ import Partners from "@/components/Partners/Partners";
 import Supporters from "@/components/Supporters/Supporters";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
+import {NextPage} from "next";
 
 // const inter = Inter({subsets: ['latin']})
 
-const Home = () => {
+const Home:NextPage = () => {
     return (
-        <div className='scrollbar scrollbar-track-gray-500/20'>
+        <div className='scrollbar scrollbar-track-yellow-400 scrollbar-thumb-[#ffd700]/80'>
 
             <header className="sticky top-0 z-50">
                 <Header/>
@@ -34,7 +35,7 @@ const Home = () => {
             </section>
 
             {/* Gallery */}
-            <section id='gallery' className='bg-[#ffd700]/10'>
+            <section id='gallery' className='bg-[#001330]/40'>
                 <Gallery/>
             </section>
 
@@ -45,7 +46,7 @@ const Home = () => {
 
 
             {/* Partners */}
-            <section id='partners' className='bg-[#ffd700]/10'>
+            <section id='partners' className='bg-[#001350]/40'>
                 <Partners/>
             </section>
 
@@ -55,7 +56,7 @@ const Home = () => {
             </section>
 
             {/* footer */}
-            <section id='footer' className='bg-gray-800'>
+            <section id='footer' className='bg-gray-800/70'>
                 <Footer/>
             </section>
 
