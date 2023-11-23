@@ -7,11 +7,37 @@ import Partners from "@/components/Partners/Partners";
 import Supporters from "@/components/Supporters/Supporters";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
-import {NextPage} from "next";
+import {AboutData, HomePageGallery, PageInfo, PartnerData, Social, SpeakerData, SupporterData} from '@/typings';
+import {GetStaticProps} from "next";
+import {fetchAbout} from "@/utils/fetchAbout";
+import {fetchHomePageGallery} from "@/utils/fetchHomePageGallery";
+import {fetchPartners} from "@/utils/fetchPartners";
+import {fetchSupporters} from "@/utils/fetchSupporters";
+import {fetchSpeakers} from "@/utils/fetchSpeakers";
+import {fetchSocials} from "@/utils/fetchSocials";
+import {fetchPageInfo} from "@/utils/fetchPageInfo";
 
 // const inter = Inter({subsets: ['latin']})
 
-const Home:NextPage = () => {
+type Props = {
+    pageInfo: PageInfo;
+    about: AboutData;
+    homePageGallery: HomePageGallery;
+    partners: PartnerData[];
+    supporters: SupporterData[];
+    socials: Social[];
+    speakers: SpeakerData[];
+}
+
+const Home = ({
+                  pageInfo,
+                  about,
+                  homePageGallery,
+                  partners,
+                  supporters,
+                  socials,
+                  speakers
+              }: Props) => {
     return (
         <div className='scrollbar scrollbar-track-yellow-400 scrollbar-thumb-[#ffd700]/80'>
 
@@ -21,12 +47,12 @@ const Home:NextPage = () => {
 
             {/*Hero*/}
             <section id='header'>
-                <Hero/>
+                <Hero pageInfo={pageInfo}/>
             </section>
 
             {/* About */}
             <section id="about">
-                <About />
+                <About/>
             </section>
 
             {/* Video */}
@@ -65,3 +91,27 @@ const Home:NextPage = () => {
 }
 
 export default Home;
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+    const pageInfo: PageInfo = await fetchPageInfo();
+    const about: AboutData = await fetchAbout();
+    const homePageGallery: HomePageGallery = await fetchHomePageGallery();
+    const partners: PartnerData[] = await fetchPartners();
+    const supporters: SupporterData[] = await fetchSupporters();
+    const socials: Social[] = await fetchSocials();
+    const speakers: SpeakerData[] = await fetchSpeakers();
+
+    return {
+        props: {
+            pageInfo,
+            about,
+            homePageGallery,
+            partners,
+            supporters,
+            socials,
+            speakers
+        },
+        revalidate: 30
+    }
+}
+

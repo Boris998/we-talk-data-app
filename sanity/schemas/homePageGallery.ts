@@ -16,7 +16,7 @@ export default      defineType({
             type: 'string',
         }),
         defineField({
-            name: 'sliderImage',
+            name: 'sliderImages',
             title: 'Slider Image',
             type: 'array',
             of: [{type: 'reference', to: {type: 'picture'}}]

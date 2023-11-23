@@ -1,12 +1,29 @@
-import {FC} from "react";
-import {ContainerProps} from "@/typings";
+import { FC, useState, useEffect } from "react";
+import { ContainerProps } from "@/typings";
 
+const ContainerHeader: FC<ContainerProps> = ({ children }) => {
+    const [scrolled, setScrolled] = useState(false);
+    const bg = 'bg-[#ffd700]/20';
 
-const ContainerHeader: FC<ContainerProps> = ({children}) =>{
-    return (<header className='mx-auto px-[5vw] w-full absolute bg-[#ffd700]/10 rounded-b-full
-    justify-between text-center overflow-hidden py-[0vw] lg:py-[15px] flex items-center'>
-        {children}
-    </header>);
-}
+    useEffect(() => {
+        const handleScroll = () => {
+            const isScrolled = window.scrollY > 0;
+            setScrolled(isScrolled);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    const headerClassName = `mx-auto px-[5vw] w-full absolute rounded-b-full
+    justify-between text-center overflow-hidden py-[0vw] lg:py-[15px] flex items-center ${
+        scrolled ? bg: ''
+    }`;
+
+    return <header className={headerClassName}>{children}</header>;
+};
 
 export default ContainerHeader;

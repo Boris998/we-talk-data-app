@@ -1,14 +1,15 @@
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
 import {ArrowDownIcon} from "@radix-ui/react-icons";
+import {FC} from "react";
 
 
-const Hero = () => {
+const Hero:FC = () => {
     return (<div className='flex flex-col overflow-hidden bg-cover bg-no-repeat
                  h-screen items-center justify-center text-center'
                  style={{
                      backgroundPosition: '50%',
-                     backgroundImage: `url('/assets/hero8.jpg')`
+                     backgroundImage: `url(/assets/Hero/IMG_8682.PNG)`
                  }}
         >
             <h1 className='mb-6 lg:text-[92px] text-[8vw] font-extrabold text-[#003767]/90 uppercase tracking-[20px] drop-shadow-[0_6.2px_1.2px_rgba(255,255,255)]'>
