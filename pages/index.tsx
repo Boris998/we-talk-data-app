@@ -15,7 +15,8 @@ import {
     PastEventsData,
     Social,
     SpeakerData,
-    SupporterData, UpcomingEventData
+    SupporterData,
+    UpcomingEventData
 } from '@/typings';
 import {GetStaticProps} from "next";
 import {fetchAbout} from "@/utils/fetchAbout";
@@ -28,8 +29,6 @@ import {fetchPageInfo} from "@/utils/fetchPageInfo";
 import {fetchPastEvents} from "@/utils/fetchPastEvents";
 import {fetchUpcomingEvent} from "@/utils/fetchUpcomingEvent";
 import UpcomingEvent from "@/components/Events/UpcomingEvent";
-import Speakers from "@/components/Events/Speakers";
-import Schedule from "@/components/Events/Schedule";
 
 // const inter = Inter({subsets: ['latin']})
 
@@ -56,7 +55,6 @@ const Home = ({
                   speakers,
                   upcomingEvent
               }: Props) => {
-    console.log(homePageGallery.featureFlag);
     return (
         <div className='scrollbar scrollbar-track-yellow-400 scrollbar-thumb-[#ffd700]/80'>
 
@@ -80,11 +78,7 @@ const Home = ({
             </section>
 
             <section>
-                <Speakers speakers={speakers} upcomingEvent={upcomingEvent}/>
-            </section>
-
-            <section>
-                <Schedule upcomingEvent={upcomingEvent}/>
+                <UpcomingEvent upcomingEvent={upcomingEvent}/>
             </section>
 
             {/* Gallery */}

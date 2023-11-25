@@ -38,7 +38,6 @@ const ImageSlider = ({homePageGallery}: Props) => {
     );
 
     const urlImage = urlFor(homePageGallery?.sliderImages[currentIndex].image).url();
-    console.dir(urlImage);
 
     const backgroundImageStyle = urlImage ? {backgroundImage: `url(${urlImage})`} : {};
 

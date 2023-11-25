@@ -64,7 +64,7 @@ export interface HomePageGallery extends SanityBody {
 
 export interface SpeakerData extends SanityBody {
     _type: "speaker",
-    name: string,
+    speakerName: string,
     jobTitle: string,
     bio?: string,
     image: Image,

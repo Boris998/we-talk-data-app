@@ -19,7 +19,7 @@ const Hero: FC<Props> = ({pageInfo}: Props) => {
                  h-screen items-center justify-center text-center space-y-[20px]'
                  style={{
                      backgroundPosition: '50%',
-                     backgroundImage: `url(/assets/hero8.jpg)`
+                     ...backgroundImageStyle
                  }}
         >
             <h3 className='mb-6 lg:text-sm text-[2vw]  max-w-4xl  font-bold text-amber-100 uppercase tracking-[4px] shadow-xl shadow-[#003767]'>

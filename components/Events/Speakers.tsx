@@ -1,5 +1,5 @@
 import HeadingWrapper from "@/components/ui/HOC/HeadingWrapper";
-import {SpeakerData, UpcomingEventData} from "@/typings";
+import {UpcomingEventData} from "@/typings";
 import Link from "next/link";
 import React from "react";
 import {urlFor} from "@/sanity";
@@ -7,28 +7,23 @@ import Image from 'next/image';
 import SpeakerCard from "@/components/ui/HOC/SpeakerCard";
 
 type Props = {
-    speakers: SpeakerData[]
     upcomingEvent: UpcomingEventData
 }
 
-const Speakers = ({speakers,upcomingEvent}: Props) => {
+const Speakers = ({upcomingEvent}: Props) => {
 
-    // const aaa = speakers.map(speaker => {
-    //     return urlFor(speaker.image).url()
-    // })
-    const listSpeakerCards = speakers.map((speaker, id) => {
-        console.log(speaker.image.asset._ref)
+    const listSpeakerCards = upcomingEvent.speaker.map((speaker) => {
         const urlImage = urlFor(speaker.image.asset._ref).url();
 
         return <SpeakerCard key={speaker._id}>
-                <Image src={urlImage} alt={urlImage} height='300' width='400' className='rounded-2xl'/>
-                <Link href='/#speakers'>
-                    <figcaption>
-                        <h3 className='hover:text-[#003767]'>view more</h3>
-                        <h3>{speaker.additionalInfo} | {speaker.jobTitle}</h3>
-                        <h4>{speaker.bio?.substring(0,50)}</h4>
-                    </figcaption>
-                </Link>
+            <Image src={urlImage} alt={speaker.speakerName} height='300' width='400' className='rounded-2xl'/>
+            <Link href='/#speakers'>
+                <figcaption>
+                    <h3 className='hover:text-[#003767]'>view more</h3>
+                    <h3>{speaker.speakerName} | {speaker.jobTitle}</h3>
+                    <h4>{speaker.bio?.substring(0, 50)}</h4>
+                </figcaption>
+            </Link>
         </SpeakerCard>;
     });
 

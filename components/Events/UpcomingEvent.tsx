@@ -1,5 +1,5 @@
 import SectionWrapperContainer from "@/components/ui/HOC/SectionWrapperContainer";
-import {SpeakerData, UpcomingEventData} from "@/typings";
+import {UpcomingEventData} from "@/typings";
 import Speakers from "@/components/Events/Speakers";
 import Schedule from "@/components/Events/Schedule";
 
@@ -10,7 +10,7 @@ type Props = {
 const UpcomingEvent = ({upcomingEvent}: Props) => {
     return (
         <SectionWrapperContainer>
-            {/*<Speakers />*/}
+            <Speakers upcomingEvent={upcomingEvent}/>
 
             <Schedule upcomingEvent={upcomingEvent}/>
         </SectionWrapperContainer>

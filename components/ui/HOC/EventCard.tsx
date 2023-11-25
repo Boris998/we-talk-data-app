@@ -7,7 +7,9 @@ type Props = {
 
 const EventCard: FC<Props> = ({children}:Props) => {
     return (
-        <figure className={`${styles.snip1577} relative hover-card cursor-pointer rounded-2xl hover:bg-[#ffd700]/60`}>
+        <figure className={`${styles.snip1577} relative hover-card cursor-pointer rounded-2xl
+        hover:bg-gradient-to-br hover:from-[#ffd700]/30 hover:to-[#003767]
+        `}>
             {children}
         </figure>
     );

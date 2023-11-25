@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const NavBar = () => {
 
-    const bars = ['HOME', 'ABOUT', 'GALLERY', 'EVENTS', 'PARTNERS', 'CONTACT US'];
+    const bars = ['HOME', 'ABOUT', 'UPCOMING EVENT', 'GALLERY', 'PAST EVENTS', 'PARTNERS'];
 
     const barsList = bars.map((bar, id) =>
         <Link key={id}

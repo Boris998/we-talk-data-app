@@ -2,7 +2,7 @@ import {Sheet, SheetContent, SheetTrigger} from "@/components/ui/sheet";
 import {HamburgerMenuIcon} from "@radix-ui/react-icons";
 import Link from "next/link";
 
-const bars = ['HOME', 'ABOUT', 'GALLERY', 'EVENTS', 'PARTNERS', 'CONTACT US'];
+const bars = ['HOME', 'ABOUT', 'UPCOMING EVENT', 'GALLERY', 'PAST EVENTS', 'PARTNERS'];
 
 const barsList = bars.map((bar,i) =>
             <Link key={i}
