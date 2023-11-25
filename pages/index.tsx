@@ -7,7 +7,16 @@ import Partners from "@/components/Partners/Partners";
 import Supporters from "@/components/Supporters/Supporters";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
-import {AboutData, HomePageGallery, PageInfo, PartnerData, Social, SpeakerData, SupporterData} from '@/typings';
+import {
+    AboutData,
+    HomePageGallery,
+    PageInfo,
+    PartnerData,
+    PastEventsData,
+    Social,
+    SpeakerData,
+    SupporterData, UpcomingEventData
+} from '@/typings';
 import {GetStaticProps} from "next";
 import {fetchAbout} from "@/utils/fetchAbout";
 import {fetchHomePageGallery} from "@/utils/fetchHomePageGallery";
@@ -16,6 +25,11 @@ import {fetchSupporters} from "@/utils/fetchSupporters";
 import {fetchSpeakers} from "@/utils/fetchSpeakers";
 import {fetchSocials} from "@/utils/fetchSocials";
 import {fetchPageInfo} from "@/utils/fetchPageInfo";
+import {fetchPastEvents} from "@/utils/fetchPastEvents";
+import {fetchUpcomingEvent} from "@/utils/fetchUpcomingEvent";
+import UpcomingEvent from "@/components/Events/UpcomingEvent";
+import Speakers from "@/components/Events/Speakers";
+import Schedule from "@/components/Events/Schedule";
 
 // const inter = Inter({subsets: ['latin']})
 
@@ -23,21 +37,26 @@ type Props = {
     pageInfo: PageInfo;
     about: AboutData;
     homePageGallery: HomePageGallery;
+    pastEvents: PastEventsData;
     partners: PartnerData[];
     supporters: SupporterData[];
     socials: Social[];
     speakers: SpeakerData[];
+    upcomingEvent: UpcomingEventData;
 }
 
 const Home = ({
                   pageInfo,
                   about,
                   homePageGallery,
+                  pastEvents,
                   partners,
                   supporters,
                   socials,
-                  speakers
+                  speakers,
+                  upcomingEvent
               }: Props) => {
+    console.log(homePageGallery.featureFlag);
     return (
         <div className='scrollbar scrollbar-track-yellow-400 scrollbar-thumb-[#ffd700]/80'>
 
@@ -52,7 +71,7 @@ const Home = ({
 
             {/* About */}
             <section id="about">
-                <About/>
+                <About about={about}/>
             </section>
 
             {/* Video */}
@@ -60,32 +79,42 @@ const Home = ({
                 <Video/>
             </section>
 
-            {/* Gallery */}
-            <section id='gallery' className='bg-[#001330]/40'>
-                <Gallery/>
+            <section>
+                <Speakers speakers={speakers} upcomingEvent={upcomingEvent}/>
             </section>
+
+            <section>
+                <Schedule upcomingEvent={upcomingEvent}/>
+            </section>
+
+            {/* Gallery */}
+            {homePageGallery?.featureFlag &&
+                <section id='gallery' className='bg-[#001330]/40'>
+                    <Gallery homePageGallery={homePageGallery}/>
+                </section>
+            }
 
             {/* Past Events */}
-            <section id='events'>
-                <PastEvents/>
-            </section>
-
+            {pastEvents?.featureFlag &&
+                <section id='events'>
+                    <PastEvents pastEvents={pastEvents}/>
+                </section>
+            }
 
             {/* Partners */}
             <section id='partners' className='bg-[#001350]/40'>
-                <Partners/>
+                <Partners partners={partners}/>
             </section>
 
             {/* Supporters */}
             <section id='supporters'>
-                <Supporters/>
+                <Supporters supporters={supporters}/>
             </section>
 
             {/* footer */}
             <section id='footer' className='bg-gray-800/70'>
-                <Footer/>
+                <Footer socials={socials}/>
             </section>
-
         </div>
     )
 }
@@ -96,22 +125,26 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     const pageInfo: PageInfo = await fetchPageInfo();
     const about: AboutData = await fetchAbout();
     const homePageGallery: HomePageGallery = await fetchHomePageGallery();
+    const pastEvents: PastEventsData = await fetchPastEvents();
     const partners: PartnerData[] = await fetchPartners();
     const supporters: SupporterData[] = await fetchSupporters();
     const socials: Social[] = await fetchSocials();
     const speakers: SpeakerData[] = await fetchSpeakers();
+    const upcomingEvent: UpcomingEventData = await fetchUpcomingEvent();
 
     return {
         props: {
             pageInfo,
             about,
             homePageGallery,
+            pastEvents,
             partners,
             supporters,
             socials,
-            speakers
+            speakers,
+            upcomingEvent
         },
-        revalidate: 30
+        revalidate: 2
     }
 }
 

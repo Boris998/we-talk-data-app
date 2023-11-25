@@ -8,6 +8,7 @@ import pastEvents from "./pastEvents";
 import speaker from "./speaker";
 import partner from "./partner";
 import supporter from "./supporter";
+import upcomingEvent from "./upcomingEvent";
 
 export const schemaTypes = [
     social,
@@ -20,4 +21,5 @@ export const schemaTypes = [
     homePageGallery,
     event,
     pastEvents,
+    upcomingEvent
 ]

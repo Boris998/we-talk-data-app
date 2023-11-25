@@ -1,7 +1,6 @@
 import SectionWrapperContainer from "@/components/ui/HOC/SectionWrapperContainer";
 import HeadingWrapper from "@/components/ui/HOC/HeadingWrapper";
 import React from "react";
-import {getImgProps} from "next/dist/shared/lib/get-img-props";
 
 const MOCK_belgradeGallery = [
     {src: '/assets/itQuarks-dark.png', alt: 'https://www.kinandcarta.com/'},

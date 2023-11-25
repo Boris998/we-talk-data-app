@@ -1,10 +1,13 @@
-import React, {FC} from 'react';
-import './EventCard.css';
-import {ContainerProps} from "@/typings";
+import React, {FC, ReactNode} from 'react';
+import styles from './EventCard.module.css';
 
-const EventCard: FC<ContainerProps> = ({children}) => {
+type Props = {
+    children: ReactNode
+}
+
+const EventCard: FC<Props> = ({children}:Props) => {
     return (
-        <figure className="snip1577 relative hover-card cursor-pointer rounded-2xl hover:bg-[#ffd700]/60">
+        <figure className={`${styles.snip1577} relative hover-card cursor-pointer rounded-2xl hover:bg-[#ffd700]/60`}>
             {children}
         </figure>
     );

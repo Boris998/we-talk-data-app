@@ -3,7 +3,7 @@ import {groq} from 'next-sanity';
 import {sanityClient} from "@/sanity";
 import {AboutData} from "@/typings";
 
-const query = groq`*[_type=="about"]`;
+const query = groq`*[_type=="about"][0]`;
 
 type Data = {
     about: AboutData[]

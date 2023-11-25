@@ -28,13 +28,18 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'subheading',
+      name: 'subHeading',
       title: 'Subheading',
       type: 'string',
     }),
     defineField({
       name: 'additionalInfo',
       title: 'AdditionalInfo',
+      type: 'string',
+    }),
+    defineField({
+      name: 'heroBtn',
+      title: 'Hero Button',
       type: 'string',
     }),
     defineField({

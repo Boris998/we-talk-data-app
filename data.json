@@ -1,0 +1,55 @@
+{
+  "upcomingEvent": {
+    "_createdAt": "2023-11-24T12:10:15Z",
+    "_id": "608ed1a8-b67e-42d7-ab91-e32aab529ca0",
+    "speaker": [
+      {
+        "_id": "1404ef24-5fe3-4f24-ae84-42f2a116bf8f",
+        "image": {
+          "_type": "image",
+          "asset": {
+            "_ref": "image-68b8f773716e32e0a7c5a125954653ef01b549fd-386x382-png",
+            "_type": "reference"
+          }
+        },
+        "featureFlag": true,
+        "jobTitle": "General Manager | Aurora Labs",
+        "_rev": "n8jUthveQsLLYWWmP6nmSO",
+        "bio": "Stojan is an engineer with an entrepreneurial mindset and with more than 18 years of experience in the software industry. His commitment to innovation has led to the creation of cutting-edge products and solutions to intricate technical problems. Lately, his focus is on domains of anomaly detection, collaborative filtering, and the development of advanced large language models (LLMs).",
+        "description": "Bringing static data to live with RoBERTa-based LLM. How from zeros and ones build a performing LLM model that is not polluted or overtrained.",
+        "_updatedAt": "2023-11-24T09:52:37Z",
+        "presentationTitle": "The Life Journey of a Large Language Model",
+        "speakerName": "Stojan Ganchev",
+        "_createdAt": "2023-11-20T23:12:12Z",
+        "_type": "speaker"
+      },
+      {
+        "image": {
+          "asset": {
+            "_ref": "image-98c0d87b0609bb7bafac6d12bfc7daee35e7df26-669x671-png",
+            "_type": "reference"
+          },
+          "_type": "image"
+        },
+        "_createdAt": "2023-11-20T23:09:12Z",
+        "_rev": "n8jUthveQsLLYWWmP6nmhC",
+        "_id": "bfa85ee3-e023-4e5f-8f55-b6714bcdc792",
+        "featureFlag": true,
+        "presentationTitle": "Maximizing Business Success with GA4: Harnessing Data for Web Design & Campaign optimization",
+        "speakerName": "Bisera Chauleva",
+        "jobTitle": "Analytics Engineer | Kin + Carta",
+        "_type": "speaker",
+        "bio": "Bisera Chauleva is Analytics Engineer in Kin+Carta with more than 2 years of experience in the web/app analytics area, mostly working with Google services like Universal Analytics/Google Analytics 4/Google Tag Manager /BigQuery but is eager to expand her knowledge within Data Engineering branch.Her secret passion is Bioinformatics and Bioengineering in which she had recently published two research papers.",
+        "description": "Uncover the potential of GA4 (Google Analytics 4) data in enhancing business success through its comprehensive reporting capabilities, accompanied by Google Tag Manager (GTM), and its pivotal role in simplifying tag implementation and improving data accuracy. Discover the dynamic synergy of GA4 and GTM through two practical use cases: data-driven web redesign and remarketing with custom audiences.",
+        "_updatedAt": "2023-11-24T09:52:39Z"
+      }
+    ],
+    "date": "2023-11-30",
+    "featureFlag": true,
+    "speakersSectionTitle": "s p e a k e r s",
+    "_rev": "4tiOs4O6tMyqRGLqp8Zokv",
+    "scheduleSectionTitle": "s c h e d u l e",
+    "_type": "upcomingEvent",
+    "_updatedAt": "2023-11-24T12:10:15Z"
+  }
+}

@@ -6,6 +6,11 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'featureFlag',
+      title: 'Display Speaker',
+      type: 'boolean',
+    }),
+    defineField({
       name: 'speakerName',
       title: 'Speaker Name',
       type: 'string',

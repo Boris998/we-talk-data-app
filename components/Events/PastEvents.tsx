@@ -1,8 +1,9 @@
 import EventCard from "@/components/ui/HOC/EventCard";
 import SectionWrapperContainer from "@/components/ui/HOC/SectionWrapperContainer";
-import React from "react";
+import React, {FC} from "react";
 import Link from "next/link";
 import HeadingWrapper from "@/components/ui/HOC/HeadingWrapper";
+import {PastEventsData} from "@/typings";
 
 const MOCK_EVENTS = [
     {
@@ -31,7 +32,11 @@ const MOCK_EVENTS = [
     },
 ];
 
-const PastEvents = () => {
+type Props = {
+    pastEvents: PastEventsData
+};
+
+const PastEvents:FC<Props> = ({pastEvents}:Props) => {
 
     const listEventCards = MOCK_EVENTS.map((event, id) => {
         return <EventCard key={id}>
@@ -51,12 +56,10 @@ const PastEvents = () => {
              sm:px-[50px] sm:space-y-[4vw] xl:space-y-[2vw] py-[8vw] sm:py-[5vw] 2xl:py-[4vw]'
         >
             <HeadingWrapper>
-                <span className='mr-3'>P a s t </span> <span> E v e n t s</span>
+                {pastEvents.title}
             </HeadingWrapper>
             <p className='text-[10px] sm:text-[14px] lg:text-xl text-white mx-[20px] sm:px-0'>
-                Embark on a captivating odyssey through We Talk Data & AI archives, exploring the brilliance of past
-                events –
-                highlights and talk recordings await.
+                {pastEvents.description}
             </p>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-4 w-full'>
                 {listEventCards}

@@ -1,34 +1,24 @@
 import {ChevronLeftIcon, ChevronRightIcon, DotIcon} from "@radix-ui/react-icons";
 import {Button} from "@/components/ui/button";
 import {useState} from "react";
+import {HomePageGallery} from "@/typings";
+import {urlFor} from "@/sanity";
 
-const slides = [
-    {
-        url: 'https://img.freepik.com/free-photo/3d-digital-background-with-connecting-lines-dots_1048-11639.jpg?w=1480&t=st=1699960616~exp=1699961216~hmac=8e909275faf18c90e87c8d8d2f9bd4e582cb6b9a4c914f54caafa24ad6517f63'
-    },
-    {
-        url: 'https://img.freepik.com/free-photo/3d-render-modern-background-with-flowing-cyber-particles_1048-13851.jpg?w=1380&t=st=1699960631~exp=1699961231~hmac=bd7fba92d5b5389db35c3e4ba7cc8cfdade2776f6c90dbe45ff1689fbb08e7ef'
-    },
-    {
-        url: 'https://img.freepik.com/free-photo/3d-render-modern-particle-flow-background-with-cyber-dots_1048-15365.jpg?w=1380&t=st=1699960651~exp=1699961251~hmac=f00d1c2f751368a3dd0194304522c057b1f33ae06208d57407afdf5e5459b17f'
-    },
-    {
-        url: 'https://img.freepik.com/free-photo/3d-render-modern-technology-background-with-flowing-lines-floating-particles-design_1048-13620.jpg?w=1380&t=st=1699960668~exp=1699961268~hmac=ef88554b18d01f01a8fc61ed87b8c8ce696f12321513ee929fb557922cbc56e3'
-    },
-];
+type Props = {
+    homePageGallery: HomePageGallery
+}
 
-
-const ImageSlider = () => {
+const ImageSlider = ({homePageGallery}: Props) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const prevSlide = () => {
-        const newIndex = currentIndex === 0 && slides.length - 1 || currentIndex - 1;
+        const newIndex = currentIndex === 0 && homePageGallery.sliderImages.length - 1 || currentIndex - 1;
         setCurrentIndex(newIndex);
     }
 
     const nextSlide = () => {
-        // const newIndex = (currentIndex === slides.length - 1) && 0 || currentIndex + 1;
-        const newIndex = currentIndex === slides.length - 1 ? 0 : currentIndex + 1;
+        // const newIndex = (currentIndex === homePageGallery.sliderImages.length - 1) && 0 || currentIndex + 1;
+        const newIndex = currentIndex === homePageGallery.sliderImages.length - 1 ? 0 : currentIndex + 1;
         setCurrentIndex(newIndex);
     }
 
@@ -36,19 +26,26 @@ const ImageSlider = () => {
         setCurrentIndex(slideIndex);
     }
 
-    const slidesList = slides.map((slide, slideIndex) =>
-        <div key={slideIndex}
-             onClick={() => goToSlide(slideIndex)}
-             className='text-2xl cursor-pointer'
-        >
-            <DotIcon key={slideIndex}/>
-        </div>
+    const sliderImagesList = homePageGallery.sliderImages.map((slide, slideIndex) => {
+            return  < div
+                key={slide?._id}
+                onClick={() => goToSlide(slideIndex)}
+                className='text-2xl cursor-pointer'
+            >
+                <DotIcon key={slideIndex}/>
+            </div>
+        }
     );
 
-    return <div className='max-w-[1400px] h-[800px] w-full m-auto py-4 px-4 relative group'>
+    const urlImage = urlFor(homePageGallery?.sliderImages[currentIndex].image).url();
+    console.dir(urlImage);
+
+    const backgroundImageStyle = urlImage ? {backgroundImage: `url(${urlImage})`} : {};
+
+    return <div className='max-w-[1400px] h-[800px] w-full m-auto py-4 px-4 relative group '>
         <div
             className='w-full h-full rounded-2xl bg-center bg-cover duration-1000'
-            style={{backgroundImage: `url(${slides[currentIndex].url})`}}>
+            style={{...backgroundImageStyle}}>
         </div>
 
         {/*left arrow*/}
@@ -67,7 +64,7 @@ const ImageSlider = () => {
             <ChevronRightIcon className='h-10 w-10'/>
         </Button>
         <div className='flex justify-center py-2'>
-            {slidesList}
+            {sliderImagesList}
         </div>
     </div>
 

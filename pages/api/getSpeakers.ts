@@ -15,5 +15,6 @@ export default async function handler(
 ) {
     const speakers: SpeakerData[] = await sanityClient.fetch(query);
 
+    console.log({speakers});
     res.status(200).json({speakers});
 }

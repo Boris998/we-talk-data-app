@@ -1,6 +1,13 @@
 import {ReactNode} from "react";
 
-interface Image {
+interface SanityBody {
+    _createdAt: string,
+    _id: string,
+    _rev: string,
+    _updatedAt: string,
+}
+
+interface Image extends SanityBody {
     _type: 'image',
     asset: {
         _ref: string;
@@ -8,16 +15,10 @@ interface Image {
     }
 }
 
-interface Picture extends Image{
+interface Picture extends SanityBody{
+    _type: 'picture'
     title: string,
     image: Image
-}
-
-interface SanityBody {
-    _createdAt: string,
-    _id: string,
-    _rev: string,
-    _updatedAt: string,
 }
 
 export interface Bars extends SanityBody {
@@ -31,9 +32,12 @@ export interface ContainerProps {
 }
 
 export interface Event extends SanityBody {
-    category: string;
-    name: string;
-    year: number
+    featureFlag?: boolean
+    title: string;
+    city?: string;
+    year?: number
+    description?: number
+    image?: Image
 }
 
 export interface Social extends SanityBody {
@@ -45,24 +49,26 @@ export interface Social extends SanityBody {
 export interface AboutData extends SanityBody {
     _type: "about",
     title: string,
-    image: Image,
+    image: string,
     description: string
 }
 
 export interface HomePageGallery extends SanityBody {
-    _type: "gallery",
+    _type: "homePageGallery",
     title: string,
-    description: string,
+    description?: string,
     sliderImages: Picture[]
+    featureFlag?: boolean
+    btn?: string
 }
 
 export interface SpeakerData extends SanityBody {
     _type: "speaker",
     name: string,
     jobTitle: string,
-    bio: string,
+    bio?: string,
     image: Image,
-    presentationTitle: string,
+    presentationTitle?: string,
     description?: string,
     additionalInfo?: string,
 }
@@ -76,7 +82,8 @@ export interface SupporterData extends SanityBody {
 
 export interface PartnerData extends SanityBody {
     _type: "partner",
-    title: string,
+    featureFlag?: boolean,
+    title?: string,
     url: string,
     image: Image
 }
@@ -88,6 +95,24 @@ export interface PageInfo extends SanityBody {
     logo: Image,
     heading?: string;
     subHeading?: string;
+    heroBtn?: string;
     additionalInfo?: string;
     address?: string;
+}
+
+export interface PastEventsData extends SanityBody {
+    _type: 'pastEvents',
+    title: string,
+    featureFlag?: boolean,
+    description?: string,
+    events?: Event[]
+}
+
+export interface UpcomingEventData extends SanityBody {
+    _type: 'upcomingEvent',
+    speakersSectionTitle: string,
+    scheduleSectionTitle: string,
+    featureFlag?: boolean,
+    date?: date,
+    speaker: SpeakerData[]
 }

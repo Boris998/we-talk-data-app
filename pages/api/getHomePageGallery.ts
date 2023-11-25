@@ -3,20 +3,20 @@ import {groq} from 'next-sanity';
 import {sanityClient} from "@/sanity";
 import {HomePageGallery} from "@/typings";
 
-const query = groq`*[_type=="homePageGallery"]{
+const query = groq`*[_type=="homePageGallery"][0]{
   ...,
   sliderImages[]->
 }`;
 
 type Data = {
-    gallery: HomePageGallery[]
+    homePageGallery: HomePageGallery[]
 };
 
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<Data>
 ) {
-    const gallery: HomePageGallery[] = await sanityClient.fetch(query);
+    const homePageGallery: HomePageGallery[] = await sanityClient.fetch(query);
 
-    res.status(200).json({ gallery });
+    res.status(200).json({ homePageGallery });
 }
