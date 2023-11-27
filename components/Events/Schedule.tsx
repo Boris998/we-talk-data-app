@@ -3,30 +3,66 @@ import {UpcomingEventData} from "@/typings";
 import React from "react";
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion";
 import SectionWrapperContainer from "@/components/ui/HOC/SectionWrapperContainer";
+import {urlFor} from "@/sanity";
+import SpeakerCard from "@/components/ui/HOC/SpeakerCard";
+import Image from "next/image";
+import Link from "next/link";
+import {indexof} from "stylis";
 
 type Props = {
     upcomingEvent: UpcomingEventData
 }
+/*
 
 const FAQ_DUMMY = {
-    "What is the capital of France?": "Paris",
+    "Stojan Ganchev | General Manager | Aurora Labs": "Bringing static data to live with RoBERTa-based LLM. How from zeros and ones build a performing LLM model that is not polluted or overtrained.",
     "Who is the president of the United States?": "Joe Biden",
-    "What is the largest mammal in the world?": "Blue Whale"
 };
-
-const list = Object.entries(FAQ_DUMMY).map(([question, answer]) => (
-    <Accordion type="single" collapsible className='mx-[15px] sm:mx-[75px] max-h-[1500px] bg-[#001330]/20' key={question}>
-        <AccordionItem value={question} className='max-h-[500px]'>
-            <AccordionTrigger className='px-6 border-l-8 border-l-[#ffd700] text-white'>{question}</AccordionTrigger>
-            <AccordionContent className='bg-[#003767]/50 text-[#ffd700] pt-3'>
-                {answer}
-            </AccordionContent>
-        </AccordionItem>
-    </Accordion>
-));
+*/
 
 
 const Schedule = ({upcomingEvent}: Props) => {
+    const listSpeakersPresentationInfo = upcomingEvent.speaker.map((speaker) => {
+        const urlImage = urlFor(speaker.image.asset._ref).url();
+
+        return <SpeakerCard key={speaker._id}>
+            <Link href={'/speakerInfo'} className='bottom-6'>
+                <figcaption>
+                    <h3 className='hover:text-[#003767]'>view more</h3>
+                    <h3>{speaker.speakerName} | {speaker.jobTitle}</h3>
+                    <h4>{speaker.bio?.substring(0, 50)}</h4>
+                </figcaption>
+            </Link>
+        </SpeakerCard>;
+    });
+
+
+    const list = upcomingEvent.speaker.map((speaker) => {
+        const urlImage = urlFor(speaker.image.asset._ref).url();
+
+
+        return <Accordion type="single" collapsible className='mx-[15px] sm:mx-[75px] max-h-[1500px] bg-[#001330]/20'
+                          key={speaker._id}>
+            <AccordionItem value={'sa'} className='max-h-[500px]'>
+                <AccordionTrigger className='border-l-8 border-l-[#ffd700] hover:bg-gradient-to-br hover:from-[#ffd700]/30 hover:to-[#003767] text-white pr-[15px]'>
+                    <span className='space-y-2 px-[10px]'>
+                        <Image src={urlImage} alt={speaker.speakerName} height='100' width='120' className='rounded-full'/>
+                        <p>
+                            {speaker.jobTitle.slice(speaker.jobTitle.indexOf('|')+1)}
+                        </p>
+                        <p className='text-xl w-[120px]'>
+                            {speaker.presentationStartTime}
+                        </p>
+                    </span>
+                    <p className='text-xl sm:px-[15px] px-[2vw]'>{speaker.presentationTitle}</p>
+                </AccordionTrigger>
+                <AccordionContent className='bg-[#003767]/50 text-[#ffd700] pt-3 text-lg'>
+                    {speaker.description}
+                </AccordionContent>
+            </AccordionItem>
+        </Accordion>
+    });
+
     return (
         <div
             className='relative flex flex-col items-center text-center overflow-x-hidden
@@ -36,7 +72,7 @@ const Schedule = ({upcomingEvent}: Props) => {
                 {upcomingEvent.scheduleSectionTitle}
             </HeadingWrapper>
             <SectionWrapperContainer>
-                    {list}
+                {list}
             </SectionWrapperContainer>
         </div>
     );

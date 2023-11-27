@@ -9,7 +9,7 @@ const NavBar = () => {
         <Link key={id}
               className='cursor-pointer text-[#ffd700] hover:text-[#001330] bg-[#003767]/50
               hover:bg-[#ffd700]/50 p-[15px] rounded-full active:bg-[#ffd700]/50 shadow-xl'
-              href={`#${bar.toLowerCase()}`}>
+              href={`/#${bar.toLowerCase().split(' ').join('-')}`}>
             {bar}
         </Link>
     );

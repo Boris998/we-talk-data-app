@@ -67,9 +67,11 @@ export interface SpeakerData extends SanityBody {
     speakerName: string,
     jobTitle: string,
     bio?: string,
+    linkedIn: string,
     image: Image,
     presentationTitle?: string,
     description?: string,
+    presentationStartTime: string;
     additionalInfo?: string,
 }
 

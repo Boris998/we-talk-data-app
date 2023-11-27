@@ -26,6 +26,11 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'linkedIn',
+      title: 'Linked In',
+      type: 'string',
+    }),
+    defineField({
       name: 'image',
       title: 'Image',
       type: 'image',
@@ -39,6 +44,11 @@ export default defineType({
     defineField({
       name: 'description',
       title: 'Description',
+      type: 'string',
+    }),
+    defineField({
+      name: 'presentationStartTime',
+      title: 'Presentation start time (e.g. 18:30)',
       type: 'string',
     }),
     defineField({

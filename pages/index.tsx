@@ -5,7 +5,6 @@ import PastEvents from "@/components/Events/PastEvents";
 import Video from "@/components/Video/Video";
 import Partners from "@/components/Partners/Partners";
 import Supporters from "@/components/Supporters/Supporters";
-import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import {
     AboutData,
@@ -68,21 +67,21 @@ const Home = ({
             </section>
 
             {/* About */}
-            <section id="about">
+            <section id="about" className='bg-[#001330]/30'>
                 <About about={about}/>
             </section>
 
             {/* Video */}
-            <section>
+            {homePageGallery.featureFlag || <section>
                 <Video/>
-            </section>
+            </section>}
 
-            <section>
+            <section id='upcoming-event' >
                 <UpcomingEvent upcomingEvent={upcomingEvent}/>
             </section>
 
             {/* Gallery */}
-            {homePageGallery?.featureFlag &&
+            {homePageGallery?.featureFlag ||
                 <section id='gallery' className='bg-[#001330]/40'>
                     <Gallery homePageGallery={homePageGallery}/>
                 </section>
@@ -90,7 +89,7 @@ const Home = ({
 
             {/* Past Events */}
             {pastEvents?.featureFlag &&
-                <section id='events'>
+                <section id='past-events'>
                     <PastEvents pastEvents={pastEvents}/>
                 </section>
             }
@@ -105,10 +104,6 @@ const Home = ({
                 <Supporters supporters={supporters}/>
             </section>
 
-            {/* footer */}
-            <section id='footer' className='bg-gray-800/70'>
-                <Footer socials={socials}/>
-            </section>
         </div>
     )
 }

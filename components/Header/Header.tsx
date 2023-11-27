@@ -7,7 +7,7 @@ import SheetMenu from "@/components/ui/SheetMenu";
 
 const Header = () => {
     return <HeaderContainer>
-        <Link href='/#about' className='lg:ml-0 sm:w-[175px] w-[30vw] animate-pulse'>
+        <Link href='/#header' className='lg:ml-0 sm:w-[175px] w-[30vw] animate-pulse'>
             <img src="/assets/we-talk-data-logo--transparent.png" alt="logo"/>
         </Link>
         <NavBar/>

@@ -5,6 +5,7 @@ import React from "react";
 import {urlFor} from "@/sanity";
 import Image from 'next/image';
 import SpeakerCard from "@/components/ui/HOC/SpeakerCard";
+import {LinkedInLogoIcon} from "@radix-ui/react-icons";
 
 type Props = {
     upcomingEvent: UpcomingEventData
@@ -15,16 +16,21 @@ const Speakers = ({upcomingEvent}: Props) => {
     const listSpeakerCards = upcomingEvent.speaker.map((speaker) => {
         const urlImage = urlFor(speaker.image.asset._ref).url();
 
-        return <SpeakerCard key={speaker._id}>
-            <Image src={urlImage} alt={speaker.speakerName} height='300' width='400' className='rounded-2xl'/>
-            <Link href='/#speakers'>
-                <figcaption>
-                    <h3 className='hover:text-[#003767]'>view more</h3>
+        return (
+            <Link suppressHydrationWarning={false} href={'/speakerInfo'} key={speaker._id}>
+            <SpeakerCard className='z-100'>
+                <Image src={urlImage} alt={speaker.speakerName} height='300' width='400' className='rounded-2xl'/>
+                <a href={speaker.linkedIn} onClick={(e) => e.stopPropagation()}
+                   className='h-20 w-20 mt-[320px] ml-[270px] absolute bottom-[110px] right-0 linkedin-logo'>
+                    <LinkedInLogoIcon className='h-16 w-16'/>
+                </a>
+                <figcaption className='px-5 py-10'>
                     <h3>{speaker.speakerName} | {speaker.jobTitle}</h3>
                     <h4>{speaker.bio?.substring(0, 50)}</h4>
                 </figcaption>
+            </SpeakerCard>
             </Link>
-        </SpeakerCard>;
+        )
     });
 
     return (
@@ -41,6 +47,6 @@ const Speakers = ({upcomingEvent}: Props) => {
     );
 }
 
-
+Speakers.ssr = false;
 export default Speakers;
 

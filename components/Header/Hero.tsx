@@ -3,14 +3,15 @@ import Link from "next/link";
 import {ArrowDownIcon} from "@radix-ui/react-icons";
 import {FC} from "react";
 import {PageInfo} from "@/typings";
+import {urlFor} from "@/sanity";
 
 type Props = {
     pageInfo: PageInfo
 };
 
 const Hero: FC<Props> = ({pageInfo}: Props) => {
-    const urlImage =
-        "urlFor(pageInfo?.heroImage).url()";
+    const urlImage = `${urlFor(pageInfo?.heroImage).url()}`;
+    console.log(urlImage);
 
     const backgroundImageStyle = urlImage ? {backgroundImage: `url(${urlImage})`} : {};
     // console.log(backgroundImageStyle);
@@ -22,13 +23,13 @@ const Hero: FC<Props> = ({pageInfo}: Props) => {
                      ...backgroundImageStyle
                  }}
         >
-            <h3 className='mb-6 lg:text-sm text-[2vw]  max-w-4xl  font-bold text-amber-100 uppercase tracking-[4px] shadow-xl shadow-[#003767]'>
+            <h3 className='mb-6 lg:text-[24px] text-[3vw]  max-w-4xl font-bold text-amber-100 uppercase tracking-[4px] shadow-[#003767]'>
                 {pageInfo?.address}
             </h3>
-            <h1 className='mb-6 lg:text-xl text-[3vw]  max-w-4xl font-extrabold text-[#ffd700] uppercase tracking-[20px] shadow-xl shadow-[#ffd700]'>
+            <h1 className='mb-6 lg:text-[36px] bg-[#003767]/40 outline-black outline-[40px] text-[4vw]  max-w-4xl font-extrabold text-[#ffd700] uppercase tracking-[20px] shadow-xl shadow-[#ffd700]/20'>
                 {pageInfo?.heading}
             </h1>
-            <h3 className='mb-6 lg:text-sm text-[2vw]  max-w-4xl  font-bold text-amber-100 uppercase tracking-[20px]'>
+            <h3 className='mb-6 lg:text-[24px] text-[3vw]  max-w-4xl  font-bold text-amber-100 uppercase tracking-[5px]'>
                 {pageInfo?.subHeading}
             </h3>
             <Link href='/#about'>

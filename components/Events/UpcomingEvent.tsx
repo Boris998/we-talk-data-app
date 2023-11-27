@@ -1,11 +1,12 @@
 import SectionWrapperContainer from "@/components/ui/HOC/SectionWrapperContainer";
 import {UpcomingEventData} from "@/typings";
-import Speakers from "@/components/Events/Speakers";
 import Schedule from "@/components/Events/Schedule";
+import dynamic from "next/dynamic";
 
 type Props = {
     upcomingEvent: UpcomingEventData
 }
+const Speakers = dynamic(()=> import('../Events/Speakers'), {ssr: false})
 
 const UpcomingEvent = ({upcomingEvent}: Props) => {
     return (

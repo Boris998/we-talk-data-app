@@ -50,13 +50,6 @@
     color: #ffd700;
 }
 
-.snip1577 figcaption {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    padding: 15px 20px;
-}
-
 .snip1577 h3,
 .snip1577 h4 {
     margin: 0;
@@ -71,12 +64,18 @@
     text-transform: uppercase;
 }
 
-.snip1577 a {
+.snip1577 a .linkedin-logo {
     position: absolute;
-    top: 0;
     bottom: 0;
-    left: 0;
     right: 0;
+}
+
+.snip1577 a {
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
+    /*right: 0;*/
     z-index: 1;
     color: #ffd700;
 }
