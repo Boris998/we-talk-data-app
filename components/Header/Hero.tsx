@@ -22,13 +22,13 @@ const Hero: FC<Props> = ({pageInfo}: Props) => {
                      ...backgroundImageStyle
                  }}
         >
-            <h3 className='mb-6 lg:text-[24px] text-[3vw]  max-w-4xl font-bold text-amber-100 uppercase tracking-[4px] shadow-[#003767]'>
+            <h3 className='mb-6 lg:text-[24px] text-[3vw]  max-w-4xl font-bold text-amber-100 uppercase tracking-[4px] shadow-[#003767] sm:mx-[4vw]'>
                 {pageInfo?.address}
             </h3>
-            <h1 className='mb-6 lg:text-[44px] outline-black outline-[40px] text-[4vw] bg-gradient-to-br from-[#ffd700]/20 to-[#003767]/20 max-w-4xl font-extrabold text-[#ffd700] rounded-2xl uppercase tracking-[15px] shadow-xl shadow-[#ffd700]/20'>
+            <h1 className='mb-6 lg:text-[44px] outline-black outline-[40px] text-[4vw] bg-gradient-to-br from-[#ffd700]/20 to-[#003767]/20 max-w-4xl font-extrabold text-[#ffd700]  sm:mx-[4vw] rounded-2xl uppercase tracking-[15px] shadow-xl shadow-[#ffd700]/20'>
                 {pageInfo?.heading}
             </h1>
-            <h3 className='mb-6 lg:text-[24px] text-[3vw]  max-w-4xl  font-bold text-amber-100 uppercase tracking-[5px]'>
+            <h3 className='mb-6 lg:text-[24px] text-[3vw]  max-w-4xl  font-bold text-amber-100 uppercase tracking-[5px]  sm:mx-[4vw]'>
                 {pageInfo?.subHeading}
             </h3>
             <Link href='/#about'>

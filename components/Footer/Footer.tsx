@@ -35,7 +35,7 @@ const socialsList1 = DUMMY_SOCIALS?.map((social, i) => {
     )
 });
 
-const Footer = ({socials}: Props) => {
+const Footer = () => {
 
     return (
         <SectionWrapperContainer>
@@ -62,19 +62,18 @@ const Footer = ({socials}: Props) => {
                     >
                         Terms of Use
                     </Link>
-                    <Link href='/pages/cp'
+                    <Link href='/cp'
                           className='hover:text-[#ffd700]/70'
                     >
                         Cookie Policy
                     </Link>
                 </div>
 
-                <div>Designed and developed by:
+                <div><span>Designed and developed by: </span>
                     <Link href='https://www.kinandcarta.com/' className='text-[#ffd700]/30 hover:text-[#ffd700]/70'
-
                           target="_blank"
                           rel="noopener noreferrer">
-                        Kin + Carta
+                            Kin + Carta
                     </Link>
                 </div>
             </div>

@@ -27,8 +27,9 @@ const Speakers = ({upcomingEvent}: Props) => {
                        className='h-20 w-20 mt-[320px] ml-[270px] absolute bottom-[110px] right-0 linkedin-logo hover:opacity-100 opacity-10'>
                         <LinkedInLogoIcon className='h-16 w-16'/>
                     </a>
-                    <figcaption className='px-5 py-10'>
-                        <h3>{speaker.speakerName} | {speaker.jobTitle}</h3>
+                    <figcaption className='px-5 py-8 space-y-1'>
+                        <h3>{speaker.speakerName}</h3>
+                        <h3>{speaker.jobTitle}</h3>
                         <h4>{speaker.bio?.substring(0, 50)}</h4>
                     </figcaption>
                 </SpeakerCard>

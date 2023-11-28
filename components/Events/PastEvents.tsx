@@ -10,25 +10,25 @@ const MOCK_EVENTS = [
         title: 'WeTalkData&AI',
         city: 'Skopje',
         year: 2023,
-        imageSrc: '/assets/hero.jpg'
+        imageSrc: '/assets/hero.png'
     },
     {
         title: 'WeTalkData&AI',
         city: 'Belgrade',
         year: 2023,
-        imageSrc: '/assets/hero.jpg'
+        imageSrc: '/assets/hero.png'
     },
     {
         title: 'WeTalkData&AI',
         city: 'San Francisco',
         year: 2023,
-        imageSrc: '/assets/hero.jpg'
+        imageSrc: '/assets/hero.png'
     },
     {
         title: 'WeTalkData&AI',
         city: 'Huston',
         year: 2023,
-        imageSrc: '/assets/hero.jpg'
+        imageSrc: '/assets/hero.png'
     },
 ];
 
@@ -56,7 +56,7 @@ const PastEvents:FC<Props> = ({pastEvents}:Props) => {
              sm:px-[50px] sm:space-y-[4vw] xl:space-y-[2vw] py-[8vw] sm:py-[5vw] 2xl:py-[4vw]'
         >
             <HeadingWrapper>
-                {pastEvents.title}
+                {pastEvents.title.toUpperCase()}
             </HeadingWrapper>
             <p className='text-[10px] sm:text-[14px] lg:text-xl text-white mx-[20px] sm:px-0'>
                 {pastEvents.description}

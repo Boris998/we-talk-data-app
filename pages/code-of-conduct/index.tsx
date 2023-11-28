@@ -49,7 +49,7 @@ const cocList = DUMMY_COC.map((code, i) => {
 const CodeOfConduct = () => {
 
     return <SectionWrapperContainer>
-        <div className='py-24'>
+        <div className='py-24 px-10 overflow-hidden'>
             <HeadingWrapper>CODE OF CONDUCT</HeadingWrapper>
             <div>{cocList}</div>
         </div>

@@ -7,11 +7,13 @@ import EventGallery from "@/components/Gallery/EventGallery";
 const GalleryPage = () => {
 
     return <SectionWrapperContainer>
-        <HeadingWrapper>
-            <span className='mr-3'>P a s t </span><span>E v e n t s</span>
-        </HeadingWrapper>
+        <div className='py-24 overflow-hidden'>
+            <HeadingWrapper>
+                <span className='mr-3'>P a s t </span><span>E v e n t s</span>
+            </HeadingWrapper>
 
-        <EventGallery/>
+            <EventGallery/>
+        </div>
     </SectionWrapperContainer>;
 }
 
