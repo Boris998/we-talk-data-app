@@ -32,12 +32,12 @@ export interface ContainerProps {
 }
 
 export interface Event extends SanityBody {
-    featureFlag?: boolean
+    featureFlag: boolean
     title: string;
-    city?: string;
-    year?: number
-    description?: number
-    image?: Image
+    city: string;
+    year: number
+    description: number
+    image: Image
 }
 
 export interface Social extends SanityBody {
@@ -56,23 +56,23 @@ export interface AboutData extends SanityBody {
 export interface HomePageGallery extends SanityBody {
     _type: "homePageGallery",
     title: string,
-    description?: string,
+    description: string,
     sliderImages: Picture[]
-    featureFlag?: boolean
-    btn?: string
+    featureFlag: boolean
+    btn: string
 }
 
 export interface SpeakerData extends SanityBody {
     _type: "speaker",
     speakerName: string,
     jobTitle: string,
-    bio?: string,
+    bio: string,
     linkedIn: string,
     image: Image,
-    presentationTitle?: string,
-    description?: string,
+    presentationTitle: string,
+    description: string,
     presentationStartTime: string;
-    additionalInfo?: string,
+    additionalInfo: string,
 }
 
 export interface SupporterData extends SanityBody {
@@ -84,8 +84,8 @@ export interface SupporterData extends SanityBody {
 
 export interface PartnerData extends SanityBody {
     _type: "partner",
-    featureFlag?: boolean,
-    title?: string,
+    featureFlag: boolean,
+    title: string,
     url: string,
     image: Image
 }
@@ -95,26 +95,26 @@ export interface PageInfo extends SanityBody {
     title: string,
     heroImage: Image,
     logo: Image,
-    heading?: string;
-    subHeading?: string;
-    heroBtn?: string;
-    additionalInfo?: string;
-    address?: string;
+    heading: string;
+    subHeading: string;
+    heroBtn: string;
+    additionalInfo: string;
+    address: string;
 }
 
 export interface PastEventsData extends SanityBody {
     _type: 'pastEvents',
     title: string,
-    featureFlag?: boolean,
-    description?: string,
-    events?: Event[]
+    featureFlag: boolean,
+    description: string,
+    events: Event[]
 }
 
 export interface UpcomingEventData extends SanityBody {
     _type: 'upcomingEvent',
     speakersSectionTitle: string,
     scheduleSectionTitle: string,
-    featureFlag?: boolean,
-    date?: date,
+    featureFlag: boolean,
+    date: date,
     speaker: SpeakerData[]
 }

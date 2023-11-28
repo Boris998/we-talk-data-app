@@ -5,7 +5,6 @@ import PastEvents from "@/components/Events/PastEvents";
 import Video from "@/components/Video/Video";
 import Partners from "@/components/Partners/Partners";
 import Supporters from "@/components/Supporters/Supporters";
-import Header from "@/components/Header/Header";
 import {
     AboutData,
     HomePageGallery,
@@ -18,16 +17,9 @@ import {
     UpcomingEventData
 } from '@/typings';
 import {GetStaticProps} from "next";
-import {fetchAbout} from "@/utils/fetchAbout";
-import {fetchHomePageGallery} from "@/utils/fetchHomePageGallery";
-import {fetchPartners} from "@/utils/fetchPartners";
-import {fetchSupporters} from "@/utils/fetchSupporters";
-import {fetchSpeakers} from "@/utils/fetchSpeakers";
-import {fetchSocials} from "@/utils/fetchSocials";
-import {fetchPageInfo} from "@/utils/fetchPageInfo";
-import {fetchPastEvents} from "@/utils/fetchPastEvents";
-import {fetchUpcomingEvent} from "@/utils/fetchUpcomingEvent";
 import UpcomingEvent from "@/components/Events/UpcomingEvent";
+import {groq} from "next-sanity";
+import {sanityClient} from "@/sanity";
 
 // const inter = Inter({subsets: ['latin']})
 
@@ -57,10 +49,6 @@ const Home = ({
     return (
         <div className='scrollbar scrollbar-track-yellow-400 scrollbar-thumb-[#ffd700]/80'>
 
-            <header className="sticky top-0 z-50">
-                <Header/>
-            </header>
-
             {/*Hero*/}
             <section id='header'>
                 <Hero pageInfo={pageInfo}/>
@@ -72,16 +60,16 @@ const Home = ({
             </section>
 
             {/* Video */}
-            {homePageGallery.featureFlag || <section>
+            {homePageGallery.featureFlag && <section>
                 <Video/>
             </section>}
 
-            <section id='upcoming-event' >
+            <section id='upcoming-event'>
                 <UpcomingEvent upcomingEvent={upcomingEvent}/>
             </section>
 
             {/* Gallery */}
-            {homePageGallery?.featureFlag ||
+            {homePageGallery?.featureFlag &&
                 <section id='gallery' className='bg-[#001330]/40'>
                     <Gallery homePageGallery={homePageGallery}/>
                 </section>
@@ -111,15 +99,52 @@ const Home = ({
 export default Home;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-    const pageInfo: PageInfo = await fetchPageInfo();
-    const about: AboutData = await fetchAbout();
-    const homePageGallery: HomePageGallery = await fetchHomePageGallery();
-    const pastEvents: PastEventsData = await fetchPastEvents();
-    const partners: PartnerData[] = await fetchPartners();
-    const supporters: SupporterData[] = await fetchSupporters();
-    const socials: Social[] = await fetchSocials();
-    const speakers: SpeakerData[] = await fetchSpeakers();
-    const upcomingEvent: UpcomingEventData = await fetchUpcomingEvent();
+
+    //fetch PageInfo
+    const queryPageInfo = groq`*[_type=="pageInfo"][0]`;
+    const pageInfo: PageInfo = await sanityClient.fetch(queryPageInfo);
+
+    //fetch About
+    const queryAbout = groq`*[_type=="about"][0]`;
+    const about: AboutData = await sanityClient.fetch(queryAbout);
+
+    //fetch HomePageGallery
+    const queryHomePageGallery = groq`*[_type=="homePageGallery"][0]{
+        ...,
+        sliderImages[]->
+    }`;
+    const homePageGallery: HomePageGallery = await sanityClient.fetch(queryHomePageGallery);
+
+    //fetchPastEvents
+    const queryPastEvents = groq`*[_type=="pastEvents"][0]{
+         ...,
+         events[]->
+    }`;
+    const pastEvents: PastEventsData = await sanityClient.fetch(queryPastEvents);
+
+    //fetch PartnerData
+    const queryPartners = groq`*[_type=="partner"]`;
+    const partners: PartnerData[] = await sanityClient.fetch(queryPartners);
+
+    //fetch SupporterData
+    const querySupporters = groq`*[_type=="supporter"]`;
+    const supporters: SupporterData[] = await sanityClient.fetch(querySupporters);
+
+    //fetch Socials
+    const querySocials = groq`*[_type=="social"]`;
+    const socials: Social[] = await sanityClient.fetch(querySocials);
+
+    //fetch SpeakerData
+    const querySpeakers = groq`*[_type=="speaker"]`;
+    const speakers: SpeakerData[] = await sanityClient.fetch(querySpeakers);
+
+    //fetch UpcomingEventData
+    const queryUpcomingEvent = groq`*[_type=="upcomingEvent"][0]{
+        ...,
+        speaker[]->
+    }`;
+    const upcomingEvent: UpcomingEventData = await sanityClient.fetch(queryUpcomingEvent);
+
 
     return {
         props: {
@@ -133,7 +158,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
             speakers,
             upcomingEvent
         },
-        revalidate: 2
     }
 }
 

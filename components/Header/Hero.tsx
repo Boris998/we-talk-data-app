@@ -11,7 +11,6 @@ type Props = {
 
 const Hero: FC<Props> = ({pageInfo}: Props) => {
     const urlImage = `${urlFor(pageInfo?.heroImage).url()}`;
-    console.log(urlImage);
 
     const backgroundImageStyle = urlImage ? {backgroundImage: `url(${urlImage})`} : {};
     // console.log(backgroundImageStyle);
@@ -26,7 +25,7 @@ const Hero: FC<Props> = ({pageInfo}: Props) => {
             <h3 className='mb-6 lg:text-[24px] text-[3vw]  max-w-4xl font-bold text-amber-100 uppercase tracking-[4px] shadow-[#003767]'>
                 {pageInfo?.address}
             </h3>
-            <h1 className='mb-6 lg:text-[36px] bg-[#003767]/40 outline-black outline-[40px] text-[4vw]  max-w-4xl font-extrabold text-[#ffd700] uppercase tracking-[20px] shadow-xl shadow-[#ffd700]/20'>
+            <h1 className='mb-6 lg:text-[44px] outline-black outline-[40px] text-[4vw] bg-gradient-to-br from-[#ffd700]/20 to-[#003767]/20 max-w-4xl font-extrabold text-[#ffd700] rounded-2xl uppercase tracking-[15px] shadow-xl shadow-[#ffd700]/20'>
                 {pageInfo?.heading}
             </h1>
             <h3 className='mb-6 lg:text-[24px] text-[3vw]  max-w-4xl  font-bold text-amber-100 uppercase tracking-[5px]'>

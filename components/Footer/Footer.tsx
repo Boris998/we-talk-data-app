@@ -8,20 +8,34 @@ type Props = {
     socials: Social[]
 }
 
+const DUMMY_SOCIALS = [
+    {title: 'Instagram', url: 'https://www.instagram.com/we.talk.data.ai/?hl=en'},
+    {title: 'LinkedIn', url: 'https://www.facebook.com/wetalkdataai'},
+    {title: 'Facebook', url: 'https://www.linkedin.com/company/wetalkdata-ai/?viewAsMember=true'}
+];
+
+const socialsList1 = DUMMY_SOCIALS?.map((social, i) => {
+    return (
+        <Link
+            href={social.url}
+            key={i}
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            {
+                social.title.toLowerCase() === 'instagram'
+                    ? <InstagramLogoIcon
+                        className='text-[#ffd700]/30 mx-[15px] hover:text-[#ffd700]/60 animate hover:animate-spin scale-150'/>
+                    : social.title.toLowerCase() === 'linkedin'
+                        ? <LinkedInLogoIcon
+                            className='text-[#ffd700]/30 mx-[15px] hover:text-[#ffd700]/60 animate hover:animate-spin scale-150'/>
+                        : <FacebookLogoIcon/>
+            }
+        </Link>
+    )
+});
+
 const Footer = ({socials}: Props) => {
-    const socialsList1 = socials?.map((social, i) => {
-        return (
-            <Link href={social.url} key={social._id}>
-                {
-                    social.title.toLowerCase() === 'instagram'
-                        ? <InstagramLogoIcon className='text-[#ffd700]/30 mx-[15px] hover:text-[#ffd700]/60 animate hover:animate-spin scale-150'/>
-                        : social.title.toLowerCase() === 'linkedin'
-                            ? <LinkedInLogoIcon className='text-[#ffd700]/30 mx-[15px] hover:text-[#ffd700]/60 animate hover:animate-spin scale-150'/>
-                            : <FacebookLogoIcon/>
-                }
-            </Link>
-        )
-    });
 
     return (
         <SectionWrapperContainer>
@@ -32,15 +46,34 @@ const Footer = ({socials}: Props) => {
                     {socialsList1}
                 </div>
                 <div className='flex flex-col text-center space-y-2 text-gray-400'>
-                    <Link href='/FAQ' className='hover:text-[#ffd700]/70'>FAQ</Link>
-                    <Link href='/#supporters' className='hover:text-[#ffd700]/70'>Code of Conduct</Link>
-                    <Link href='/#supporters' className='hover:text-[#ffd700]/70'>Terms and Conditions</Link>
-                    <Link href='/#supporters' className='hover:text-[#ffd700]/70'>Privacy Policy</Link>
-                    <Link href='/#supporters' className='hover:text-[#ffd700]/70'>Cookie Policy</Link>
+                    <Link
+                        href='/FAQ'
+                        className='hover:text-[#ffd700]/70'
+                    >
+                        FAQ
+                    </Link>
+                    <Link href='/code-of-conduct'
+                          className='hover:text-[#ffd700]/70'
+                    >
+                        Code of Conduct
+                    </Link>
+                    <Link href='/terms-of-use'
+                          className='hover:text-[#ffd700]/70'
+                    >
+                        Terms of Use
+                    </Link>
+                    <Link href='/pages/cp'
+                          className='hover:text-[#ffd700]/70'
+                    >
+                        Cookie Policy
+                    </Link>
                 </div>
 
                 <div>Designed and developed by:
-                    <Link href='https://www.kinandcarta.com/' className='text-[#ffd700]/30 hover:text-[#ffd700]/70'>
+                    <Link href='https://www.kinandcarta.com/' className='text-[#ffd700]/30 hover:text-[#ffd700]/70'
+
+                          target="_blank"
+                          rel="noopener noreferrer">
                         Kin + Carta
                     </Link>
                 </div>

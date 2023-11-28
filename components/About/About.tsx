@@ -18,13 +18,13 @@ const About = ({about}:Props) => {
                     {about.title}
                 </HeadingWrapper>
                 <div className='flex flex-col md:flex-row relative items-center
-                justify-center space-y-[30px] px-[20px] md:space-x-[50px] md:space-y-0'>
-                    <img className='w-[400px] h-[300px] rounded-xl object-cover mx-auto
-                md:rounded-xl md:w-[320px] md:h-[320px] lg:w-[500px] lg:h-[500px] 2xl:w-[650px] 2xl:h-[500px]'
+                justify-evenly space-y-[30px] px-[20px] md:space-x-[50px] md:space-y-0'>
+                    <img className='w-[400px] h-[300px] rounded-xl object-cover mx-auto md:w-1/2
+                md:rounded-xl md:h-[370px] lg:h-[500px] 2xl:h-[25vw]'
                          src={urlFor(about.image).url()}
                          alt={about?.title}
                     />
-                    <p className='text-[10px] sm:text-[14px] md:text-[12px] lg:text-[16px] xl:text-xl 2xl:text-left text-white'>
+                    <p className='text-[10px] sm:text-[14px] md:text-[12px] lg:text-[16px] xl:text-lg 2xl:text-left text-white md:w-1/2'>
                         {about?.description}
                     </p>
                 </div>

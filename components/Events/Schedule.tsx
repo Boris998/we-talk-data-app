@@ -4,10 +4,7 @@ import React from "react";
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion";
 import SectionWrapperContainer from "@/components/ui/HOC/SectionWrapperContainer";
 import {urlFor} from "@/sanity";
-import SpeakerCard from "@/components/ui/HOC/SpeakerCard";
 import Image from "next/image";
-import Link from "next/link";
-import {indexof} from "stylis";
 
 type Props = {
     upcomingEvent: UpcomingEventData
@@ -22,22 +19,8 @@ const FAQ_DUMMY = {
 
 
 const Schedule = ({upcomingEvent}: Props) => {
+
     const listSpeakersPresentationInfo = upcomingEvent.speaker.map((speaker) => {
-        const urlImage = urlFor(speaker.image.asset._ref).url();
-
-        return <SpeakerCard key={speaker._id}>
-            <Link href={'/speakerInfo'} className='bottom-6'>
-                <figcaption>
-                    <h3 className='hover:text-[#003767]'>view more</h3>
-                    <h3>{speaker.speakerName} | {speaker.jobTitle}</h3>
-                    <h4>{speaker.bio?.substring(0, 50)}</h4>
-                </figcaption>
-            </Link>
-        </SpeakerCard>;
-    });
-
-
-    const list = upcomingEvent.speaker.map((speaker) => {
         const urlImage = urlFor(speaker.image.asset._ref).url();
 
 
@@ -72,7 +55,7 @@ const Schedule = ({upcomingEvent}: Props) => {
                 {upcomingEvent.scheduleSectionTitle}
             </HeadingWrapper>
             <SectionWrapperContainer>
-                {list}
+                {listSpeakersPresentationInfo}
             </SectionWrapperContainer>
         </div>
     );

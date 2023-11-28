@@ -18,17 +18,20 @@ const Speakers = ({upcomingEvent}: Props) => {
 
         return (
             <Link suppressHydrationWarning={false} href={'/speakerInfo'} key={speaker._id}>
-            <SpeakerCard className='z-100'>
-                <Image src={urlImage} alt={speaker.speakerName} height='300' width='400' className='rounded-2xl'/>
-                <a href={speaker.linkedIn} onClick={(e) => e.stopPropagation()}
-                   className='h-20 w-20 mt-[320px] ml-[270px] absolute bottom-[110px] right-0 linkedin-logo'>
-                    <LinkedInLogoIcon className='h-16 w-16'/>
-                </a>
-                <figcaption className='px-5 py-10'>
-                    <h3>{speaker.speakerName} | {speaker.jobTitle}</h3>
-                    <h4>{speaker.bio?.substring(0, 50)}</h4>
-                </figcaption>
-            </SpeakerCard>
+                <SpeakerCard className='z-100'>
+                    <Image src={urlImage} alt={speaker.speakerName} height='300' width='400' className='rounded-2xl'/>
+                    <a href={speaker.linkedIn}
+                       onClick={(e) => e.stopPropagation()}
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       className='h-20 w-20 mt-[320px] ml-[270px] absolute bottom-[110px] right-0 linkedin-logo hover:opacity-100 opacity-10'>
+                        <LinkedInLogoIcon className='h-16 w-16'/>
+                    </a>
+                    <figcaption className='px-5 py-10'>
+                        <h3>{speaker.speakerName} | {speaker.jobTitle}</h3>
+                        <h4>{speaker.bio?.substring(0, 50)}</h4>
+                    </figcaption>
+                </SpeakerCard>
             </Link>
         )
     });
@@ -36,7 +39,7 @@ const Speakers = ({upcomingEvent}: Props) => {
     return (
         <div className='relative flex flex-col items-center text-center overflow-x-hidden
                 px-0 md:text-left max-w-full justify-center mx-auto overflow-y border-b
-                sm:px-[50px] sm:space-y-[4vw] xl:space-y-[2vw] py-[9vw] sm:py-[5vw] 2xl:py-[4vw]'>
+                sm:px-[50px] pt-[9vw] sm:pt-[5vw] 2xl:pt-[4vw]'>
             <HeadingWrapper>
                 {upcomingEvent.speakersSectionTitle}
             </HeadingWrapper>

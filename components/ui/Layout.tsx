@@ -1,8 +1,7 @@
 import {Social} from "@/typings";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
-import {fetchSocials} from "@/utils/fetchSocials";
-import {ReactNode, useEffect, useState} from "react";
+import {ReactNode, useState} from "react";
 
 
 type Props = {
@@ -10,17 +9,15 @@ type Props = {
 }
 
 const Layout = ({children}: Props) => {
-    const [loadSocials, setLoadSocials] = useState<Social[]>([]);
-
-    useEffect( () => {
-        const fSocials = fetchSocials().then(res=>setLoadSocials(res));
-    }, []);
+    const [socials, setSocials] = useState<Social[]>([]);
 
     return <>
-        <Header/>
+        <header className="sticky top-0 z-50">
+            <Header/>
+        </header>
         <main>{children}</main>
         <section id='footer' className='bg-gray-800/70'>
-            <Footer socials={loadSocials}/>
+            <Footer socials={socials}/>
         </section>
     </>
 }
