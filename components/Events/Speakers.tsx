@@ -15,9 +15,10 @@ const Speakers = ({upcomingEvent}: Props) => {
 
     const listSpeakerCards = upcomingEvent.speaker.map((speaker) => {
         const urlImage = urlFor(speaker.image.asset._ref).url();
+        let href0 = speaker.speakerName.toLowerCase() === 'stojan ganchev' ? '/speakerInfo/stojan':'/speakerInfo/bisera';
 
         return (
-            <Link suppressHydrationWarning={false} href={'/speakerInfo'} key={speaker._id}>
+            <Link suppressHydrationWarning={false} href={href0} key={speaker._id}>
                 <SpeakerCard className='z-100'>
                     <Image src={urlImage} alt={speaker.speakerName} height='300' width='400' className='rounded-2xl'/>
                     <a href={speaker.linkedIn}

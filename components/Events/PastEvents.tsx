@@ -4,6 +4,7 @@ import React, {FC} from "react";
 import Link from "next/link";
 import HeadingWrapper from "@/components/ui/HOC/HeadingWrapper";
 import {PastEventsData} from "@/typings";
+import Image from "next/image";
 
 const MOCK_EVENTS = [
     {
@@ -40,7 +41,7 @@ const PastEvents:FC<Props> = ({pastEvents}:Props) => {
 
     const listEventCards = MOCK_EVENTS.map((event, id) => {
         return <EventCard key={id}>
-            <img src={`${event.imageSrc}`} alt='as'/>
+            <Image src={`${event.imageSrc}`} alt='as' width={800} height={800}/>
             <Link href='/'>
                 <figcaption>
                     <h3>{event.title} | {event.city}</h3>

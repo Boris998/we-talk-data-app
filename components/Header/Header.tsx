@@ -4,11 +4,12 @@ import {Button} from "@/components/ui/button";
 import {MoonIcon, SunIcon} from "@radix-ui/react-icons";
 import NavBar from "@/components/Header/NavBar";
 import SheetMenu from "@/components/ui/SheetMenu";
+import Image from "next/image";
 
 const Header = () => {
     return <HeaderContainer>
         <Link href='/#header' className='lg:ml-0 sm:w-[175px] w-[30vw] animate-pulse'>
-            <img src="/assets/we-talk-data-logo--transparent.png" alt="logo"/>
+            <Image src="/assets/we-talk-data-logo--transparent.png" alt="logo" width={175} height={100}/>
         </Link>
         <NavBar/>
         <Button

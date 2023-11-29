@@ -1,5 +1,6 @@
 import SectionWrapperContainer from "@/components/ui/HOC/SectionWrapperContainer";
 import React from "react";
+import Image from "next/image";
 
 const MOCK_skopjeGallery = [
     {src: '/assets/hero.png', alt: 'https://www.kinandcarta.com/'},
@@ -17,10 +18,16 @@ const MOCK_skopjeGallery = [
 
 const EventGallery = () => {
 
-    const listSkopjeGallery = MOCK_skopjeGallery.map((image, id)=><img className='rounded-xl' key={id} src={image.src} alt={image.alt}/>);
+    const listSkopjeGallery = MOCK_skopjeGallery
+        .map((image, id) =>
+            (
+                <Image className='rounded-xl' key={id} src={image.src} alt={image.alt} height={1500} width={1500}/>
+            )
+        );
 
     return <SectionWrapperContainer>
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 w-full px-[8vw] sm:px-[12vw] lg:px-[100px]'>
+        <div
+            className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 w-full px-[8vw] sm:px-[12vw] lg:px-[100px]'>
             {listSkopjeGallery}
         </div>
     </SectionWrapperContainer>;

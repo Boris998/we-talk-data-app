@@ -2,6 +2,8 @@ import SectionWrapperContainer from "@/components/ui/HOC/SectionWrapperContainer
 import HeadingWrapper from "@/components/ui/HOC/HeadingWrapper";
 import {AboutData} from "@/typings";
 import {urlFor} from "@/sanity";
+import Image from "next/image";
+
 
 type Props = {
     about: AboutData
@@ -19,10 +21,12 @@ const About = ({about}:Props) => {
                 </HeadingWrapper>
                 <div className='flex flex-col md:flex-row relative items-center
                 justify-evenly space-y-[30px] px-[20px] md:space-x-[50px] md:space-y-0'>
-                    <img className='w-[400px] h-[300px] rounded-xl object-cover mx-auto md:w-1/2
-                md:rounded-xl md:h-[370px] lg:h-[500px] 2xl:h-[25vw]'
-                         src={urlFor(about.image).url()}
-                         alt={about?.title}
+                    <Image
+                        className='w-[400px] h-[300px] rounded-xl object-cover mx-auto md:w-1/2 md:rounded-xl md:h-[370px] lg:h-[500px] 2xl:h-[26vw]'
+                        src={urlFor(about.image).url()}
+                        alt={about?.title}
+                        width={400}
+                        height={300}
                     />
                     <p className='text-[10px] sm:text-[14px] md:text-[12px] lg:text-[16px] xl:text-lg 2xl:text-left text-white md:w-1/2'>
                         {about?.description}
