@@ -47,7 +47,7 @@ const Home = ({
                   upcomingEvent
               }: Props) => {
     return (
-        <div className='scrollbar scrollbar-track-yellow-400 scrollbar-thumb-[#ffd700]/80'>
+        <div className='scrollbar scrollbar-track-yellow-400 scrollbar-thumb-[#ffd700]/80' id='home'>
 
             {/*Hero*/}
             <section id='header'>
