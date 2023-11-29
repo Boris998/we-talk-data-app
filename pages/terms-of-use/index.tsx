@@ -2,7 +2,10 @@ import SectionWrapperContainer from "@/components/ui/HOC/SectionWrapperContainer
 import HeadingWrapper from "@/components/ui/HOC/HeadingWrapper";
 
 const DUMMY_COC = [
-    {one: 'Intro', two: ['Welcome to WeTalkDATA&AI’s website. By using our site, you are agreeing to comply with and be bound by the following terms of use. Please review the following terms carefully. If you do not agree to these terms, you should not use this site. ']},
+    {
+        one: 'Intro',
+        two: ['Welcome to WeTalkDATA&AI’s website. By using our site, you are agreeing to comply with and be bound by the following terms of use. Please review the following terms carefully. If you do not agree to these terms, you should not use this site. ']
+    },
     {
         one: '1. Acceptance of Agreement ',
         two: 'You agree to the terms and conditions outlined in this Terms of Use Agreement (“Agreement”) ' +
@@ -12,7 +15,7 @@ const DUMMY_COC = [
             'or through the Site, and the subject matter of this Agreement. This Agreement may be amended at any time by us ' +
             'from time to time without specific notice to you. The latest Agreement will be posted on the Site,' +
             ' and you should review this Agreement prior to using the Site.'
-    },{
+    }, {
         one: '2. Copyright ',
         two: 'The content, organization, graphics, design, audio, animation, video, compilation, magnetic translation, ' +
             'digital conversion and other matters related to the Site are protected under\n' +
@@ -20,11 +23,11 @@ const DUMMY_COC = [
             ' The copying, redistribution, use or publication by you of any such matters or any part of the Site, except as allowed' +
             ' by Section 4, is strictly prohibited. You do not acquire ownership rights to any content, document or other materials viewed through the Site. ' +
             'The posting of information or materials on the Site does not constitute a waiver of any right in such information and materials. '
-    },{
+    }, {
         one: '3. Trademarks ',
         two: 'WeTalkDATA&AI is the trademark or registered trademark of WeTalkDATA&AI in the Republic of North Macedonia and/or other countries.' +
             ' All other trademarks and registered trademarks are the property of their respective owners. \n'
-    },{
+    }, {
         one: '5. Editing, Deleting and Modification ',
         two: 'Unless otherwise specified, the viewing, printing or downloading of any content, graphic, ' +
             'form or document from the Site grants you only a limited, nonexclusive license for use solely by you ' +
@@ -34,20 +37,20 @@ const DUMMY_COC = [
             ' Unless otherwise specified, the developer tools and components, download areas, communication forums and product information (collectively "Services")' +
             ' are for your personal and non-commercial use. You may not modify, copy, distribute, transmit, display, perform, reproduce, publish,' +
             'license, create derivative works from, transfer, or sell any information, software, products or services obtained from the Services. '
-    },{
+    }, {
         one: '4. Limited Right to Use ',
         two: 'We reserve the right in our sole discretion to edit or delete any documents,' +
             ' information or other content appearing on the Site.'
-    },{
+    }, {
         one: '6. Indemnification ',
         two: 'You agree to indemnify, defend and hold us and our partners, attorneys, staff and affiliates ' +
             '(collectively, “Affiliated Parties”) harmless from any liability, loss, claim and expense,' +
             ' including reasonable attorney’s fees, related to your violation of this Agreement or use of the Site. \n'
-    },{
+    }, {
         one: '7. Nontransferable ',
         two: 'Your right to use the Site is not transferable.' +
             ' Any password or right given to you to obtain information or documents is not transferable.'
-    },{
+    }, {
         one: '8. Disclaimer and Limits ',
         two: 'THE INFORMATION FROM OR THROUGH THE SITE ARE PROVIDED “AS-IS,” “AS AVAILABLE,” AND ALL WARRANTIES, EXPRESS OR IMPLIED,' +
             ' ARE DISCLAIMED (INCLUDING BUT NOT LIMITED TO THE DISCLAIMER OF ANY IMPLIED WARRANTIES OF MERCHANTABILITY AND ' +
@@ -63,14 +66,14 @@ const DUMMY_COC = [
             ' CONTAINED WITHIN THE ELECTRONIC FILE CONTAINING THE FORM OR DOCUMENT IS DISCLAIMED. WE WILL NOT BE LIABLE TO YOU FOR ANY INCIDENTAL,' +
             ' SPECIAL OR CONSEQUENTIAL DAMAGES OF ANY KIND THAT MAY RESULT FROM USE OF OR INABILITY TO USE OUR SITE. ' +
             'OUR MAXIMUM LIABILITY TO YOU UNDER ALL CIRCUMSTANCES WILL BE EQUAL TO THE PURCHASE PRICE YOU PAY FOR ANY GOODS, SERVICES OR INFORMATION. '
-    },{
+    }, {
         one: '9. Use of Information',
         two: 'We reserve the right, and you authorize us, to the use and assignment of all information ' +
             'regarding Site uses by you and all information provided by you in any manner consistent with our Privacy Policy. '
-    },{
+    }, {
         one: '10. Privacy Policy ',
         two: 'Our Privacy Policy, as it may change from time to time, is a part of this Agreement.  '
-    },{
+    }, {
         one: '11. Links to other Web Sites ',
         two: 'The Site contains links to other Web sites. We are not responsible for the content,' +
             ' accuracy or opinions express in such Web sites, and such Web sites are not investigated,' +
@@ -82,8 +85,12 @@ const DUMMY_COC = [
 
 const cocList = DUMMY_COC.map((code, i) => {
     return <div key={i} className='text-left py-4'>
-        <h1 className='font-extrabold text-[36px] text-white'>{code.one}</h1>
-        <p className='text-[#ffd700] py-1'>{code.two}</p>
+        <h1 className='font-extrabold 2xl:text-4xl xl:text-3xl text-xl lg:text-2xl text-white'>
+            {code.one}
+        </h1>
+        <p className='text-[#ffd700] py-1 2xl:text-lg lg:text-md md:text-sm text-xs'>
+            {code.two}
+        </p>
     </div>
 });
 

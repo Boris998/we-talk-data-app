@@ -18,7 +18,7 @@ const Video: FC = () => {
     };
 
     return (
-        <div className='h-full w-full overflow-hidden relative my-auto max-h-[500px]'>
+        <div className='h-full w-full overflow-hidden relative my-auto max-h-[550px]'>
             <video loop controls ref={videoRef} className='relative w-full mb-[-10vh]'>
                 <source src='/assets/video.mp4' type='video/mp4'/>
             </video>

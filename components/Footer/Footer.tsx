@@ -69,11 +69,13 @@ const Footer = () => {
                     </Link>
                 </div>
 
-                <div><span>Designed and developed by: </span>
-                    <Link href='https://www.kinandcarta.com/' className='text-[#ffd700]/30 hover:text-[#ffd700]/70'
+                <div><span className='text-gray-400'>Designed and developed by:  </span>
+                    <Link
+                        href='https://www.kinandcarta.com/'
+                        className='text-[#ffd700]/50 hover:text-[#ffd700]'
                           target="_blank"
                           rel="noopener noreferrer">
-                            Kin + Carta
+                            @Kin + Carta
                     </Link>
                 </div>
             </div>
