@@ -32,13 +32,13 @@ const DUMMY_COC = [
 
 const cocList = DUMMY_COC.map((code, i) => {
     return <div key={i} className='text-left py-4'>
-        <h1 className='font-extrabold text-[36px] text-white'>{code.one}</h1>
+        <h1 className='font-extrabold 2xl:text-4xl xl:text-3xl text-xl lg:text-2xl text-white'>{code.one}</h1>
         {
             code.two.map((line1, i) =>
                 (
                     <div key={i}>
-                        {i === 0 && <p className='text-[#ffd700] py-1'>{line1}</p>}
-                        {i >= 1 && <li className='text-[#ffd700] py-1'>{line1}</li>}
+                        {i === 0 && <p className='text-[#ffd700] py-1 2xl:text-lg lg:text-md md:text-sm text-xs'>{line1}</p>}
+                        {i >= 1 && <li className='text-[#ffd700] py-1 2xl:text-lg lg:text-md md:text-sm text-xs'>{line1}</li>}
                     </div>
                 )
             )
@@ -49,7 +49,7 @@ const cocList = DUMMY_COC.map((code, i) => {
 const CodeOfConduct = () => {
 
     return <SectionWrapperContainer>
-        <div className='py-24 px-10 overflow-hidden'>
+        <div className='sm:py-24 py-16 px-6 sm:px-10 overflow-hidden'>
             <HeadingWrapper>CODE OF CONDUCT</HeadingWrapper>
             <div>{cocList}</div>
         </div>
