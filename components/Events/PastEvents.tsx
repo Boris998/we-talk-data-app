@@ -11,25 +11,25 @@ const MOCK_EVENTS = [
         title: 'WeTalkData&AI',
         city: 'Skopje',
         year: 2023,
-        imageSrc: '/assets/hero.png'
+        imageSrc: '/assets/gall-5.png'
     },
     {
         title: 'WeTalkData&AI',
         city: 'Belgrade',
         year: 2023,
-        imageSrc: '/assets/hero.png'
+        imageSrc: '/assets/gall-5.png'
     },
     {
         title: 'WeTalkData&AI',
         city: 'San Francisco',
         year: 2023,
-        imageSrc: '/assets/hero.png'
+        imageSrc: '/assets/gall-5.png'
     },
     {
         title: 'WeTalkData&AI',
         city: 'Huston',
         year: 2023,
-        imageSrc: '/assets/hero.png'
+        imageSrc: '/assets/gall-5.png'
     },
 ];
 

@@ -29,7 +29,8 @@ const Hero: FC<Props> = ({pageInfo}: Props) => {
 
             </h1>
             <h3 className='mb-6 lg:text-[24px] text-[3vw]  max-w-4xl  font-bold text-amber-100 uppercase tracking-[5px]  sm:mx-[4vw]'>
-                {pageInfo?.subHeading}
+                <p>{pageInfo?.subHeading.split(' ').splice(0,6).join(' ')}</p>
+                <p>{pageInfo?.subHeading.split(' ').splice(6, 8)}</p>
             </h3>
             <Link href='/#about'>
                 <Button

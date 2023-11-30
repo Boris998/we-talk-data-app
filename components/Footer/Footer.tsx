@@ -5,8 +5,8 @@ import FacebookLogoIcon from "@/components/ui/FacebookLogoIcon";
 
 const DUMMY_SOCIALS = [
     {title: 'Instagram', url: 'https://www.instagram.com/we.talk.data.ai/?hl=en'},
-    {title: 'LinkedIn', url: 'https://www.facebook.com/wetalkdataai'},
-    {title: 'Facebook', url: 'https://www.linkedin.com/company/wetalkdata-ai/?viewAsMember=true'}
+    {title: 'LinkedIn', url: 'https://www.linkedin.com/company/wetalkdata-ai/?viewAsMember=true'},
+    {title: 'Facebook', url: 'https://www.facebook.com/wetalkdataai'}
 ];
 
 const socialsList1 = DUMMY_SOCIALS?.map((social, i) => {
