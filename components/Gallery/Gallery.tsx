@@ -13,7 +13,7 @@ type Props = {
 const Gallery = ({homePageGallery}: Props) => {
     return <SectionWrapperContainer className='bg-white'>
         <div
-            className='relative flex flex-col h-screen items-center text-center overflow-hidden
+            className='relative flex flex-col h-screen items-center text-center overflow-hidden sm:min-h-[900px] min-h-[500px]
             sm:px-[50px] sm:space-y-[4vw] xl:space-y-[2vw] py-[8vw] sm:py-[5vw] 2xl:py-[4vw]'
         >
             <HeadingWrapper>G a l l e r y</HeadingWrapper>

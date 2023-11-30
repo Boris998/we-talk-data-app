@@ -1,12 +1,7 @@
 import SectionWrapperContainer from "@/components/ui/HOC/SectionWrapperContainer";
 import Link from "next/link";
 import {InstagramLogoIcon, LinkedInLogoIcon} from "@radix-ui/react-icons";
-import {Social} from "@/typings";
 import FacebookLogoIcon from "@/components/ui/FacebookLogoIcon";
-
-type Props = {
-    socials: Social[]
-}
 
 const DUMMY_SOCIALS = [
     {title: 'Instagram', url: 'https://www.instagram.com/we.talk.data.ai/?hl=en'},
@@ -69,7 +64,7 @@ const Footer = () => {
                     </Link>
                 </div>
 
-                <div><span className='text-gray-400'>Designed and developed by:  </span>
+                <div className='text-sm sm:text-lg'><span className='text-gray-400'>Designed and developed by:  </span>
                     <Link
                         href='https://www.kinandcarta.com/'
                         className='text-[#ffd700]/50 hover:text-[#ffd700]'

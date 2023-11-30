@@ -22,7 +22,8 @@ const About = ({about}:Props) => {
                 <div className='flex flex-col md:flex-row relative items-center
                 justify-evenly space-y-[30px] px-[20px] md:space-x-[50px] md:space-y-0'>
                     <Image
-                        className='w-[400px] h-[300px] rounded-xl object-cover mx-auto md:w-1/2 md:rounded-xl md:h-[370px] lg:h-[500px] 2xl:h-[26vw]'
+                        className='w-[400px] h-[300px] rounded-xl object-cover mx-auto
+                        md:w-1/2 md:rounded-xl md:h-[370px] lg:h-[500px] 2xl:h-[26vw] max-h-[500px]'
                         src={urlFor(about.image).url()}
                         alt={about?.title}
                         width={400}
