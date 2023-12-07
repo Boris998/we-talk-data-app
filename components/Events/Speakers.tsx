@@ -38,7 +38,7 @@ const Speakers = ({upcomingEvent}: Props) => {
             <HeadingWrapper>
                 {upcomingEvent.speakersSectionTitle}
             </HeadingWrapper>
-            <div className='flex justify-center items-center flex-wrap '>
+            <div className='flex justify-center items-center flex-wrap'>
                 {listSpeakerCards}
             </div>
         </div>

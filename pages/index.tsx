@@ -60,7 +60,7 @@ const Home = ({
             </section>
 
             {/* Video */}
-            {pastEvents.featureFlag || <section>
+            {!pastEvents.featureFlag || <section>
                 <Video/>
             </section>}
 
@@ -76,7 +76,7 @@ const Home = ({
             }
 
             {/* Past Events */}
-            {!pastEvents?.featureFlag ||
+            {/*{!pastEvents?.featureFlag ||*/}{
                 <section id='past-events'>
                     <PastEvents pastEvents={pastEvents}/>
                 </section>

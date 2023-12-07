@@ -13,24 +13,6 @@ const MOCK_EVENTS = [
         year: 2023,
         imageSrc: '/assets/gall-5.png'
     },
-    {
-        title: 'WeTalkData&AI',
-        city: 'Belgrade',
-        year: 2023,
-        imageSrc: '/assets/gall-5.png'
-    },
-    {
-        title: 'WeTalkData&AI',
-        city: 'San Francisco',
-        year: 2023,
-        imageSrc: '/assets/gall-5.png'
-    },
-    {
-        title: 'WeTalkData&AI',
-        city: 'Huston',
-        year: 2023,
-        imageSrc: '/assets/gall-5.png'
-    },
 ];
 
 type Props = {
@@ -41,8 +23,8 @@ const PastEvents:FC<Props> = ({pastEvents}:Props) => {
 
     const listEventCards = MOCK_EVENTS.map((event, id) => {
         return <EventCard key={id}>
-            <Image src={`${event.imageSrc}`} alt='as' width={800} height={800}/>
-            <Link href='/'>
+            <Image src={`${event.imageSrc}`} alt='as' width={600} height={400}/>
+            <Link href='/events/Skopje'>
                 <figcaption>
                     <h3>{event.title} | {event.city}</h3>
                     <h4>{event.year}</h4>
@@ -53,7 +35,7 @@ const PastEvents:FC<Props> = ({pastEvents}:Props) => {
 
     return <SectionWrapperContainer>
         <div
-            className='relative px-[10px] space-y-[20px] overflow-x-hidden
+            className='relative flex flex-col px-[10px] space-y-[20px] overflow-x-hidden
              sm:px-[50px] sm:space-y-[4vw] xl:space-y-[2vw] py-[8vw] sm:py-[5vw] 2xl:py-[4vw]'
         >
             <HeadingWrapper>
@@ -62,7 +44,7 @@ const PastEvents:FC<Props> = ({pastEvents}:Props) => {
             <p className='text-[10px] sm:text-[14px] lg:text-xl text-white mx-[20px] sm:px-0'>
                 {pastEvents.description}
             </p>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-4 w-full'>
+            <div className='flex justify-center items-center flex-wrap'>
                 {listEventCards}
             </div>
         </div>
