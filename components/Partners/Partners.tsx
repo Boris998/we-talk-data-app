@@ -15,7 +15,7 @@ const Partners = ({partners}: Props) => {
         return <Link
             href={partner.url}
             key={id}
-            className='px-[15px] hover:bg-[ffd700] rounded-full'
+            className='px-[15px]'
             target="_blank"
             rel="noopener noreferrer"
         >

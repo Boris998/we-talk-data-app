@@ -50,7 +50,7 @@ const Home = ({
         <div className='scrollbar scrollbar-track-yellow-400 scrollbar-thumb-[#ffd700]/80' id='home'>
 
             {/*Hero*/}
-            <section id='header'>
+            <section id='header' className={'{/*bg-gradient-to-tl from-blue-800/70 to-[#ffd700]/60*/}'}>
                 <Hero pageInfo={pageInfo}/>
             </section>
 
@@ -60,7 +60,7 @@ const Home = ({
             </section>
 
             {/* Video */}
-            {homePageGallery.featureFlag && <section>
+            {pastEvents.featureFlag || <section>
                 <Video/>
             </section>}
 
@@ -76,7 +76,7 @@ const Home = ({
             }
 
             {/* Past Events */}
-            {pastEvents?.featureFlag &&
+            {!pastEvents?.featureFlag ||
                 <section id='past-events'>
                     <PastEvents pastEvents={pastEvents}/>
                 </section>

@@ -62,6 +62,14 @@ export interface HomePageGallery extends SanityBody {
     btn: string
 }
 
+export interface EventGalleryData extends SanityBody {
+    _type: "eventGallery",
+    title: string,
+    sliderImages: Picture[]
+    featureFlag: boolean
+    _ref: boolean
+}
+
 export interface SpeakerData extends SanityBody {
     _type: "speaker",
     speakerName: string,
@@ -107,6 +115,7 @@ export interface PastEventsData extends SanityBody {
     title: string,
     featureFlag: boolean,
     description: string,
+    image: string,
     events: Event[]
 }
 

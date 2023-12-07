@@ -20,10 +20,10 @@ const socialsList1 = DUMMY_SOCIALS?.map((social, i) => {
             {
                 social.title.toLowerCase() === 'instagram'
                     ? <InstagramLogoIcon
-                        className='text-[#ffd700]/30 mx-[15px] hover:text-[#ffd700]/60 animate hover:animate-spin scale-150'/>
+                        className='text-[#ffd700]/30 mx-[15px] hover:text-[#ffd700]/60 animate scale-150'/>
                     : social.title.toLowerCase() === 'linkedin'
                         ? <LinkedInLogoIcon
-                            className='text-[#ffd700]/30 mx-[15px] hover:text-[#ffd700]/60 animate hover:animate-spin scale-150'/>
+                            className='text-[#ffd700]/30 mx-[15px] hover:text-[#ffd700]/60 animate scale-150'/>
                         : <FacebookLogoIcon/>
             }
         </Link>

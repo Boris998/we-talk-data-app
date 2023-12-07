@@ -1,8 +1,8 @@
 import {defineField, defineType} from 'sanity'
 
-export default      defineType({
-    name: 'homePageGallery',
-    title: 'Home Page Gallery',
+export default defineType({
+    name: 'eventGallery',
+    title: 'Event Gallery',
     type: 'document',
     fields: [
         defineField({
@@ -16,8 +16,8 @@ export default      defineType({
             type: 'string',
         }),
         defineField({
-            name: 'image',
-            title: 'Image',
+            name: 'sliderImages',
+            title: 'Slider Image',
             type: 'array',
             of: [{type: 'reference', to: {type: 'picture'}}]
         }),
