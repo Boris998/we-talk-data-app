@@ -2,6 +2,7 @@ import SectionWrapperContainer from "@/components/ui/HOC/SectionWrapperContainer
 import Link from "next/link";
 import {InstagramLogoIcon, LinkedInLogoIcon} from "@radix-ui/react-icons";
 import FacebookLogoIcon from "@/components/ui/FacebookLogoIcon";
+import { PRIMARY_THEME_COLORS } from "@/constants/primary-theme";
 
 const DUMMY_SOCIALS = [
     {title: 'Instagram', url: 'https://www.instagram.com/we.talk.data.ai/?hl=en'},
@@ -20,10 +21,10 @@ const socialsList1 = DUMMY_SOCIALS?.map((social, i) => {
             {
                 social.title.toLowerCase() === 'instagram'
                     ? <InstagramLogoIcon
-                        className='text-[#ffd700]/30 mx-[15px] hover:text-[#ffd700]/60 animate scale-150'/>
+                        className={`text-[${PRIMARY_THEME_COLORS.tertiary}]/30 mx-[15px] hover:text-[${PRIMARY_THEME_COLORS.tertiary}]/60 animate scale-150`}/>
                     : social.title.toLowerCase() === 'linkedin'
                         ? <LinkedInLogoIcon
-                            className='text-[#ffd700]/30 mx-[15px] hover:text-[#ffd700]/60 animate scale-150'/>
+                            className={`text-[#ffd700]/30 mx-[15px] hover:text-[#ffd700]/60 animate scale-150`}/>
                         : <FacebookLogoIcon/>
             }
         </Link>
@@ -43,31 +44,33 @@ const Footer = () => {
                 <div className='flex flex-col text-center space-y-2 text-gray-400'>
                     <Link
                         href='/FAQ'
-                        className='hover:text-[#ffd700]/70'
+                        className={`hover:text-[#ffd700]/70`}
                     >
                         FAQ
                     </Link>
                     <Link href='/code-of-conduct'
-                          className='hover:text-[#ffd700]/70'
+                          className={`hover:text-[#ffd700]/70`}
                     >
                         Code of Conduct
                     </Link>
                     <Link href='/terms-of-use'
-                          className='hover:text-[#ffd700]/70'
+                          className={`hover:text-[#ffd700]/70`}
                     >
                         Terms of Use
                     </Link>
                     <Link href='/cp'
-                          className='hover:text-[#ffd700]/70'
+                          className={`hover:text-[#ffd700]/70`}
                     >
                         Cookie Policy
                     </Link>
                 </div>
 
-                <div className='text-sm sm:text-lg'><span className='text-gray-400'>Designed and developed by:  </span>
+                <div className='text-sm sm:text-lg'><span className={`${PRIMARY_THEME_COLORS.textWhite}`}>
+                    Designed and developed by: {" "}
+                    </span>
                     <Link
                         href='https://www.kinandcarta.com/'
-                        className='text-[#ffd700]/50 hover:text-[#ffd700]'
+                        className={`text-[#ffd700]/50 hover:text-[#ffd700]`}
                           target="_blank"
                           rel="noopener noreferrer">
                             @Kin + Carta

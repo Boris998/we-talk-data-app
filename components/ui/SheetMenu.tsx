@@ -7,10 +7,10 @@ const SheetMenu = () => {
     const bars = [
         {title: 'HOME', href: '/#home'},
         {title: 'ABOUT', href: '/#about'},
-        {title: 'UPCOMING EVENT', href: '/#upcoming-event'},
         {title: 'GALLERY', href: '/#gallery'},
         {title: 'PAST EVENTS', href: '/#past-events'},
         {title: 'PARTNERS', href: '/#partners'},
+        {title: 'SUPPORTERS', href: '/#supporters'},
     ];
 
     const [activeLink, setActiveLink] = useState(bars[0].href);
@@ -25,8 +25,8 @@ const SheetMenu = () => {
             <Link
                 key={id}
                 className={`cursor-pointer text-[#ffd700] hover:text-[#001330] text-center ${
-                    activeLink === bar.title ? 'bg-[#ffd700]/50' : 'bg-[#003767]/50'
-                } hover:bg-[#ffd700]/50 p-[15px] rounded-full active:bg-[#ffd700]/50 shadow-xl`}
+                    activeLink === bar.title ? 'bg-gradient-to-br from-[#ffd700]/30 to-[#003767]/30' : 'bg-[#003767]/30'
+                } hover:bg-gradient-to-br active:bg-gradient-to-br from-[#ffd700]/30 to-[#003767]/30 p-[15px] rounded-full shadow-xl`}
                 href={`${bar.href}`}
                 onClick={() => {
                     handleLinkClick(bar.title)
@@ -40,7 +40,7 @@ const SheetMenu = () => {
 
     return <div>
         <Sheet >
-            <SheetTrigger className='text-[#ffd700]/50 hover:text-[#ffd700]' asChild={true}>
+            <SheetTrigger className={`text-[#ffd700]/50 hover:text-[#ffd700]`} asChild={true}>
                 <HamburgerMenuIcon className='h-[8vw] w-[10vw] sm:h-[32px] sm:w-[32px]'/>
             </SheetTrigger>
             <SheetContent side='right' className={`w-full lg:block`}>

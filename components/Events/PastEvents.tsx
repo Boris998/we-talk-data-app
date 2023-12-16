@@ -5,15 +5,8 @@ import Link from "next/link";
 import HeadingWrapper from "@/components/ui/HOC/HeadingWrapper";
 import {PastEventsData} from "@/typings";
 import Image from "next/image";
-
-const MOCK_EVENTS = [
-    {
-        title: 'WeTalkData&AI',
-        city: 'Skopje',
-        year: 2023,
-        imageSrc: '/assets/gall-5.png'
-    },
-];
+import { urlFor } from "@/sanity";
+import { FONTS, INNER_WRAPPER, PRIMARY_THEME_COLORS } from "@/constants/primary-theme";
 
 type Props = {
     pastEvents: PastEventsData
@@ -21,13 +14,13 @@ type Props = {
 
 const PastEvents:FC<Props> = ({pastEvents}:Props) => {
 
-    const listEventCards = MOCK_EVENTS.map((event, id) => {
+    const listEventCards = pastEvents.events.map((event, id) => {
         return <EventCard key={id}>
-            <Image src={`${event.imageSrc}`} alt='as' width={600} height={400}/>
+            <Image src={urlFor(pastEvents.image).url()} alt='as' width={600} height={400}/>
             <Link href='/events/Skopje'>
                 <figcaption>
                     <h3>{event.title} | {event.city}</h3>
-                    <h4>{event.year}</h4>
+                    <h4>30.11.{event.year}</h4>
                 </figcaption>
             </Link>
         </EventCard>;
@@ -35,13 +28,12 @@ const PastEvents:FC<Props> = ({pastEvents}:Props) => {
 
     return <SectionWrapperContainer>
         <div
-            className='relative flex flex-col px-[10px] space-y-[20px] overflow-x-hidden
-             sm:px-[50px] sm:space-y-[4vw] xl:space-y-[2vw] py-[8vw] sm:py-[5vw] 2xl:py-[4vw]'
+            className={`px-[10px] ${INNER_WRAPPER.container}`}
         >
             <HeadingWrapper>
-                {pastEvents.title.toUpperCase()}
+                <span className='tracking-[10px]'>{pastEvents.title.toUpperCase()}</span>
             </HeadingWrapper>
-            <p className='text-[10px] sm:text-[14px] lg:text-xl text-white mx-[20px] sm:px-0'>
+            <p className={`${PRIMARY_THEME_COLORS.textWhite} ${FONTS.paragraph} mx-[20px] sm:px-0`}>
                 {pastEvents.description}
             </p>
             <div className='flex justify-center items-center flex-wrap'>

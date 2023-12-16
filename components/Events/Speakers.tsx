@@ -5,7 +5,6 @@ import React from "react";
 import {urlFor} from "@/sanity";
 import Image from 'next/image';
 import SpeakerCard from "@/components/ui/HOC/SpeakerCard";
-import {LinkedInLogoIcon} from "@radix-ui/react-icons";
 
 type Props = {
     upcomingEvent: UpcomingEventData

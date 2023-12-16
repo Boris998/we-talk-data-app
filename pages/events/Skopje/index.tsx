@@ -32,8 +32,8 @@ const Skopje = ({upcomingEvent, pastEvent}:Props) => {
                         width={400}
                         height={300}
                     />
-                    <p className='text-[10px] sm:text-[14px] md:text-[12px] lg:text-[16px] xl:text-lg 2xl:text-left text-white md:w-1/2'>
-                        {pastEvent.description}
+                    <p className='text-[0.65rem] sm:text-[0.75rem] md:text-[0.9rem] lg:text-[1rem] xl:text-[1.25rem] 2xl:text-left text-white md:w-1/2'>
+                        {pastEvent.events[0].description}
                     </p>
                 </div>
             </div>

@@ -1,18 +1,28 @@
 import HeaderContainer from "@/components/ui/HOC/ContainerHeader";
 import Link from "next/link";
-import {Button} from "@/components/ui/button";
-import {MoonIcon, SunIcon} from "@radix-ui/react-icons";
+import { Button } from "@/components/ui/button";
+import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import NavBar from "@/components/Header/NavBar";
 import SheetMenu from "@/components/ui/SheetMenu";
 import Image from "next/image";
+import { PRIMARY_THEME_COLORS } from "@/constants/primary-theme";
 
 const Header = () => {
-    return <HeaderContainer>
-        <Link href='/#header' className='lg:ml-0 sm:w-[175px] w-[30vw] animate-pulse'>
-            <Image src="/assets/we-talk-data-logo--transparent.png" alt="logo" width={175} height={100}/>
-        </Link>
-        <NavBar/>
-        <Button
+  return (
+    <HeaderContainer>
+      <Link
+        href="/#header"
+        className={`lg:ml-0 sm:w-[175px] w-[30vw] rounded-full mx-auto hover:bg-gradient-to-br from-[${PRIMARY_THEME_COLORS.primary}]/20 to-[${PRIMARY_THEME_COLORS.tertiary}]/30`}
+      >
+        <Image
+          src="/assets/we-talk-data-logo--transparent.png"
+          alt="logo"
+          width={175}
+          height={100}
+        />
+      </Link>
+      <NavBar />
+      {/*         <Button
             variant='default'
             size='icon'
             className='rounded-full text-[#ffd700]/50 hover:animate hover:animate-spin
@@ -27,11 +37,12 @@ const Header = () => {
                         transition-all dark:-rotate-90 dark:scale-0
                         hover:bg-[#ffd700]/50'/>
             <span className='sr-only'>Toggle Theme</span>
-        </Button>
-        <div className='lg:hidden'>
-            <SheetMenu/>
-        </div>
+        </Button> */}
+      <div className="lg:hidden">
+        <SheetMenu />
+      </div>
     </HeaderContainer>
-}
+  );
+};
 
 export default Header;

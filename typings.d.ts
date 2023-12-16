@@ -35,9 +35,9 @@ export interface Event extends SanityBody {
     featureFlag: boolean
     title: string;
     city: string;
-    year: number
-    description: number
-    image: Image
+    year: string;
+    description: number;
+    image: Image;
 }
 
 export interface Social extends SanityBody {

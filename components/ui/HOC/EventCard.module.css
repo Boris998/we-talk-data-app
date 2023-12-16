@@ -9,7 +9,7 @@
     width: 600px;
     color: #ffd700;
     text-align: left;
-    font-size: 16px;
+    font-size: 1em;
 }
 
 .snip1577 *,
@@ -67,7 +67,7 @@
 }
 
 .snip1577 h4 {
-    font-size: .8em;
+    font-size: 1em;
     text-transform: uppercase;
 }
 
