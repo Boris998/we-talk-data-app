@@ -3,6 +3,7 @@ import {Button} from "@/components/ui/button";
 import {useState} from "react";
 import {HomePageGallery} from "@/typings";
 import {urlFor} from "@/sanity";
+import { PRIMARY_THEME_COLORS } from "@/constants/primary-theme";
 
 type Props = {
     homePageGallery: HomePageGallery
@@ -41,7 +42,7 @@ const HomePageImageSlider = ({homePageGallery}: Props) => {
 
     const backgroundImageStyle = urlImage ? {backgroundImage: `url(${urlImage})`} : {};
 
-    return <div className='max-w-[1400px] h-[800px] w-full m-auto py-4 px-4 relative group min-h-[300px] sm:min-h-[500px]'>
+    return <div className='max-w-[1400px] h-[750px] w-full m-auto py-4 px-4 relative group min-h-[300px] sm:min-h-[450px]'>
         <div
             className='w-full h-full rounded-2xl bg-center bg-cover duration-500'
             style={{...backgroundImageStyle}}>
@@ -49,16 +50,18 @@ const HomePageImageSlider = ({homePageGallery}: Props) => {
 
         {/*left arrow*/}
         <Button onClick={prevSlide}
-                className='hidden group-hover:block absolute top-[45%] -translate-x-0 translatey-y-[-50%]
-                left-5 text-2xl rounded-full bg-black/20 text-white pb-12 hover:bg-[#ffd700]/40'
+                className={`hidden group-hover:block absolute top-[45%] -translate-x-0 translatey-y-[-50%]
+                left-5 text-2xl rounded-full bg-black/20 ${PRIMARY_THEME_COLORS.textWhite} pb-12
+                hover:bg-gradient-to-br from-[${PRIMARY_THEME_COLORS.primary}]/20 to-[${PRIMARY_THEME_COLORS.tertiary}]/30 hover:text-[${PRIMARY_THEME_COLORS.tertiary}]`}
         >
             <ChevronLeftIcon className='h-10 w-10'/>
         </Button>
 
         {/*right arrow*/}
         <Button onClick={nextSlide}
-                className='hidden group-hover:block absolute top-[45%] -translate-x-0 translatey-y-[-50%]
-                right-5 text-2xl rounded-full bg-black/20 text-white pb-12 hover:bg-[#ffd700]/40'
+                className={`hidden group-hover:block absolute top-[45%] -translate-x-0 translatey-y-[-50%]
+                right-5 text-2xl rounded-full bg-black/20 ${PRIMARY_THEME_COLORS.textWhite} pb-12
+                hover:bg-gradient-to-br from-[${PRIMARY_THEME_COLORS.primary}]/20 to-[${PRIMARY_THEME_COLORS.tertiary}]/30 hover:text-[${PRIMARY_THEME_COLORS.tertiary}]`}
         >
             <ChevronRightIcon className='h-10 w-10'/>
         </Button>

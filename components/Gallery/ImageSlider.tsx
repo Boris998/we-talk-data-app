@@ -50,7 +50,8 @@ const ImageSlider = ({homePageGallery}: Props) => {
         {/*left arrow*/}
         <Button onClick={prevSlide}
                 className='hidden group-hover:block absolute top-[45%] -translate-x-0 translatey-y-[-50%]
-                left-5 text-2xl rounded-full bg-black/20 text-white pb-12 hover:bg-[#ffd700]/40'
+                left-5 text-2xl rounded-full bg-black/20 text-white pb-12 
+                hover:bg-gradient-to-br hover:from-blue-800/20 hover:to-[#ffd700]/30 hover:text-[#ffd700]'
         >
             <ChevronLeftIcon className='h-10 w-10'/>
         </Button>
@@ -58,7 +59,8 @@ const ImageSlider = ({homePageGallery}: Props) => {
         {/*right arrow*/}
         <Button onClick={nextSlide}
                 className='hidden group-hover:block absolute top-[45%] -translate-x-0 translatey-y-[-50%]
-                right-5 text-2xl rounded-full bg-black/20 text-white pb-12 hover:bg-[#ffd700]/40'
+                right-5 text-2xl rounded-full bg-black/20 text-white pb-12 
+                hover:bg-gradient-to-br hover:from-blue-800/20 hover:to-[#ffd700]/30 hover:text-[#ffd700]'
         >
             <ChevronRightIcon className='h-10 w-10'/>
         </Button>
