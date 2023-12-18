@@ -49,7 +49,7 @@ const Home = ({
       {/*Hero*/}
       <section
         id="header"
-        className={"{/*bg-gradient-to-tl from-blue-800/70 to-[#ffd700]/60*/}"}
+        className={"{/*bg-gradient-to-tl from-blue-800/70 to-[#ffd700]/60 */}"}
       >
         <Hero pageInfo={pageInfo} />
       </section>
