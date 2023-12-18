@@ -11,6 +11,11 @@ export default function Document() {
                 <title>
                     We Talk Data & AI
                 </title>
+                <meta
+                    name="description"
+                    content="We Talk Data & AI Tech Talk"
+                    key="desc"
+                />
             </Head>
             <body>
                 <Main/>

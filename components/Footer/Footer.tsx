@@ -15,6 +15,7 @@ const socialsList1 = DUMMY_SOCIALS?.map((social, i) => {
         <Link
             href={social.url}
             key={i}
+            aria-label={social.title}
             target="_blank"
             rel="noopener noreferrer"
         >

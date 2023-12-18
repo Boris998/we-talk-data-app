@@ -25,6 +25,7 @@ const Video: FC = () => {
             <div className='bg-cover text-center h-full left-0 top-0 absolute w-full z-999 bg-[#ffd700]/40'>
                 <Button
                     variant='outline'
+                    aria-label={`Play`}
                     className='rounded-full relative top-[25%] sm:top-[50%] h-[50px] scale-75 sm:scale-100 text-[#ffd700]'
                     onClick={togglePlay}
                 >

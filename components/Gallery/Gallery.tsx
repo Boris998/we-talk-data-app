@@ -5,7 +5,7 @@ import React from "react";
 import {HomePageGallery} from "@/typings";
 import Link from "next/link";
 import HomePageImageSlider from "@/components/Gallery/HomePageImageSlider";
-import { FONTS, INNER_WRAPPER, PRIMARY_THEME_COLORS } from "@/constants/primary-theme";
+import {INNER_WRAPPER, PRIMARY_THEME_COLORS} from "@/constants/primary-theme";
 
 type Props = {
     homePageGallery: HomePageGallery

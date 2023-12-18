@@ -4,6 +4,7 @@ import Link from "next/link";
 import CompaniesWrapper from "@/components/ui/HOC/CompaniesWrapper";
 import {SupporterData} from "@/typings";
 import {urlFor} from "@/sanity";
+import Image from "next/image";
 
 
 type Props = {
@@ -15,13 +16,15 @@ const Supporters = ({supporters}: Props) => {
         return <Link
             href={supporter.url}
             key={id}
-            className='px-[15px] hover:bg-[ffd700] rounded-full'
+            className='relative h-[30vw] w-[40vw] sm:h-[9em] sm:w-[12em]'
             target="_blank"
             rel="noopener noreferrer"
         >
-            <img className='h-[14vw] lg:h-[12vw] xl:h-[8vw] 2xl:h-[5vw]'
-                 src={urlFor(supporter.image).url()}
-                 alt={supporter.title} />
+            <Image className='object-fit'
+                   src={urlFor(supporter.image).url()}
+                   alt={supporter.title}
+                   fill
+            />
         </Link>
     });
 

@@ -4,6 +4,7 @@ import Link from "next/link";
 import CompaniesWrapper from "@/components/ui/HOC/CompaniesWrapper";
 import {PartnerData} from "@/typings";
 import {urlFor} from "@/sanity";
+import Image from "next/image";
 
 type Props = {
     partners: PartnerData[]
@@ -15,13 +16,15 @@ const Partners = ({partners}: Props) => {
         return <Link
             href={partner.url}
             key={id}
-            className='px-[15px]'
+            className='relative overflow-hidden h-[30vw] w-[40vw] sm:h-[9em] sm:w-[12em]'
             target="_blank"
             rel="noopener noreferrer"
         >
-            <img className='h-[14vw] lg:h-[12vw] xl:h-[8vw] 2xl:h-[5vw]'
-                 src={urlFor(partner.image).url()}
-                 alt={partner.title}/>
+                <Image className='object-fit'
+                    src={urlFor(partner.image).url()}
+                    alt={partner.title}
+                    fill
+                />
         </Link>
     });
 
@@ -30,8 +33,8 @@ const Partners = ({partners}: Props) => {
             <HeadingWrapper>
                 P a r t n e r s
             </HeadingWrapper>
-            <div className='flex flex-row'>
-                {listPartners}
+            <div className='flex flex-row space-x-4'>
+                {listPartners.reverse()}
             </div>
         </CompaniesWrapper>
     );
