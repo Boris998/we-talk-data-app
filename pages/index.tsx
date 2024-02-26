@@ -75,7 +75,7 @@ const Home = ({
       {/* Past Events */}
       {!pastEvents?.featureFlag &&
         <section id="past-events" >
-          <PastEvents pastEvents={pastEvents}/>
+          <PastEvents />
         </section>
       }
 
