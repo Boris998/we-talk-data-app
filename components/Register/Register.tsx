@@ -46,16 +46,16 @@ const Register = (props: Props) => {
     e: React.FormEvent<HTMLFormElement>
   ) => {
     e.preventDefault();
-
+/*
     let comment = commentRef.current?.value;
-    let agree = agreeRef.current?.checked;
+    let agree = agreeRef.current?.checked;*/
   
     const data = {
       enteredName,
       enteredEmail,
       enteredExperience,
-      comment,
-      agree,
+      commentRef,
+      agreeRef,
     };
 
     /* try {
