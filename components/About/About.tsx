@@ -1,9 +1,8 @@
-import SectionWrapperContainer from "@/components/ui/HOC/SectionWrapperContainer";
 import HeadingWrapper from "@/components/ui/HOC/HeadingWrapper";
-import { AboutData } from "@/typings";
+import SectionWrapperContainer from "@/components/ui/HOC/SectionWrapperContainer";
 import { urlFor } from "@/sanity";
+import { AboutData } from "@/typings";
 import Image from "next/image";
-import { FONTS, INNER_WRAPPER, PRIMARY_THEME_COLORS } from "@/constants/primary-theme";
 
 type Props = {
   about: AboutData;
@@ -12,27 +11,25 @@ type Props = {
 const About = ({ about }: Props) => {
   return (
     <SectionWrapperContainer>
-      <div className={`max-h-[2100px] items-center text-center px-0 md:text-left max-w-full justify-center mx-auto min-h-[500px] overflow-y ${INNER_WRAPPER.container}`}>
+      <figure className='max-h-[2100px] md:text-left max-w-full mx-auto min-h-[30rem] overflow-y inner-wrapper-container'>
         <HeadingWrapper>{about.title}</HeadingWrapper>
         <div
-          className="flex flex-col md:flex-row relative items-center
-                justify-evenly space-y-[30px] px-[20px] md:space-y-0 md:space-x-8"
+          className="flex flex-col md:flex-row relative items-stretch inner-section-wrapper-fixer md:space-y-0 md:space-x-8"
         >
           <Image
-            className="w-[400px] h-[300px] sm:w-[500px] sm:h-[360px] rounded-xl object-cover md:w-1/2 md:rounded-xl md:h-[400px] lg:h-[500px] 2xl:h-[26vw] max-h-[500px]"
+            className="flex rounded-xl object-cover md:w-1/2 md:rounded-xl"
             src={urlFor(about.image).url()}
             alt={about?.title}
-            width={400}
+            width={700}
             height={300}
           />
           <p
-            className={`${FONTS.paragraph} ${PRIMARY_THEME_COLORS.textWhite}
-                    md:w-1/2 max-w-[400px] sm:max-w-[500px] text-left`}
+            className='md:w-1/2 text-left paragraph-1 flex-grow min-h-full'
           >
             {about?.description}
           </p>
         </div>
-      </div>
+      </figure>
     </SectionWrapperContainer>
   );
 };

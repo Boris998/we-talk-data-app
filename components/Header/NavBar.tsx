@@ -5,6 +5,7 @@ const NavBar = () => {
   const bars = [
     { title: "HOME", href: "/#home" },
     { title: "ABOUT", href: "/#about" },
+    { title: "UPCOMING EVENT", href: "/#upcoming-event" },
     { title: "GALLERY", href: "/#gallery" },
     { title: "PAST EVENTS", href: "/#past-events" },
     { title: "PARTNERS", href: "/#partners" },
@@ -20,11 +21,11 @@ const NavBar = () => {
   const barsList = bars.map((bar, id) => (
     <Link
       key={id}
-      className={`cursor-pointer hover:text-[#ffd700] rounded-2xl hover:shadow-xl hover:shadow-[#ffd700]/50 text-center p-1 ${
+      className={`cursor-pointer hover:text-[#ffd700] rounded-full hover:shadow-xl hover:shadow-[#ffd700]/50 text-center p-[1em] ${
         activeLink === bar.title
           ? "text-yellow-400 shadow-xl shadow-[#ffd700]/50 bg-gradient-to-br from-blue-800/20 to-[#ffd700]/30"
           : ""
-      } text-amber-200 px-[12px] hover:bg-gradient-to-br hover:from-blue-800/20 hover:to-[#ffd700]/20 mix-blend-darken`}
+      } text-amber-200 px-[1em] py-[0.5em] hover:bg-gradient-to-br hover:from-blue-800/20 hover:to-[#ffd700]/20 mix-blend-darken`}
       href={`${bar.href}`}
       onClick={() => handleLinkClick(bar.title)}
     >
@@ -33,7 +34,7 @@ const NavBar = () => {
   ));
 
   return (
-    <nav className="text-right xl:text-center space-x-3 hidden lg:block w-full xl:pr-[8vw]">
+    <nav className="text-right xl:text-center space-x-3 hidden xl:block w-full xl:pr-[8vw]">
       {barsList}
     </nav>
   );

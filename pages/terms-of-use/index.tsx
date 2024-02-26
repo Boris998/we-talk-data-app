@@ -1,6 +1,5 @@
-import SectionWrapperContainer from "@/components/ui/HOC/SectionWrapperContainer";
 import HeadingWrapper from "@/components/ui/HOC/HeadingWrapper";
-import { FONTS, PRIMARY_THEME_COLORS } from "@/constants/primary-theme";
+import SectionWrapperContainer from "@/components/ui/HOC/SectionWrapperContainer";
 
 const DUMMY_COC = [
     {
@@ -86,10 +85,10 @@ const DUMMY_COC = [
 
 const cocList = DUMMY_COC.map((code, i) => {
     return <div key={i} className='text-left py-4'>
-        <h1 className={`${PRIMARY_THEME_COLORS.textWhite} font-extrabold 2xl:text-4xl xl:text-3xl text-xl lg:text-2xl`}>
+        <h1 className='text-white font-extrabold 2xl:text-4xl xl:text-3xl text-xl lg:text-2xl'>
             {code.one}
         </h1>
-        <p className={`text-[${PRIMARY_THEME_COLORS.tertiary}] py-1`}>
+        <p className='text-[#ffd700] py-1 paragraph-1'>
             {code.two}
         </p>
     </div>
@@ -97,10 +96,10 @@ const cocList = DUMMY_COC.map((code, i) => {
 
 const TermsAndConditions = () => {
     return <SectionWrapperContainer>
-        <div className='py-24 px-5 overflow-hidden'>
+        <figure className='inner-wrapper-container'>
             <HeadingWrapper>TERMS OF USE</HeadingWrapper>
             <div>{cocList}</div>
-        </div>
+        </figure>
     </SectionWrapperContainer>
 }
 

@@ -3,37 +3,65 @@
 @tailwind utilities;
 
 :root {
-    --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 214, 219, 220;
-    --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
-        --foreground-rgb: 255, 255, 255;
-        --background-start-rgb: 0, 0, 0;
-        --background-end-rgb: 0, 0, 0;
-    }
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
 }
 
 body {
-    /*background: linear-gradient(225deg, hsla(208, 100%, 20%, 1) 20%, hsla(216, 100%, 9%, 1) 100%);*/
-    /*background: linear-gradient(45deg, hsla(216, 100%, 9%, 1) 0%, hsla(208, 100%, 20%, 1) 25%, hsla(216, 100%, 9%, 1) 50%, hsla(208, 100%, 20%, 1) 75%, hsla(216, 100%, 9%, 1) 100%);*/
-    /*background: radial-gradient(circle, hsla(0, 0%, 0%, 1) 0%, hsla(208, 100%, 20%, 1) 25%, hsla(216, 100%, 9%, 1) 50%, hsla(208, 100%, 20%, 1) 75%, hsla(216, 100%, 9%, 1) 100%);*/
-    /*background: radial-gradient(circle, hsla(208, 100%, 20%, 1) 2%, hsla(210, 100%, 17%, 1) 20%, hsla(216, 91%, 13%, 1) 56%, hsla(208, 100%, 20%, 1) 92%);*/
-    background: radial-gradient(circle, hsla(208, 100%, 20%, 1) 2%, hsla(210, 100%, 17%, 1) 20%, hsla(216, 100%, 10%, 0.95) 56%, hsla(208, 100%, 20%, 1) 92%);
+  /*background: linear-gradient(225deg, hsla(208, 100%, 20%, 1) 20%, hsla(216, 100%, 9%, 1) 100%);*/
+  /*background: linear-gradient(45deg, hsla(216, 100%, 9%, 1) 0%, hsla(208, 100%, 20%, 1) 25%, hsla(216, 100%, 9%, 1) 50%, hsla(208, 100%, 20%, 1) 75%, hsla(216, 100%, 9%, 1) 100%);*/
+  /*background: radial-gradient(circle, hsla(0, 0%, 0%, 1) 0%, hsla(208, 100%, 20%, 1) 25%, hsla(216, 100%, 9%, 1) 50%, hsla(208, 100%, 20%, 1) 75%, hsla(216, 100%, 9%, 1) 100%);*/
+  /*background: radial-gradient(circle, hsla(208, 100%, 20%, 1) 2%, hsla(210, 100%, 17%, 1) 20%, hsla(216, 91%, 13%, 1) 56%, hsla(208, 100%, 20%, 1) 92%);*/
+  background: radial-gradient(
+    circle,
+    hsla(208, 100%, 20%, 1) 2%,
+    hsla(210, 100%, 17%, 1) 20%,
+    hsla(216, 100%, 10%, 0.95) 56%,
+    hsla(208, 100%, 20%, 1) 92%
+  );
 }
 
-/*body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}*/
+@layer components {
+  .inner-wrapper-container {
+    @apply relative flex flex-col w-full sm:max-w-screen-xl items-center justify-center text-center overflow-x-hidden px-6 py-10 lg:py-16 sm:px-16 space-y-4;
+  }
+
+  .paragraph-1 {
+    @apply text-xs sm:text-sm lg:text-base xl:text-lg text-white;
+  }
+
+  .inner-section-wrapper-fixer {
+    @apply space-y-4 md:space-y-0 md:space-x-8 md:py-4;
+  }
+
+  .text-white-centered-1 {
+    @apply text-white flex font-extrabold justify-center;
+  }
+
+  .input-group {
+    @apply px-4 py-2 bg-[#ffd700]/10 rounded-full;
+  }
+
+  .invalid {
+    @apply border-2 border-red-700;
+
+  }
+  
+  .invalid-text {
+    @apply text-red-700;
+  }
+}
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
+

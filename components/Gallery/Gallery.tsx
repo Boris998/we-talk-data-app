@@ -5,31 +5,32 @@ import React from "react";
 import {HomePageGallery} from "@/typings";
 import Link from "next/link";
 import HomePageImageSlider from "@/components/Gallery/HomePageImageSlider";
-import {INNER_WRAPPER, PRIMARY_THEME_COLORS} from "@/constants/primary-theme";
 
 type Props = {
-    homePageGallery: HomePageGallery
-}
+  homePageGallery: HomePageGallery;
+};
 
-const Gallery = ({homePageGallery}: Props) => {
-    return <SectionWrapperContainer className='bg-white'>
-        <div
-            className={`${INNER_WRAPPER.container} h-screen items-center text-center overflow-hidden landscape:min-h-[1000px] portrait:min-h-[800px]`}
+const Gallery = ({ homePageGallery }: Props) => {
+  return (
+    <SectionWrapperContainer>
+      <div className="inner-wrapper-container h-[46rem] items-center text-center overflow-hidden sm:landscape:min-h-[35rem] md:landscape:min-h-[55rem] portrait:min-h-[45rem]">
+        <HeadingWrapper>G a l l e r y</HeadingWrapper>
+        <p className="paragraph-1 px-4 sm:px-0">
+          {homePageGallery?.description}
+        </p>
+        <HomePageImageSlider homePageGallery={homePageGallery} />
+
+        {/* refactor all buttons */}
+        <Button
+          title="asdasd"
+          variant="outline"
+          className="text-[#ffd700] rounded-full py-5 mt-5 sm:mt-0 tracking-wider pb-6 hover:bg-gradient-to-br hover:from-blue-800/20 hover:to-[#ffd700]/30 hover:text-[#ffd700]"
         >
-            <HeadingWrapper>G a l l e r y</HeadingWrapper>
-            <p className={`text-xs sm:text-sm lg:text-base xl:text-lg ${PRIMARY_THEME_COLORS.textWhite} px-[20px] sm:px-0`}>
-                {homePageGallery?.description}
-            </p>
-            <HomePageImageSlider homePageGallery={homePageGallery}/>
-
-            <Button title='asdasd' variant='outline'
-                    className={`text-[${PRIMARY_THEME_COLORS.tertiary}] rounded-full py-5 mt-5 sm:mt-0 tracking-wider pb-6 hover:bg-gradient-to-br hover:from-blue-800/20 hover:to-[${PRIMARY_THEME_COLORS.tertiary}]/30 hover:text-[${PRIMARY_THEME_COLORS.tertiary}]`}>
-                <Link href='/gallery'>
-                    {homePageGallery?.btn}
-                </Link>
-            </Button>
-        </div>
-    </SectionWrapperContainer>;
-}
+          <Link href="/gallery">{homePageGallery?.btn}</Link>
+        </Button>
+      </div>
+    </SectionWrapperContainer>
+  );
+};
 
 export default Gallery;

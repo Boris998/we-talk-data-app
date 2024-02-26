@@ -1,43 +1,52 @@
 import HeadingWrapper from "@/components/ui/HOC/HeadingWrapper";
-import React from "react";
-import Link from "next/link";
-import CompaniesWrapper from "@/components/ui/HOC/CompaniesWrapper";
-import {PartnerData} from "@/typings";
-import {urlFor} from "@/sanity";
+import { sanityClient, urlFor } from "@/sanity";
+import { PartnerData } from "@/typings";
 import Image from "next/image";
+import Link from "next/link";
+import SectionWrapperContainer from "../ui/HOC/SectionWrapperContainer";
+import { useQuery } from "@tanstack/react-query";
+import { groq } from "next-sanity";
 
-type Props = {
-    partners: PartnerData[]
-}
+const Partners = () => {
+  const { isPending, data: partners } = useQuery({
+    queryKey: ["partners"],
+    queryFn: async () => {
+      const queryPartners = groq`*[_type=="partner"]`;
+      return sanityClient.fetch(queryPartners);
+    },
+  });
 
-const Partners = ({partners}: Props) => {
+  if (isPending) return null;
 
-    const listPartners = partners.map((partner, id) => {
-        return <Link
+  const listPartners = partners.map((partner: PartnerData, id: number) => {
+    return (
+      <Link
             href={partner.url}
             key={id}
-            className='relative overflow-hidden h-[30vw] w-[40vw] sm:h-[9em] sm:w-[12em]'
+            className={`flex relative ${partner.title.toLocaleLowerCase().includes('kin')?'w-[20rem] sm:w-[20rem]':'w-[10rem] sm:w-[9rem]'} h-auto items-center justify-center`}
             target="_blank"
             rel="noopener noreferrer"
         >
                 <Image className='object-fit'
                     src={urlFor(partner.image).url()}
                     alt={partner.title}
-                    fill
+                    height={300}
+                    width={500}
                 />
         </Link>
-    });
-
-    return (
-        <CompaniesWrapper>
-            <HeadingWrapper>
-                P a r t n e r s
-            </HeadingWrapper>
-            <div className='flex flex-row space-x-4'>
-                {listPartners.reverse()}
-            </div>
-        </CompaniesWrapper>
     );
-}
+  });
+
+  return (
+    <SectionWrapperContainer>
+      <article className="inner-wrapper-container">
+        <HeadingWrapper>P a r t n e r s</HeadingWrapper>
+        <div className="flex items-center flex-col sm:flex-row space-x-4 space-y-4">
+          {listPartners.reverse()}
+        </div>
+      </article>
+    </SectionWrapperContainer>
+  );
+};
 
 export default Partners;

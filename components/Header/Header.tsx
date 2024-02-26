@@ -1,18 +1,15 @@
-import HeaderContainer from "@/components/ui/HOC/ContainerHeader";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import NavBar from "@/components/Header/NavBar";
+import HeaderContainer from "@/components/ui/HOC/ContainerHeader";
 import SheetMenu from "@/components/ui/SheetMenu";
 import Image from "next/image";
-import { PRIMARY_THEME_COLORS } from "@/constants/primary-theme";
+import Link from "next/link";
 
 const Header = () => {
   return (
     <HeaderContainer>
       <Link
         href="/#header"
-        className={`lg:ml-0 sm:w-[175px] w-[30vw] rounded-full mx-auto hover:bg-gradient-to-br from-[${PRIMARY_THEME_COLORS.primary}]/20 to-[${PRIMARY_THEME_COLORS.tertiary}]/30`}
+        className='lg:ml-0 sm:w-[175px] w-[11rem] rounded-full mx-auto hover:bg-gradient-to-br from-[#003767]/20 to-[#ffd700]/30'
       >
         <Image
           src="/assets/we-talk-data-logo--transparent.png"
@@ -38,7 +35,7 @@ const Header = () => {
                         hover:bg-[#ffd700]/50'/>
             <span className='sr-only'>Toggle Theme</span>
         </Button> */}
-      <div className="lg:hidden">
+      <div className="xl:hidden">
         <SheetMenu />
       </div>
     </HeaderContainer>

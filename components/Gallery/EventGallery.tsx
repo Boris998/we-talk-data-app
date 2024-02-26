@@ -2,18 +2,30 @@ import SectionWrapperContainer from "@/components/ui/HOC/SectionWrapperContainer
 import React, {useState} from "react";
 import Image from "next/image";
 import {Dialog, DialogContent, DialogTrigger} from "@/components/ui/dialog";
-import {EventGalleryData} from "@/typings";
-import {urlFor} from "@/sanity";
+import {Picture} from "@/typings";
+import {sanityClient, urlFor} from "@/sanity";
 import {Button} from "@/components/ui/button";
 import {ChevronLeftIcon, ChevronRightIcon} from "@radix-ui/react-icons";
 import Link from "next/link";
+import {groq} from "next-sanity";
+import {useQuery} from "@tanstack/react-query";
 
-type Props = {
-  eventGallery: EventGalleryData;
-};
-
-const EventGallery = ({ eventGallery }: Props) => {
+const EventGallery = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const { isPending, data: eventGallery } = useQuery({
+    queryKey: ["eventGallery"],
+    queryFn: async () => {
+      const queryEventGallery = groq`*[_type=="eventGallery"][0]{
+        ...,
+        sliderImages[]->
+    }`;
+      return sanityClient.fetch(queryEventGallery);
+    },
+  });
+
+  if (isPending) return null;
+  console.log(eventGallery);
   
 
   const prevSlide = () => {
@@ -41,7 +53,7 @@ const EventGallery = ({ eventGallery }: Props) => {
     : {};
 
   const listSkopjeGallery = eventGallery.sliderImages.map(
-    (slide, slideIndex) => {
+    (slide: Picture, slideIndex: number) => {
       return (
         <div className="px-2 py-1" key={slide?._id}>
           <Dialog>

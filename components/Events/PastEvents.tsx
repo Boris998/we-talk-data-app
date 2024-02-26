@@ -1,46 +1,67 @@
 import EventCard from "@/components/ui/HOC/EventCard";
-import SectionWrapperContainer from "@/components/ui/HOC/SectionWrapperContainer";
-import React, {FC} from "react";
-import Link from "next/link";
 import HeadingWrapper from "@/components/ui/HOC/HeadingWrapper";
-import {PastEventsData} from "@/typings";
+import SectionWrapperContainer from "@/components/ui/HOC/SectionWrapperContainer";
+import { sanityClient, urlFor } from "@/sanity";
+import { useQuery } from "@tanstack/react-query";
+import { groq } from "next-sanity";
 import Image from "next/image";
-import { urlFor } from "@/sanity";
-import { FONTS, INNER_WRAPPER, PRIMARY_THEME_COLORS } from "@/constants/primary-theme";
+import Link from "next/link";
+import {
+    Event
+  } from "@/typings";
 
-type Props = {
-    pastEvents: PastEventsData
-};
+const PastEvents = () => {
+  const { isPending, data: pastEvents } = useQuery({
+    queryKey: ["pastEvents"],
+    queryFn: async () => {
+      const queryPastEvents = groq`*[_type=="pastEvents"][0]{
+                ...,
+                events[]->
+           }`;
+      return sanityClient.fetch(queryPastEvents);
+    },
+  });
 
-const PastEvents:FC<Props> = ({pastEvents}:Props) => {
+    if (isPending) return null;
+    console.log(pastEvents);
+    
 
-    const listEventCards = pastEvents.events.map((event, id) => {
-        return <EventCard key={id}>
-            <Image src={urlFor(pastEvents.image).url()} alt='as' width={600} height={400}/>
-            <Link href='/events/Skopje'>
-                <figcaption>
-                    <h3>{event.title} | {event.city}</h3>
-                    <h4>30.11.{event.year}</h4>
-                </figcaption>
-            </Link>
-        </EventCard>;
-    });
+  const listEventCards = pastEvents.events.map((event: Event, id: number) => {
+    return (
+      <EventCard key={id}>
+        <Image
+          src={urlFor(pastEvents.image).url()}
+          alt="as"
+          width={600}
+          height={400}
+        />
+        <Link href="/events/Skopje">
+          <figcaption>
+            <h3>
+              {event.title} | {event.city}
+            </h3>
+            <h4>30.11.{event.year}</h4>
+          </figcaption>
+        </Link>
+      </EventCard>
+    );
+  });
 
-    return <SectionWrapperContainer>
-        <div
-            className={`px-[10px] ${INNER_WRAPPER.container}`}
-        >
-            <HeadingWrapper>
-                <span className='tracking-[10px]'>{pastEvents.title.toUpperCase()}</span>
-            </HeadingWrapper>
-            <p className={`${PRIMARY_THEME_COLORS.textWhite} ${FONTS.paragraph} mx-[20px] sm:px-0`}>
-                {pastEvents.description}
-            </p>
-            <div className='flex justify-center items-center flex-wrap'>
-                {listEventCards}
-            </div>
+  return (
+    <SectionWrapperContainer>
+      <div className="px-2 inner-wrapper-container">
+        <HeadingWrapper>
+          <span className="tracking-[0.675]">
+            {pastEvents.title.toUpperCase()}
+          </span>
+        </HeadingWrapper>
+        <p className="paragraph-1">{pastEvents.description}</p>
+        <div className="flex justify-center items-center flex-wrap">
+          {listEventCards}
         </div>
-    </SectionWrapperContainer>;
-}
+      </div>
+    </SectionWrapperContainer>
+  );
+};
 
 export default PastEvents;

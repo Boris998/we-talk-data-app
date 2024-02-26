@@ -1,7 +1,6 @@
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion";
 import SectionWrapperContainer from "@/components/ui/HOC/SectionWrapperContainer";
 import HeadingWrapper from "@/components/ui/HOC/HeadingWrapper";
-import Header from "@/components/Header/Header";
 
 const FAQ_DUMMY = {
     "HOW MUCH DOES IT COST TO ATTEND WeTalkDATA&AI?": "The event is free of charge and only has limited capacity.",
@@ -24,14 +23,14 @@ const list = Object.entries(FAQ_DUMMY).map(([question, answer]) => (
 ));
 
 const FAQ = () => {
-    return <div className='relative overflow-hidden bg-cover bg-no-repeat h-screen'>
+    return <section className='relative overflow-hidden bg-cover bg-no-repeat h-screen'>
         <SectionWrapperContainer>
-            <div className='pt-[100px]'>
+            <div className='pt-24'>
                 <HeadingWrapper>F A Q</HeadingWrapper>
                 {list}
             </div>
         </SectionWrapperContainer>
-    </div>
+    </section>
 }
 
 export default FAQ;

@@ -18,8 +18,8 @@ const ContainerHeader: FC<ContainerProps> = ({ children }) => {
         };
     }, []);
 
-    const headerClassName = `mx-auto px-[5vw] w-full absolute rounded-b-full
-    justify-between text-center overflow-hidden py-[0vw] lg:py-[15px] flex items-center ${
+    const headerClassName = `mx-auto px-8 w-full absolute rounded-b-full
+    justify-between text-center overflow-hidden lg:py-[0.5em] flex items-center ${
         scrolled ? bg: ''
     }`;
 

@@ -42,7 +42,7 @@ const HomePageImageSlider = ({homePageGallery}: Props) => {
 
     const backgroundImageStyle = urlImage ? {backgroundImage: `url(${urlImage})`} : {};
 
-    return <div className='max-w-[1400px] h-[750px] w-full m-auto py-4 px-4 relative group min-h-[300px] sm:min-h-[450px]'>
+    return <div className='max-w-[1400px] w-full m-auto py-4 px-4 relative group min-h-[25rem] lg:min-h-[35rem]'>
         <div
             className='w-full h-full rounded-2xl bg-center bg-cover duration-500'
             style={{...backgroundImageStyle}}>

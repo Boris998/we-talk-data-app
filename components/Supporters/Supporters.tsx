@@ -1,43 +1,53 @@
 import HeadingWrapper from "@/components/ui/HOC/HeadingWrapper";
-import React from "react";
-import Link from "next/link";
-import CompaniesWrapper from "@/components/ui/HOC/CompaniesWrapper";
-import {SupporterData} from "@/typings";
-import {urlFor} from "@/sanity";
+import { sanityClient, urlFor } from "@/sanity";
+import { SupporterData } from "@/typings";
 import Image from "next/image";
+import Link from "next/link";
+import SectionWrapperContainer from "../ui/HOC/SectionWrapperContainer";
+import { useQuery } from "@tanstack/react-query";
+import { groq } from "next-sanity";
 
+const Supporters = () => {
+  const { isPending, data: supporters } = useQuery({
+    queryKey: ["supporters"],
+    queryFn: async () => {
+      const querySupporters = groq`*[_type=="supporter"]`;
+      return sanityClient.fetch(querySupporters);
+    },
+  });
+    
+  if(isPending) return null;
 
-type Props = {
-    supporters: SupporterData[]
-}
-
-const Supporters = ({supporters}: Props) => {
-    const listSupporters = supporters.map((supporter, id)=>{
-        return <Link
-            href={supporter.url}
-            key={id}
-            className='relative h-[30vw] w-[40vw] sm:h-[9em] sm:w-[12em]'
-            target="_blank"
-            rel="noopener noreferrer"
+  const listSupporters = supporters.map(
+    (supporter: SupporterData, id: number) => {
+      return (
+        <Link
+          href={supporter.url}
+          key={id}
+          className="relative w-[20rem] sm:w-[12rem]"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-            <Image className='object-fit'
-                   src={urlFor(supporter.image).url()}
-                   alt={supporter.title}
-                   fill
-            />
+          <Image
+            className="object-fit"
+            src={urlFor(supporter.image).url()}
+            alt={supporter.title}
+            height={300}
+            width={500}
+          />
         </Link>
-    });
+      );
+    }
+  );
 
-    return (
-        <CompaniesWrapper>
-            <HeadingWrapper>
-                S u p p o r t e r s
-            </HeadingWrapper>
-            <div className='flex flex-row'>
-                {listSupporters}
-            </div>
-        </CompaniesWrapper>
-    );
-}
+  return (
+    <SectionWrapperContainer>
+      <article className="inner-wrapper-container">
+        <HeadingWrapper>S u p p o r t e r s</HeadingWrapper>
+        <div className="flex flex-row">{listSupporters}</div>
+      </article>
+    </SectionWrapperContainer>
+  );
+};
 
 export default Supporters;

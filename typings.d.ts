@@ -29,6 +29,7 @@ export interface Bars extends SanityBody {
 export interface ContainerProps {
     children: ReactNode;
     className?: string;
+    id?: string;
 }
 
 export interface Event extends SanityBody {
@@ -126,4 +127,12 @@ export interface UpcomingEventData extends SanityBody {
     featureFlag: boolean,
     date: date,
     speaker: SpeakerData[]
+}
+
+export interface RetisterFormInput {
+    _id: string;
+    name: string;
+    email: string;
+    experience: string;
+    comment?: string;
 }

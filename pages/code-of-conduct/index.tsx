@@ -1,6 +1,5 @@
 import SectionWrapperContainer from "@/components/ui/HOC/SectionWrapperContainer";
 import HeadingWrapper from "@/components/ui/HOC/HeadingWrapper";
-import { FONTS, PRIMARY_THEME_COLORS } from "@/constants/primary-theme";
 
 const DUMMY_COC = [
   {
@@ -54,14 +53,14 @@ const cocList = DUMMY_COC.map((code, i) => {
         <div key={i}>
           {i === 0 && (
             <p
-              className={`text-[${PRIMARY_THEME_COLORS.tertiary}] ${FONTS.paragraph} py-1`}
+              className='text-[#ffd700] paragraph-1 py-1'
             >
               {line1}
             </p>
           )}
           {i >= 1 && (
             <li
-              className={`text-[${PRIMARY_THEME_COLORS.tertiary}] ${FONTS.paragraph} py-1`}
+              className='text-[#ffd700] paragraph-1 py-1'
             >
               {line1}
             </li>
@@ -75,7 +74,7 @@ const cocList = DUMMY_COC.map((code, i) => {
 const CodeOfConduct = () => {
   return (
     <SectionWrapperContainer>
-      <div className="sm:py-24 py-16 px-6 sm:px-10 overflow-hidden">
+      <div className="inner-wrapper-container">
         <HeadingWrapper>CODE OF CONDUCT</HeadingWrapper>
         <div>{cocList}</div>
       </div>

@@ -1,10 +1,12 @@
 import About from "@/components/About/About";
-import Hero from "@/components/Header/Hero";
-import Gallery from "@/components/Gallery/Gallery";
 import PastEvents from "@/components/Events/PastEvents";
-import Video from "@/components/Video/Video";
+import UpcomingEvent from "@/components/Events/UpcomingEvent";
+import Gallery from "@/components/Gallery/Gallery";
+import Hero from "@/components/Header/Hero";
 import Partners from "@/components/Partners/Partners";
 import Supporters from "@/components/Supporters/Supporters";
+import Video from "@/components/Video/Video";
+import { sanityClient } from "@/sanity";
 import {
   AboutData,
   HomePageGallery,
@@ -14,13 +16,8 @@ import {
   SupporterData,
   UpcomingEventData,
 } from "@/typings";
-import {GetStaticProps} from "next";
-import UpcomingEvent from "@/components/Events/UpcomingEvent";
-import {groq} from "next-sanity";
-import {sanityClient} from "@/sanity";
-import {PRIMARY_THEME_COLORS} from "@/constants/primary-theme";
-
-// const inter = Inter({subsets: ['latin']})
+import { GetStaticProps } from "next";
+import { groq } from "next-sanity";
 
 type Props = {
   pageInfo: PageInfo;
@@ -37,19 +34,15 @@ const Home = ({
   about,
   homePageGallery,
   pastEvents,
-  partners,
-  supporters,
-  upcomingEvent,
 }: Props) => {
   return (
     <div
-      className={`scrollbar scrollbar-track-yellow-400 scrollbar-thumb-[${PRIMARY_THEME_COLORS.tertiary}]/80`}
       id="home"
     >
       {/*Hero*/}
       <section
         id="header"
-        className={"{/*bg-gradient-to-tl from-blue-800/70 to-[#ffd700]/60 */}"}
+        className=''
       >
         <Hero pageInfo={pageInfo} />
       </section>
@@ -66,11 +59,11 @@ const Home = ({
         </section>
       )}
 
-      {!upcomingEvent?.featureFlag && (
+      (
         <section id="upcoming-event">
-          <UpcomingEvent upcomingEvent={upcomingEvent} />
+          <UpcomingEvent />
         </section>
-      )}
+      )
 
       {/* Gallery */}
       {homePageGallery?.featureFlag && (
@@ -88,12 +81,12 @@ const Home = ({
 
       {/* Partners */}
       <section id="partners" className={`bg-[#001330]/30`}>
-        <Partners partners={partners} />
+        <Partners />
       </section>
 
       {/* Supporters */}
       <section id="supporters" className={`bg-[#001330]/80`}>
-        <Supporters supporters={supporters} />
+        <Supporters/>
       </section>
     </div>
   );
