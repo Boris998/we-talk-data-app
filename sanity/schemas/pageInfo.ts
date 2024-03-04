@@ -47,5 +47,10 @@ export default defineType({
       title: 'Address',
       type: 'string',
     }),
+    defineField({
+      name: 'retisterFlag',
+      title: 'Register Flag',
+      type: 'boolean',
+    }),
   ],
 })

@@ -41,23 +41,23 @@ const Footer = () => {
   return (
     <SectionWrapperContainer>
       <div
-        className="relative flex flex-col max-h-[1000px] items-center text-center overflow-x-hidden py-[75px]
-                px-0 sm:px-[50px] md:text-left max-w-full justify-center mx-auto overflow-y space-y-[50px]"
+        className="relative flex flex-col max-h-[1000px] items-center text-center overflow-x-hidden py-20
+                px-0 sm:px-[50px] md:text-left max-w-full justify-center mx-auto overflow-y space-y-12"
       >
         <div className="flex items-center justify-center space-x-2 w-full pl-4">
           {socialsList1}
         </div>
         <div className="flex flex-col text-center space-y-2 text-gray-400">
-          <Link href="/FAQ" className={`hover:text-[#ffd700]/70`}>
+          <Link href="/FAQ" className='hover:text-[#ffd700]/70'>
             FAQ
           </Link>
-          <Link href="/code-of-conduct" className={`hover:text-[#ffd700]/70`}>
+          <Link href="/code-of-conduct" className='hover:text-[#ffd700]/70'>
             Code of Conduct
           </Link>
-          <Link href="/terms-of-use" className={`hover:text-[#ffd700]/70`}>
+          <Link href="/terms-of-use" className='hover:text-[#ffd700]/70'>
             Terms of Use
           </Link>
-          <Link href="/cp" className={`hover:text-[#ffd700]/70`}>
+          <Link href="/cp" className='hover:text-[#ffd700]/70'>
             Cookie Policy
           </Link>
         </div>

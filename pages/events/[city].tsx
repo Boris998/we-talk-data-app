@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 
 const Skopje = () => {
   const router = useRouter();
-  const city = router.query.name;
+  const city = router.query.city;
 
   const { isPending, data: pastEvent } = useQuery({
     queryKey: ["pastEvent"],
@@ -26,10 +26,10 @@ const Skopje = () => {
     if (isPending) return null;
     
     // console.log(pastEvent.events[0]);
-
+/*
     const currEvent = pastEvent.events.find(
         (event: Event) => event.city === city
-    );
+    );*/
     
     // console.log('asd',currEvent);
 

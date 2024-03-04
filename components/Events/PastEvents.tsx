@@ -6,9 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { groq } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
-import {
-    Event
-  } from "@/typings";
+import { Event } from "@/typings";
 
 const PastEvents = () => {
   const { isPending, data: pastEvents } = useQuery({
@@ -22,9 +20,7 @@ const PastEvents = () => {
     },
   });
 
-    if (isPending) return null;
-    console.log(pastEvents);
-    
+  if (isPending) return null;
 
   const listEventCards = pastEvents.events.map((event: Event, id: number) => {
     return (

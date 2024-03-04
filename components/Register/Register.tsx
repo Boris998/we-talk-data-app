@@ -1,14 +1,21 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import useInput from "../../hooks/use-input";
+import Image from "next/image";
+import sucessGif from "../../public/assets/success.gif";
 
 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+const REGISTRATION_API_URL = 'https://sheetdb.io/api/v1/cyl33uuvvxsot';
 
-type Props = {};
-
-const Register = (props: Props) => {
+export const Register = () => {
   const [formIsValid, setFormIsValid] = useState(false);
-  const commentRef = useRef(null);
-  const agreeRef = useRef(null);
+  const [registerIsCompleted, setRegisterIsCompleted] = useState(false);
+  const [dataIsSucess, setDataIsSucess] = useState(false);
+
+  const nameRef = useRef<HTMLInputElement | null>(null);
+  const emailRef = useRef<HTMLInputElement | null>(null);
+  const expRef = useRef<HTMLSelectElement | null>(null);
+  const commentRef = useRef<HTMLTextAreaElement | null>(null);
+  const agreeRef = useRef<HTMLInputElement | null>(null);
 
   const {
     value: enteredName,
@@ -46,168 +53,184 @@ const Register = (props: Props) => {
     e: React.FormEvent<HTMLFormElement>
   ) => {
     e.preventDefault();
-/*
-    let comment = commentRef.current?.value;
-    let agree = agreeRef.current?.checked;*/
-  
-    const data = {
-      enteredName,
-      enteredEmail,
-      enteredExperience,
-      commentRef,
-      agreeRef,
-    };
 
-    /* try {
-      await sanityClient.create({
-        _type: "registerForm",
-        post: {
-          _type: "reference",
-          _ref: _id,
-        },
+    const name = nameRef.current?.value;
+    const email = emailRef.current?.value;
+    const experience = expRef.current?.value;
+    const comment = commentRef.current?.value;
+    const agree = agreeRef.current?.checked;
+
+    try {
+      const data = {
         name,
-        enteredEmail,
-        enteredExperience,
+        email,
+        experience,
         comment,
-        agree
+        agree,
+      };
+
+      const res = await fetch(REGISTRATION_API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       });
+
+      if (!res.ok) throw new Error("Failed to submit data!");
+      else setDataIsSucess(true);
+    } catch (err) {
+      console.error("Error submitting data", err);
     }
-    catch (err) { console.log(err); }
-
-    if (!formIsValid) return;
-
-    const postFormData = async (data: any) => {
-      
-      
-      const query = groq`*[_type=="registerForm"]`;
-      sanityClient
-        .fetch(query, {
-          method: "POST",
-          body: JSON.stringify(data),
-        })
-        .then(() => {
-          console.log(data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-
-    postFormData(data); */
-
-    //submit registration
 
     resetNameInput();
     resetEmailInput();
     resetExperienceInput();
   };
 
+  const handleRegistration = () => {
+    setTimeout(() => {
+      setRegisterIsCompleted(!registerIsCompleted);
+    }, 50);
+  };
+
   return (
     <form
+      action="https://sheetdb.io/api/v1/cyl33uuvvxsot"
+      method="post"
+      id="sheetdb-form"
       onSubmit={confirmRegistrationHandler}
-      className="inner-wrapper-container space-y-8 text-white bg-black/20 rounded-xl mb-10"
+      className="inner-wrapper-container space-y-8 text-white bg-black/20 rounded-xl max-w-7xl mb-10"
     >
-      <div className="flex flex-row space-x-16">
-        <label htmlFor="Name">
-          <input
-            type="text"
-            id="name"
-            className={`input-group ${nameHasError ? "invalid" : ""}`}
-            size={40}
-            placeholder="Name"
-            value={enteredName}
-            onBlur={nameInputBlurHandler}
-            onChange={nameInputChangeHandler}
+      {dataIsSucess && <>
+        <Image
+          src={sucessGif}
+            className="flex rounded-xl object-cover md:rounded-xl"
+            alt='success'
+            height={400}
+            width={400}
           />
-          {nameHasError && (
-            <p className="py-2 invalid-text">
-              Name field required (Invalid Name)
-            </p>
-          )}
-        </label>
-        <label htmlFor="Email">
-          <input
-            type="email"
-            id="email"
-            className={`input-group ${emailHasError ? "invalid" : ""}`}
-            size={40}
-            placeholder="Email"
-            value={enteredEmail}
-            onBlur={emailInputBlurHandler}
-            onChange={emailInputChangeHandler}
-          />
-          {emailHasError && (
-            <p className="py-2 invalid-text">
-              Email field required (Invalid Email)
-            </p>
-          )}
-        </label>
-      </div>
-      <label htmlFor="Experience" className="flex flex-col space-y-2">
-        <span>What is your experience with the respective domain?</span>
-        <select
-          id="experience"
-          onBlur={experienceInputBlurHandler}
-          onChange={experienceInputChangeHandler}
-          className={`text-[#ffd700] ${
-            experienceHasError ? "invalid" : ""
-          } px-[4.5rem] input-group`}
-        >
-          <option className="bg-[#001330]/90" value="0">
-            --- Please Choose an Option ---
-          </option>
-          <option className="bg-[#001330]/90" value="1">
-            I do not have much experience, but I am interested and want to learn
-            more.
-          </option>
-          <option className="bg-[#001330]/90" value="2">
-            I’m already working in this field.
-          </option>
-          <option className="bg-[#001330]/90" value="3">
-            I have extensive experience and would like to teach/share that
-            experience in the future.
-          </option>
-        </select>
-        {experienceHasError && (
-          <p className="py-2 invalid-text">Experience field required</p>
-        )}
-      </label>
-      <label htmlFor="Expectations" className="space-y-2">
-        <textarea
-          id="expectations"
-          name="expectations"
-          rows={5}
-          cols={100}
-          placeholder="Please state your expectations and share some tips for the for the upcoming event"
-          className="rounded-xl input-group text-[#ffd700]"
-          ref={commentRef}
-        />
-      </label>
-      <label htmlFor="Comment" className="space-y-2 ">
-        <input
-          id="comment"
-          name="comment"
-          type="checkbox"
-          placeholder="Please state your expectations and share some tips for the for the upcoming event"
-          className="rounded-xl input-group text-[#ffd700]"
-          ref={agreeRef}
-        />{" "}
-        Do you agree to receive emails and information about upcoming events
-      </label>
+        
+      <p className="text-[#ffd700] font-bold text-[1.05rem] sm:text-xl">You are sucessfully registered for the event at 29th!</p>
+      </>}
+      {!dataIsSucess && (
+        <>
+          <div className="flex flex-col sm:flex-row space-x-0 sm:space-x-12 md:space-x-16 lg:space-x-36 space-y-4 sm:space-y-0 w-full justify-between">
+            <label htmlFor="Name" className="w-full">
+              <input
+                type="text"
+                name="data[name]"
+                id="name"
+                className={`input-group flex ${nameHasError ? "invalid" : ""}`}
+                size={40}
+                placeholder="Name and Surname"
+                ref={nameRef}
+                value={enteredName}
+                onBlur={nameInputBlurHandler}
+                onChange={nameInputChangeHandler}
+              />
+              {nameHasError && (
+                <p className="py-2 invalid-text">
+                  Invalid Name (It needs to be at least 4 characters long)
+                </p>
+              )}
+            </label>
+            <label htmlFor="Email" className="w-full">
+              <input
+                type="email"
+                name="data[email]"
+                id="email"
+                className={`input-group ${emailHasError ? "invalid" : ""}`}
+                size={40}
+                placeholder="Email"
+                ref={emailRef}
+                value={enteredEmail}
+                onBlur={emailInputBlurHandler}
+                onChange={emailInputChangeHandler}
+              />
+              {emailHasError && (
+                <p className="py-2 invalid-text">
+                  Invalid Email (Please check the format) - [something@domain.subdomain] 
+                </p>
+              )}
+            </label>
+          </div>
+          <label
+            htmlFor="Experience"
+            className="flex flex-col space-y-2 w-full"
+          >
+            <span>What is your experience with the respective domain?</span>
+            <select
+              ref={expRef}
+              value={enteredExperience}
+              onBlur={experienceInputBlurHandler}
+              onChange={experienceInputChangeHandler}
+              className={`text-[#ffd700] ${
+                experienceHasError ? "invalid" : ""
+              } input-group`}
+            >
+              <option className="bg-[#001330]/90" value="0">
+                --- Please Choose an Option ---
+              </option>
+              <option className="bg-[#001330]/90" value="1">
+                I do not have much experience, but I am interested and want to
+                learn more.
+              </option>
+              <option className="bg-[#001330]/90" value="2">
+                I’m already working in this field.
+              </option>
+              <option className="bg-[#001330]/90" value="3">
+                I have extensive experience and would like to teach/share that
+                experience in the future.
+              </option>
+            </select>
+            {experienceHasError && (
+              <p className="py-2 invalid-text">Experience field required</p>
+            )}
+          </label>
+          <label htmlFor="Comment" className="space-y-2 w-full">
+            <textarea
+              id="comment"
+              name="data[comment]"
+              rows={5}
+              cols={100}
+              placeholder="Please state your expectations and share some tips for the for the upcoming event"
+              className="rounded-xl input-group text-[#ffd700]"
+              ref={commentRef}
+            />
+          </label>
+          <label htmlFor="agree" className="space-y-2 flex flex-row">
+            <input
+              id="agree"
+              name="data[agree]"
+              type="checkbox"
+              placeholder="Please state your expectations and share some tips for the for the upcoming event"
+              className="input-group text-[#ffd700] w-4 h-4 p-4 mt-3 mr-2"
+              ref={agreeRef}
+            />{" "}
+            <span>
+              Do you agree to receive emails and information about upcoming
+              events
+            </span>
+          </label>
 
-      <button
-        type="submit"
-        disabled={!formIsValid}
-        className={`text-[#ffd700] rounded-full px-8 py-3 tracking-wider hover:bg-gradient-to-br hover:from-blue-800/20 hover:to-[#ffd700]/30 hover:text-[#ffd700] border-2 border-[#ffd700] ${
-          formIsValid
-            ? "cursor-pointer"
-            : "cursor-not-allowed border-2 hover:border-red-700"
-        }`}
-      >
-        Register
-      </button>
+          {registerIsCompleted && <span className="loader"></span>}
+          {registerIsCompleted || (
+            <button
+              type="submit"
+              disabled={!formIsValid}
+              onClick={handleRegistration}
+              className={`text-[#ffd700] rounded-full px-8 py-3 tracking-wider hover:bg-gradient-to-br hover:from-blue-800/20 hover:to-[#ffd700]/30 hover:text-[#ffd700] border-2 border-[#ffd700] ${
+                formIsValid
+                  ? "cursor-pointer"
+                  : "cursor-not-allowed border-2 hover:border-red-700"
+              }`}
+            >
+              Register
+            </button>
+          )}
+        </>
+      )}
     </form>
   );
 };
-
-export default Register;
