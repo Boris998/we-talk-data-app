@@ -10,6 +10,7 @@ import partner from "./partner";
 import supporter from "./supporter";
 import upcomingEvent from "./upcomingEvent";
 import eventGallery from './eventGallery'
+import featureFlags from './featureFlags';
 
 export const schemaTypes = [
     social,
@@ -23,5 +24,6 @@ export const schemaTypes = [
     event,
     pastEvents,
     upcomingEvent,
-    eventGallery
+    eventGallery,
+    featureFlags
 ]

@@ -13,6 +13,7 @@ import { useQuery } from "@tanstack/react-query";
 import { groq } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "../ui/button";
 
 const Schedule = () => {
 
@@ -107,6 +108,15 @@ const Schedule = () => {
           Socializing: 19:30 - 21:00
         </p>
       </figure>
+      <Link href="/register">
+        <Button
+          title="asdasd"
+          variant="outline"
+          className="text-[#ffd700] rounded-full p-6 tracking-wider hover:bg-gradient-to-br hover:from-blue-800/20 hover:to-[#ffd700]/30 hover:text-[#ffd700] scale-75 sm:scale-100"
+        >
+          REGISTER FOR WETALKDATA&AI | SKOPJE
+        </Button>
+      </Link>
       <SectionWrapperContainer>
         {listSpeakersPresentationInfo.reverse()}
       </SectionWrapperContainer>

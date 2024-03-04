@@ -16,6 +16,7 @@ const Header = () => {
           alt="logo"
           width={175}
           height={100}
+          className=''
         />
       </Link>
       <NavBar />

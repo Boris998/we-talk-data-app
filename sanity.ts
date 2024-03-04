@@ -9,8 +9,6 @@ export const config = {
     token: process.env.SANITY_API_TOKEN
 }
 
-console.log(config);
-
 export const sanityClient = createClient(config);
 
 export const urlFor = (source:any)=>

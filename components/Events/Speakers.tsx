@@ -31,7 +31,7 @@ const Speakers = () => {
         href={`/speakerInfo/${speaker.speakerName}`}
         key={speaker._id}
       >
-        <SpeakerCard className="z-100">
+        <SpeakerCard className="z-100 ">
           <Image
             src={urlImage}
             alt={speaker.speakerName}

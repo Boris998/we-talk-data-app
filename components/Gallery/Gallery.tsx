@@ -2,18 +2,30 @@ import SectionWrapperContainer from "@/components/ui/HOC/SectionWrapperContainer
 import {Button} from "@/components/ui/button";
 import HeadingWrapper from "@/components/ui/HOC/HeadingWrapper";
 import React from "react";
-import {HomePageGallery} from "@/typings";
 import Link from "next/link";
 import HomePageImageSlider from "@/components/Gallery/HomePageImageSlider";
+import {groq} from "next-sanity";
+import {sanityClient} from "@/sanity";
+import {useQuery} from "@tanstack/react-query";
 
-type Props = {
-  homePageGallery: HomePageGallery;
-};
+const Gallery = () => {
+  const { isPending, data: homePageGallery } = useQuery({
+    queryKey: ["homePageGallery"],
+    queryFn: async () => {
+      const queryEventGallery = groq`*[_type=="homePageGallery"][0]{
+        ...,
+        sliderImages[]->
+    }`;
+      return sanityClient.fetch(queryEventGallery);
+    },
+  });
 
-const Gallery = ({ homePageGallery }: Props) => {
+  if (isPending) return null;
+  console.log(homePageGallery);
+
   return (
     <SectionWrapperContainer>
-      <div className="inner-wrapper-container h-[46rem] items-center text-center overflow-hidden sm:landscape:min-h-[35rem] md:landscape:min-h-[55rem] portrait:min-h-[45rem]">
+      <div className="inner-wrapper-container h-[46rem] items-center text-center overflow-y-hidden sm:landscape:min-h-[35rem] md:landscape:min-h-[45rem] lg:landscape:min-h-[59rem] portrait:min-h-[45rem]">
         <HeadingWrapper>G a l l e r y</HeadingWrapper>
         <p className="paragraph-1 px-4 sm:px-0">
           {homePageGallery?.description}

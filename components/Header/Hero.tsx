@@ -1,25 +1,12 @@
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
 import {ArrowDownIcon} from "@radix-ui/react-icons";
-import {FC} from "react";
-import {PageInfo} from "@/typings";
 import {sanityClient, urlFor} from "@/sanity";
 import {useQuery} from "@tanstack/react-query";
 import {groq} from "next-sanity";
 
-type Props = {
-  pageInfo: PageInfo;
-};
-
-const Hero: FC<Props> = ({ pageInfo }: Props) => {
-  const urlImage = `${urlFor(pageInfo.heroImage).url()}`;
-
-  /*     //fetch PageInfo
-    const queryPageInfo = groq`*[_type=="pageInfo"][0]`;
-    const pageInfo: PageInfo = await sanityClient.fetch(queryPageInfo);
-   */
-
-  const { isPending, data } = useQuery({
+const Hero = () => {
+  const { isPending, data: pageInfo } = useQuery({
     queryKey: ["pageInfo"],
     queryFn: async () => {
       const queryPageInfo = groq`*[_type=="pageInfo"][0]`;
@@ -27,11 +14,15 @@ const Hero: FC<Props> = ({ pageInfo }: Props) => {
     },
   });
 
+  if (isPending) return null;
+
+  const urlImage = `${urlFor(pageInfo.heroImage).url()}`;
+
   const backgroundImageStyle = urlImage
     ? { backgroundImage: `url(${urlImage})` }
     : {};
 
-  return (
+  return <>
     <header
       className=" relative flex flex-col overflow-hidden bg-cover bg-no-repeat
                  h-screen items-center justify-center text-center sm:space-y-5 space-y-2 px-3 sm:px-0"
@@ -44,13 +35,13 @@ const Hero: FC<Props> = ({ pageInfo }: Props) => {
         className="mb-4 lg:text-2xl text-xl max-w-4xl font-bold text-orange-200 uppercase
             tracking-[4px] shadow-[#003767] mix-blend-differense"
       >
-        {data?.address}
+        {pageInfo?.address}
       </h3>
       <h1
         dangerouslySetInnerHTML={{
           __html: pageInfo?.heading.replace("$n", "<br/>"),
         }}
-        className="text-[1.25rem] sm:text-[1.5rem] md:text-[1.75rem] xl:text-[2rem] max-w-4xl font-extrabold text-white
+        className="text-[1.25rem] sm:text-[1.5rem] md:text-[1.75rem] xl:text-[2rem] max-w-4xl font-extrabold text-[#ffd700]
                 rounded-2xl uppercase tracking-[0.5rem] sm:tracking-[1rem]"
       ></h1>
       <h3 className="text-[1rem] lg:text-[1.25rem] max-w-4xl font-bold text-amber-100 uppercase tracking-[5px] sm:mx-[4vw] ">
@@ -76,7 +67,7 @@ const Hero: FC<Props> = ({ pageInfo }: Props) => {
         >
           <div className="flex flex-col items-center space-y-[10px]">
             <div className="flex flex-col scale-75 sm:scale-100">
-              {pageInfo.heroBtn?.split(" ").map((word, index) => (
+              {pageInfo.heroBtn?.split(" ").map((word: string, index:number) => (
                 <div key={index}>{word}</div>
               ))}
             </div>
@@ -85,7 +76,7 @@ const Hero: FC<Props> = ({ pageInfo }: Props) => {
         </Button>
       </Link>
     </header>
-  );
+  </>;
 };
 
 export default Hero;

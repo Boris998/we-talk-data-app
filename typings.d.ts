@@ -130,9 +130,9 @@ export interface UpcomingEventData extends SanityBody {
 }
 
 export interface RetisterFormInput {
-    _id: string;
-    name: string;
-    email: string;
-    experience: string;
+    name?: string;
+    email?: string;
+    experience?: string;
     comment?: string;
+    agree?: boolean;
 }
