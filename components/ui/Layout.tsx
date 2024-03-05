@@ -13,7 +13,7 @@ const Layout = ({children}: Props) => {
         <header className="sticky top-0 z-50">
             <Header/>
         </header>
-        <main>{children}</main>
+        <main className='min-h-[78vh]'>{children}</main>
         <section id='footer' className='bg-gray-800/70'>
             <Footer/>
         </section>

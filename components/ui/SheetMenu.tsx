@@ -46,7 +46,6 @@ const SheetMenu = () => {
   ));
 
   return (
-    <div>
       <Sheet>
         <SheetTrigger
           className={`text-[#ffd700]/50 hover:text-[#ffd700]`}
@@ -58,7 +57,6 @@ const SheetMenu = () => {
           <nav className="flex flex-col gap-4 mt-16 font-bold">{barsList}</nav>
         </SheetContent>
       </Sheet>
-    </div>
   );
 };
 

@@ -7,7 +7,7 @@ import {Register} from "@/components/Register/Register";
 const index = () => {
   return (
     <SectionWrapperContainer>
-      <figure className="pt-16 sm:pt-24 px-2 min-h-[80vh]">
+      <figure className="pt-16 sm:pt-24 px-2">
         <HeadingWrapper>
           WeTalkData&AI form Registration | Skopje 2024
         </HeadingWrapper>

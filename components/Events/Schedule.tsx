@@ -146,7 +146,7 @@ const Schedule = () => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           title="asdasd"
-          className="text-[#ffd700] rounded-full px-8 py-3 tracking-wider hover:bg-gradient-to-br hover:from-blue-800/20 hover:to-[#ffd700]/30 hover:text-[#ffd700] border-2 border-[#ffd700] "
+          className="text-[#ffd700] text-[0.75rem] sm:text-[1rem] lg:text-[1.15rem] xl:text-[1.25rem] rounded-full px-8 py-3 tracking-wider hover:bg-gradient-to-br hover:from-blue-800/20 hover:to-[#ffd700]/30 hover:text-[#ffd700] border-2 border-[#ffd700] "
         >
           REGISTER FOR WETALKDATA&AI | SKOPJE
         </motion.button>

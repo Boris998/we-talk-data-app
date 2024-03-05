@@ -11,7 +11,6 @@ const GalleryPage = () => {
           <span className="mr-3">E v e n t s </span>
           <span>G a l l e r y</span>
         </HeadingWrapper>
-
         <EventGallery />
       </div>
     </SectionWrapperContainer>
