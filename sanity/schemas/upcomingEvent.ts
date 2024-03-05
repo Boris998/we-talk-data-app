@@ -6,11 +6,6 @@ export default defineType({
     type: 'document',
     fields: [
         defineField({
-            name: 'featureFlag',
-            title: 'Display Section',
-            type: 'boolean',
-        }),
-        defineField({
             name: 'speakersSectionTitle',
             title: 'Speakers Section Title',
             type: 'string',
@@ -30,6 +25,11 @@ export default defineType({
             title: 'Speaker',
             type: 'array',
             of: [{type: 'reference', to: {type: 'speaker'}}]
+        }),
+        defineField({
+            name: 'registerFlag',
+            title: 'Register Flag',
+            type: 'boolean',
         }),
     ],
 })

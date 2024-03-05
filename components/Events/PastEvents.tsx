@@ -7,6 +7,7 @@ import { groq } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
 import { Event } from "@/typings";
+import { motion } from "framer-motion";
 
 const PastEvents = () => {
   const { isPending, data: pastEvents } = useQuery({
@@ -51,10 +52,29 @@ const PastEvents = () => {
             {pastEvents.title.toUpperCase()}
           </span>
         </HeadingWrapper>
-        <p className="paragraph-1">{pastEvents.description}</p>
-        <div className="flex justify-center items-center flex-wrap">
+        <motion.p
+          initial={{
+            y: 25,
+            opacity: 0,
+          }}
+          transition={{
+            duration: 1.2,
+          }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="paragraph-1"
+        >
+          {pastEvents.description}
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0 }}
+          transition={{ duration: 2.5 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="flex justify-center items-center flex-wrap"
+        >
           {listEventCards}
-        </div>
+        </motion.div>
       </div>
     </SectionWrapperContainer>
   );

@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { groq } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
-
+import {motion} from 'framer-motion';
 
 const Speakers = () => {
   const { isPending, data: agenda } = useQuery({
@@ -52,9 +52,14 @@ const Speakers = () => {
   return (
     <article className="inner-wrapper-container border-b">
       <HeadingWrapper>{agenda.speakersSectionTitle}</HeadingWrapper>
-      <div className="flex justify-center items-center flex-wrap">
+      <motion.div
+        initial={{opacity: 0}}
+        transition={{duration: 2.5}}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="flex justify-center items-center flex-wrap">
         {listSpeakerCards}
-      </div>
+      </motion.div>
     </article>
   );
 };

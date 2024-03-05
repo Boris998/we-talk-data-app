@@ -56,7 +56,7 @@ const Home = ({ about }: Props) => {
       )}
 
       {/* Gallery */}
-      {featureFlags.featureFlagUpcomingGallery && (
+      {featureFlags.featureFlagGallery && (
         <section id="gallery" className={`bg-[#001330]/30`}>
           <Gallery />
         </section>
