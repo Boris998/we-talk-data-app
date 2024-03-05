@@ -6,6 +6,7 @@ import Link from "next/link";
 import SectionWrapperContainer from "../ui/HOC/SectionWrapperContainer";
 import { useQuery } from "@tanstack/react-query";
 import { groq } from "next-sanity";
+import { motion } from "framer-motion";
 
 const Supporters = () => {
   const { isPending, data: supporters } = useQuery({
@@ -15,8 +16,8 @@ const Supporters = () => {
       return sanityClient.fetch(querySupporters);
     },
   });
-    
-  if(isPending) return null;
+
+  if (isPending) return null;
 
   const listSupporters = supporters.map(
     (supporter: SupporterData, id: number) => {
@@ -24,7 +25,7 @@ const Supporters = () => {
         <Link
           href={supporter.url}
           key={id}
-          className="relative w-[20rem] sm:w-[12rem]"
+          className="relative w-[12rem] "
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -42,9 +43,22 @@ const Supporters = () => {
 
   return (
     <SectionWrapperContainer>
-      <article className="inner-wrapper-container">
+      <article className="inner-wrapper-container overflow-hidden">
         <HeadingWrapper>S u p p o r t e r s</HeadingWrapper>
-        <div className="flex flex-row">{listSupporters}</div>
+        <motion.div
+          initial={{
+            y: 120,
+            opacity: 0,
+          }}
+          transition={{
+            duration: 1.2,
+          }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex flex-row"
+        >
+          {listSupporters}
+        </motion.div>
       </article>
     </SectionWrapperContainer>
   );

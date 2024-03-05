@@ -74,21 +74,21 @@ const EventGallery = () => {
                   style={{ ...backgroundImageStyle }}
                 ></div>
 
-                <Button
+                <button
                   onClick={prevSlide}
-                  className={`hidden group-hover:block absolute top-[45%] -translate-x-0 translatey-y-[-50%] left-5 text-2xl rounded-full bg-black/20 text-white pb-12 hover:bg-gradient-to-br hover:from-[#003767]/90 hover:to-[#ffd700]/30 hover:text-[#ffd700]`}
+                  className='hidden group-hover:block absolute top-[45%] -translate-x-0 translatey-y-[-50%] left-5 text-2xl rounded-full bg-black/20 text-white pb-12 hover:bg-gradient-to-br hover:from-[#003767]/90 hover:to-[#ffd700]/30 hover:text-[#ffd700]'
                 >
                   <ChevronLeftIcon className="h-10 w-10" />
-                </Button>
+                </button>
 
-                <Button
+                <button
                   onClick={nextSlide}
-                  className={`hidden group-hover:block absolute top-[45%] -translate-x-0 translatey-y-[-50%]
+                  className='hidden group-hover:block absolute top-[45%] -translate-x-0 translatey-y-[-50%]
                   right-5 text-2xl rounded-full bg-black/20 text-white pb-12 
-                  hover:bg-gradient-to-br hover:from-[#003767]/90 hover:to-[#ffd700]/30 hover:text-[#ffd700]`}
+                  hover:bg-gradient-to-br hover:from-[#003767]/90 hover:to-[#ffd700]/30 hover:text-[#ffd700]'
                 >
                   <ChevronRightIcon className="h-10 w-10" />
-                </Button>
+                </button>
               </div>
             </DialogContent>
           </Dialog>

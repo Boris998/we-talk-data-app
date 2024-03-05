@@ -8,17 +8,18 @@ import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { useState } from "react";
 
-const SheetMenu = () => {
-  const bars = [
-    { title: "HOME", href: "/#home" },
-    { title: "ABOUT", href: "/#about" },
-    { title: "UPCOMING EVENT", href: "/#upcoming-event" },
-    { title: "GALLERY", href: "/#gallery" },
-    { title: "PAST EVENTS", href: "/#past-events" },
-    { title: "PARTNERS", href: "/#partners" },
-    { title: "SUPPORTERS", href: "/#supporters" },
-  ];
+const bars = [
+  { title: "HOME", href: "/#home" },
+  { title: "ABOUT", href: "/#about" },
+  { title: "UPCOMING EVENT", href: "/#upcoming-event" },
+  { title: "GALLERY", href: "/#gallery" },
+  { title: "PAST EVENTS", href: "/#past-events" },
+  { title: "PARTNERS", href: "/#partners" },
+  { title: "SUPPORTERS", href: "/#supporters" },
+];
 
+
+const SheetMenu = () => {
   const [activeLink, setActiveLink] = useState(bars[0].href);
 
   const handleLinkClick = (link: string) => {

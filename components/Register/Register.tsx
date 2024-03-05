@@ -4,7 +4,7 @@ import Image from "next/image";
 import sucessGif from "../../public/assets/success.gif";
 
 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-const REGISTRATION_API_URL = 'https://sheetdb.io/api/v1/cyl33uuvvxsot';
+const REGISTRATION_API_URL = "https://sheetdb.io/api/v1/cyl33uuvvxsot";
 
 export const Register = () => {
   const [formIsValid, setFormIsValid] = useState(false);
@@ -102,17 +102,21 @@ export const Register = () => {
       onSubmit={confirmRegistrationHandler}
       className="inner-wrapper-container space-y-8 text-white bg-black/20 rounded-xl max-w-7xl mb-10"
     >
-      {dataIsSucess && <>
-        <Image
-          src={sucessGif}
+      {dataIsSucess && (
+        <>
+          <Image
+            src={sucessGif}
             className="flex rounded-xl object-cover md:rounded-xl"
-            alt='success'
+            alt="success"
             height={400}
             width={400}
           />
-        
-      <p className="text-[#ffd700] font-bold text-[1.05rem] sm:text-xl">You are sucessfully registered for the event at 29th!</p>
-      </>}
+
+          <p className="text-[#ffd700] font-bold text-[1.05rem] sm:text-xl">
+            You are sucessfully registered for the event at 27th!
+          </p>
+        </>
+      )}
       {!dataIsSucess && (
         <>
           <div className="flex flex-col sm:flex-row space-x-0 sm:space-x-12 md:space-x-16 lg:space-x-36 space-y-4 sm:space-y-0 w-full justify-between">
@@ -150,7 +154,8 @@ export const Register = () => {
               />
               {emailHasError && (
                 <p className="py-2 invalid-text">
-                  Invalid Email (Please check the format) - [something@domain.subdomain] 
+                  Invalid Email (Please check the format) -
+                  [something@domain.subdomain]
                 </p>
               )}
             </label>
