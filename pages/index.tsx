@@ -36,13 +36,13 @@ const Home = ({ about }: Props) => {
 
       {/* About */}
       {featureFlags.featureFlagAbout && (
-        <section id="about" className={`bg-[#001330]/40`}>
+        <section id="about" className='bg-[#001330]/60'>
           <About about={about} />
         </section>
       )}
 
       {/* Video */}
-      {featureFlags.featureFlagVideo && (
+      {featureFlags.featureFlagVideo || (
         <section>
           <Video />
         </section>
@@ -50,14 +50,14 @@ const Home = ({ about }: Props) => {
 
       {/* UpcomingEvent */}
       {featureFlags.featureFlagUpcomingEvents && (
-        <section id="upcoming-event">
+        <section id="upcoming-event" className='bg-[#001330]/40'>
           <UpcomingEvent />
         </section>
       )}
 
       {/* Gallery */}
       {featureFlags.featureFlagGallery && (
-        <section id="gallery" className={`bg-[#001330]/30`}>
+        <section id="gallery" className='bg-[#001330]/20'>
           <Gallery />
         </section>
       )}
@@ -71,14 +71,14 @@ const Home = ({ about }: Props) => {
 
       {/* Partners */}
       {featureFlags.featureFlagPartners && (
-        <section id="partners" className={`bg-[#001330]/30`}>
+        <section id="partners" className='bg-[#001330]/30'>
           <Partners />
         </section>
       )}
 
       {/* Supporters */}
       {featureFlags.featureFlagSupporters && (
-        <section id="supporters" className={`bg-[#001330]/80`}>
+        <section id="supporters" className='bg-[#001330]/60'>
           <Supporters />
         </section>
       )}
