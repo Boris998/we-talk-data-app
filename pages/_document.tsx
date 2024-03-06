@@ -8,7 +8,8 @@ export default function Document() {
   return (
     <Html lang="en">
       <title>We Talk Data & AI</title>
-      <Head>
+          <Head>
+          <meta property="description" content="We Talk Data & AI Tech Talk" key="desc" />
         <meta property="og:title" content="WeTalkDATA&AI" />
               <meta property="og:description" content="We Talk Data & AI Tech Talk" key="desc" />
               <meta property="og:url" content="https://we-talk-data-app.vercel.app/" />
