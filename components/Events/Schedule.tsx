@@ -86,12 +86,12 @@ const Schedule = () => {
           Location:
           <Link
             className="first-line:px-2 text-[#ffd700]/50 hover:text-[#ffd700] flex flex-row pr-2"
-            href="https://maps.app.goo.gl/p25yuLr5vFrwbbcz5"
+            href={agenda.locationUrl}
             target="_blank"
             rel="noopener noreferrer"
           >
             <SewingPinIcon className="w-6 h-6" />
-            Public Room
+            {agenda.location}
           </Link>
           <span>{agenda.date}</span>
         </motion.p>
@@ -108,7 +108,7 @@ const Schedule = () => {
           viewport={{ once: true }}
           className="text-white-centered-1"
         >
-          Reception and introduction: 18:00 - 18:30
+          Reception and introduction: {agenda.receptionTime}
         </motion.p>
         <motion.p
           initial={{
@@ -123,7 +123,7 @@ const Schedule = () => {
           viewport={{ once: true }}
           className="text-white-centered-1"
         >
-          Tech Talks: 18:30 - 19:30
+          Tech Talks: {agenda.techTalkTime}
         </motion.p>
         <motion.p
           initial={{
@@ -138,7 +138,7 @@ const Schedule = () => {
           viewport={{ once: true }}
           className="text-white-centered-1 pb-2"
         >
-          Socializing: 19:30 - 21:00
+          Socializing and Networking: {agenda.networkingTime}
         </motion.p>
       </figure>
       <Link href="/register">
@@ -148,7 +148,7 @@ const Schedule = () => {
           title="asdasd"
           className="text-[#ffd700] text-[0.75rem] sm:text-[1rem] lg:text-[1.15rem] xl:text-[1.25rem] rounded-full px-8 py-3 tracking-wider hover:bg-gradient-to-br hover:from-blue-800/20 hover:to-[#ffd700]/30 hover:text-[#ffd700] border-2 border-[#ffd700] "
         >
-          REGISTER FOR WETALKDATA&AI | SKOPJE
+          {agenda.registerButton}
         </motion.button>
       </Link>
       <SectionWrapperContainer>
