@@ -53,7 +53,7 @@ const Speakers = () => {
             <figcaption className="px-5 py-3 space-y-1">
               <h3>{speaker.speakerName}</h3>
               <h3>{speaker.jobTitle}</h3>
-              <h4>{speaker.bio?.substring(0, 50)}</h4>
+              <h4>{speaker.bio?.substring(0, 75)} ...</h4>
             </figcaption>
           </SpeakerCard>
         </Link>
