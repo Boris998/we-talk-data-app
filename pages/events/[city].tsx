@@ -25,19 +25,15 @@ const Skopje = () => {
 
     if (isPending) return null;
     
-    // console.log(pastEvent.events[0]);
-/*
-    const currEvent = pastEvent.events.find(
+    const currEvent = pastEvent.events.findIndex(
         (event: Event) => event.city === city
-    );*/
+    );
     
-    // console.log('asd',currEvent);
-
   return (
     <SectionWrapperContainer>
       <figure className="inner-wrapper-container border-b">
         <HeadingWrapper>
-          {pastEvent.events[0].title} | {pastEvent.events[0].city}
+          {pastEvent.events[currEvent].title} | {pastEvent.events[currEvent].city}
         </HeadingWrapper>
         <div className="flex flex-col md:flex-row relative inner-section-wrapper-fixer md:space-y-0 md:space-x-8 items-center">
           <Image
@@ -48,7 +44,7 @@ const Skopje = () => {
             height={300}
           />
           <p className="paragraph-1 text-left leading-2 xl:leading-8">
-            {pastEvent.events[0].description}
+            {pastEvent.events[currEvent].description}
           </p>
         </div>
       </figure>
