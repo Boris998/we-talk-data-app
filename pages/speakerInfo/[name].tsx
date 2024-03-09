@@ -14,24 +14,21 @@ const SpeakerInfo = () => {
   const router = useRouter();
   const name = router.query.name;
 
-  const { isPending, data: agenda } = useQuery({
-    queryKey: ["agenda"],
+  const { isPending, data: speakerData1 } = useQuery({
+    queryKey: ["speakerData1"],
     queryFn: async () => {
-      const queryAgenda = groq`*[_type=="upcomingEvent"][0]{
-        ...,
-        speaker[]->
-    }`;
+      const queryAgenda = groq`*[_type=="speaker"]`;
       return sanityClient.fetch(queryAgenda);
     },
   });
 
   if (isPending) return null;
 
-  const currSpeaker = agenda.speaker.find(
+   const currSpeaker = speakerData1.find(
     (speaker: SpeakerData) => speaker.speakerName === name
   );
 
-  return (
+    return (
     <SectionWrapperContainer>
       <figure className="inner-wrapper-container">
         <HeadingWrapper>

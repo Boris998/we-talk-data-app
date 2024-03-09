@@ -12,44 +12,46 @@ const Skopje = () => {
   const router = useRouter();
   const city = router.query.city;
 
-  const { isPending, data: pastEvent } = useQuery({
-    queryKey: ["pastEvent"],
+  const { isPending, data: pastEventsData } = useQuery({
+    queryKey: ["pastEventsData"],
     queryFn: async () => {
-        const queryPastEvents = groq`*[_type=="pastEvents"][0]{
-            ...,
-            events[]->
-       }`;
+      const queryPastEvents = groq`*[_type=="event"]{
+                ...,
+                speakers[]->
+           }`;
       return sanityClient.fetch(queryPastEvents);
     },
   });
 
-    if (isPending) return null;
-    
-    const currEvent = pastEvent.events.findIndex(
-        (event: Event) => event.city === city
-    );
-    
+  if (isPending) return null;
+
+  const currEvent = pastEventsData.findIndex(
+    (event: Event) => event.city === city
+  ); 
+
+  const speakersData = pastEventsData[currEvent].speakers;
+
   return (
     <SectionWrapperContainer>
       <figure className="inner-wrapper-container border-b">
         <HeadingWrapper>
-          {pastEvent.events[currEvent].title} | {pastEvent.events[currEvent].city}
+          {pastEventsData[currEvent].title} | {pastEventsData[currEvent].city}
         </HeadingWrapper>
         <div className="flex flex-col md:flex-row relative inner-section-wrapper-fixer md:space-y-0 md:space-x-8 items-center">
           <Image
             className="flex rounded-xl object-cover md:w-1/2 md:rounded-xl"
-            src={urlFor(pastEvent.image).url()}
+            src={urlFor(pastEventsData[currEvent].image).url()}
             alt="Skopje 2023"
             width={500}
             height={300}
           />
           <p className="paragraph-1 text-left leading-2 xl:leading-8">
-            {pastEvent.events[currEvent].description}
+            {pastEventsData[currEvent].description}
           </p>
         </div>
       </figure>
 
-      <Speakers />
+      <Speakers speakersData={speakersData} />
     </SectionWrapperContainer>
   );
 };

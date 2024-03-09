@@ -9,22 +9,12 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 const shakeValue = 2;
+type Props = {
+  speakersData: SpeakerData[];
+};
 
-const Speakers = () => {
-  const { isPending, data: agenda } = useQuery({
-    queryKey: ["agenda"],
-    queryFn: async () => {
-      const queryAgenda = groq`*[_type=="upcomingEvent"][0]{
-        ...,
-        speaker[]->
-    }`;
-      return sanityClient.fetch(queryAgenda);
-    },
-  });
-
-  if (isPending) return null;
-
-  const listSpeakerCards = agenda.speaker.map((speaker: SpeakerData) => {
+const Speakers = ({ speakersData }: Props) => {
+  const listSpeakerCards = speakersData.map((speaker: SpeakerData) => {
     const urlImage = urlFor(speaker.image.asset._ref).url();
 
     return (
@@ -63,7 +53,7 @@ const Speakers = () => {
 
   return (
     <article className="inner-wrapper-container border-b">
-      <HeadingWrapper>{agenda.speakersSectionTitle}</HeadingWrapper>
+      <HeadingWrapper>Speakers</HeadingWrapper>
       <motion.div
         initial={{ opacity: 0 }}
         transition={{ duration: 2.5 }}
