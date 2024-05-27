@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const NavBar = () => {
   const bars = [
@@ -19,22 +20,27 @@ const NavBar = () => {
   };
 
   const barsList = bars.map((bar, id) => (
-    <Link
+    <motion.div
       key={id}
-      className={`cursor-pointer hover:text-[#ffd700] rounded-full hover:shadow-xl hover:shadow-[#ffd700]/50 text-center p-[1em] ${
-        activeLink === bar.title
-          ? "text-yellow-400 shadow-xl shadow-[#ffd700]/50 bg-gradient-to-br from-blue-800/20 to-[#ffd700]/30"
-          : ""
-      } text-amber-200 px-[1em] py-[0.5em] hover:bg-gradient-to-br hover:from-blue-800/20 hover:to-[#ffd700]/20 mix-blend-darken`}
-      href={`${bar.href}`}
-      onClick={() => handleLinkClick(bar.title)}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
     >
-      {bar.title.toUpperCase()}
-    </Link>
-  ));
+      <Link
+        className={`cursor-pointer hover:text-[#ffd700] rounded-full hover:shadow-xl hover:shadow-[#ffd700]/50 text-center p-[1em] ${
+          activeLink === bar.title
+            ? "text-yellow-400 shadow-xl shadow-[#ffd700]/50 bg-gradient-to-br from-blue-800/20 to-[#ffd700]/30"
+            : ""
+        } text-amber-200 px-[1em] py-[0.5em] hover:bg-gradient-to-br hover:from-blue-800/20 hover:to-[#ffd700]/20 mix-blend-darken`}
+        href={`${bar.href}`}
+        onClick={() => handleLinkClick(bar.title)}
+      >
+        {bar.title.toUpperCase()}
+      </Link>
+    </motion.div>
+  )); 
 
   return (
-    <nav className="text-right xl:text-center space-x-3 hidden xl:block w-full xl:pr-[8vw]">
+    <nav className="text-right absolute xl:text-center space-x-3 hidden xl:flex w-full justify-center xl:pr-14">
       {barsList}
     </nav>
   );

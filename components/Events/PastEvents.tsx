@@ -27,17 +27,17 @@ const PastEvents = () => {
     return (
       <EventCard key={id}>
         <Image
-          src={urlFor(pastEvents.image).url()}
+          src={urlFor(event.image.asset._ref).url()}
           alt="as"
           width={600}
           height={400}
         />
-        <Link href="/events/Skopje">
+        <Link href={`/events/${event.city}`}>
           <figcaption>
             <h3>
-              {event.title} | {event.city}
+              {event.title} | {event.city.replace(/[0-9]/g, '')}
             </h3>
-            <h4>30.11.{event.year}</h4>
+            <h4>{event.date}</h4>
           </figcaption>
         </Link>
       </EventCard>

@@ -1,14 +1,11 @@
 import HeadingWrapper from "@/components/ui/HOC/HeadingWrapper";
 import SpeakerCard from "@/components/ui/HOC/SpeakerCard";
-import { sanityClient, urlFor } from "@/sanity";
+import { urlFor } from "@/sanity";
 import { SpeakerData } from "@/typings";
-import { useQuery } from "@tanstack/react-query";
-import { groq } from "next-sanity";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 
-const shakeValue = 2;
 type Props = {
   speakersData: SpeakerData[];
 };

@@ -2,7 +2,7 @@ import {defineField, defineType} from 'sanity'
 
 export default defineType({
     name: 'event',
-    title: 'Event',
+    title: 'Past Events Page',
     type: 'document',
     fields: [
         defineField({
@@ -21,9 +21,9 @@ export default defineType({
             type: 'string',
         }),
         defineField({
-            name: 'year',
-            title: 'Year',
-            type: 'number',
+            name: 'date',
+            title: 'Date',
+            type: 'string',
         }),
         defineField({
             name: 'description',

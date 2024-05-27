@@ -43,7 +43,7 @@ const Hero = () => {
           animate={{ opacity: 1, scale: 1 }}
         >
           <h3
-            className="mb-4 lg:text-2xl text-xl max-w-4xl font-bold text-orange-200 uppercase
+            className="pb-4 lg:text-2xl text-xl max-w-4xl font-bold text-orange-200 uppercase
             tracking-[4px] shadow-[#003767] mix-blend-differense"
           >
             {pageInfo?.address}
@@ -55,7 +55,7 @@ const Hero = () => {
             className="text-[1.25rem] sm:text-[1.5rem] md:text-[1.75rem] xl:text-[2rem] max-w-4xl font-extrabold text-[#ffd700]
                 rounded-2xl uppercase tracking-[0.5rem] sm:tracking-[1rem]"
           ></h1>
-          <h3 className="text-[1rem] lg:text-[1.25rem] max-w-4xl font-bold text-amber-100 uppercase tracking-[5px] sm:mx-[4vw] ">
+          <h3 className="pt-4 text-[1rem] lg:text-[1.25rem] max-w-4xl font-bold text-amber-100 uppercase tracking-[5px] sm:mx-[4vw] ">
             {pageInfo?.subHeading.split(" ").splice(0, 6).join(" ")}
             <br />
             {pageInfo?.subHeading.split(" ").splice(6, 8)}

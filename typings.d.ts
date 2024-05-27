@@ -36,7 +36,7 @@ export interface Event extends SanityBody {
     featureFlag: boolean
     title: string;
     city: string;
-    year: string;
+    date: string;
     description: number;
     image: Image;
 }

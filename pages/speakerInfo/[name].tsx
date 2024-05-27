@@ -28,6 +28,10 @@ const SpeakerInfo = () => {
     (speaker: SpeakerData) => speaker.speakerName === name
   );
 
+  console.log(speakerData1);
+  console.log(currSpeaker);
+  
+
     return (
     <SectionWrapperContainer>
       <figure className="inner-wrapper-container">
