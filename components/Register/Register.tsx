@@ -5,7 +5,7 @@ import sucessGif from "../../public/assets/success.gif";
 import { motion } from "framer-motion";
 
 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-const REGISTRATION_API_URL = "https://sheetdb.io/api/v1/cyl33uuvvxsot";
+const REGISTRATION_API_URL = "https://sheetdb.io/api/v1/khnxmwi2aer8n";
 
 export const Register = () => {
   const [formIsValid, setFormIsValid] = useState(false);
@@ -97,7 +97,7 @@ export const Register = () => {
 
   return (
     <form
-      action="https://sheetdb.io/api/v1/cyl33uuvvxsot"
+      action="https://sheetdb.io/api/v1/khnxmwi2aer8n"
       method="post"
       id="sheetdb-form"
       onSubmit={confirmRegistrationHandler}
